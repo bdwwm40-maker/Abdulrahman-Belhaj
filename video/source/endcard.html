@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: Cairo; src: url(cairo.ttf) format("woff2"); font-weight: 700; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #f4f1ec; }
+#stage { position: relative; width: 100%; height: 100%; overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, #ffffff 0, #ffffff 48vmin, #efeae2 120vmin); }
+#sweep { position: absolute; inset: -50%; pointer-events: none;
+  background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,.85) 50%, transparent 58%); }
+#glow { position: absolute; left: 50%; top: 44%; width: 70vmin; height: 70vmin; transform: translate(-50%,-50%);
+  border-radius: 50%; background: radial-gradient(circle, rgba(0,114,188,.16) 0%, rgba(122,184,0,.07) 40%, transparent 70%); }
+#logo { mix-blend-mode: multiply; position: absolute; left: 50%; top: 44%; width: 56vmin; height: 56vmin; transform: translate(-50%,-50%); }
+#tag { position: absolute; left: 0; right: 0; top: calc(44% + 31vmin); text-align: center;
+  font-family: Cairo, sans-serif; font-weight: 700; font-size: 5.2vmin; color: #1b2a3a; letter-spacing: .02em; }
+#line { position: absolute; left: 50%; top: calc(44% + 29vmin); height: 2px; transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, #0072bc, #7ab800, transparent); }
+#fade { position: absolute; inset: 0; background: #f4f1ec; }
+</style>
+</head>
+<body>
+<div id="stage">
+    <img id="logo" src="logo.png">
+  <div id="line"></div>
+  <div id="tag">معًا نصنع أثرًا.</div>
+  <div id="sweep"></div>
+  <div id="fade"></div>
+</div>
+<script>
+const clamp = (x) => Math.max(0, Math.min(1, x));
+const ease = (x) => { x = clamp(x); return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2; };
+const prog = (t, a, b) => ease((t - a) / (b - a));
+window.setT = (t) => {
+  const $ = (id) => document.getElementById(id);
+  // opening fade from page colour
+  $('fade').style.opacity = 1 - prog(t, 0, 0.8) + prog(t, 7.4, 8);
+  // logo: soft blur-to-sharp reveal with slow settle; never recoloured or reshaped
+  const l = prog(t, 0.6, 2.6);
+  const push = 1 + 0.03 * clamp((t - 2.6) / 5.4);
+  $('logo').style.opacity = l;
+  $('logo').style.filter = `blur(${(1 - l) * 14}px)`;
+  $('logo').style.transform = `translate(-50%,-50%) scale(${(0.9 + 0.1 * l) * push})`;
+  // accent line and tagline
+  $('line').style.width = `${prog(t, 3.0, 4.0) * 30}vmin`;
+  const g = prog(t, 3.4, 4.6);
+  $('tag').style.opacity = g;
+  $('tag').style.transform = `translateY(${(1 - g) * 2}vmin)`;
+  // single light sweep across the card
+  const s = clamp((t - 2.4) / 1.6);
+  $('sweep').style.transform = `translateX(${-60 + s * 120}%)`;
+  $('sweep').style.opacity = s > 0 && s < 1 ? 1 : 0;
+};
+window.setT(0);
+</script>
+</body>
+</html>
