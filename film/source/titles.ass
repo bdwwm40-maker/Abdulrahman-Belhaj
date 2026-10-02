@@ -1,0 +1,32 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: S,Amiri,170,&H00D6E6F3,&H00FFFFFF,&H00000000,&H60000000,0,0,0,0,100,100,0,0,1,0,3,5,0,0,0,1
+Style: Big,Amiri,240,&H00D6E6F3,&H00FFFFFF,&H00000000,&H90000000,1,0,0,0,100,100,0,0,1,0,2,5,0,0,0,1
+Style: Name,Amiri,118,&H00F2F6FA,&H00FFFFFF,&H00000000,&HA0000000,1,0,0,0,100,100,0,0,1,0,2,3,0,0,0,1
+Style: Role,Amiri,70,&H00B4CCDD,&H00FFFFFF,&H00000000,&HA0000000,0,0,0,0,100,100,0,0,1,0,2,3,0,0,0,1
+Style: Small,Amiri,60,&H0090A0AA,&H00FFFFFF,&H00000000,&HA0000000,0,0,0,0,100,100,0,0,1,0,1,5,0,0,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:11.20,0:00:15.60,S,,0,0,0,,{\an5\pos(420,540)\fad(900,900)\blur7\t(0,1200,\blur0.6)}نساءٌ تركن أثرًا...
+Dialogue: 0,0:00:17.60,0:00:22.00,S,,0,0,0,,{\an5\pos(420,540)\fad(900,900)\blur7\t(0,1200,\blur0.6)}نساءٌ صنعن فرقًا...
+Dialogue: 0,0:00:31.40,0:00:36.00,S,,0,0,0,,{\an5\pos(960,872)\fad(900,900)\blur7\t(0,1200,\blur0.6)}نساءٌ لم يكن حضورهن عابرًا.
+Dialogue: 0,0:00:54.60,0:00:57.50,Name,,0,0,0,,{\an3\pos(1790,850)\fad(600,600)\blur7\t(0,900,\blur0.6)}نجلاء السوكني
+Dialogue: 0,0:00:54.85,0:00:57.50,Role,,0,0,0,,{\an3\pos(1790,910)\fad(600,600)\blur7\t(0,900,\blur0.6)}عضو المجلس البلدي العجيلات
+Dialogue: 0,0:01:00.90,0:01:04.20,Role,,0,0,0,,{\an3\pos(1790,778)\fad(600,600)\blur7\t(0,900,\blur0.6)}سيدةٌ صنعت أثرًا
+Dialogue: 0,0:01:01.60,0:01:04.20,Name,,0,0,0,,{\an3\pos(1790,852)\fad(600,600)\blur7\t(0,900,\blur0.6)}زهرة رجال
+Dialogue: 0,0:01:01.90,0:01:04.20,Role,,0,0,0,,{\an3\pos(1790,908)\fad(600,600)\blur7\t(0,900,\blur0.6)}إحدى المكرّمات
+Dialogue: 0,0:01:34.12,0:01:38.52,S,,0,0,0,,{\an5\pos(960,540)\fad(1100,1000)\blur7\t(0,1400,\blur0.6)}من نساءٍ صنعن التاريخ...
+Dialogue: 0,0:01:38.72,0:01:43.32,S,,0,0,0,,{\an5\pos(960,540)\fad(1100,1000)\blur7\t(0,1400,\blur0.6)}إلى سيداتٍ يصنعن الأثر اليوم.
+Dialogue: 0,0:01:44.92,0:01:50.52,Big,,0,0,0,,{\an5\pos(960,510)\fad(1300,1100)\blur7\t(0,1600,\blur0.6)}العجيلات — 2026
+Dialogue: 0,0:01:45.72,0:01:50.52,Role,,0,0,0,,{\an3\pos(960,640)\fad(1100,1100)\blur7\t(0,1400,\blur0.6)}{\an5}الدورة الثالثة لتكريم سيدات العجيلات
+Dialogue: 0,0:01:51.52,0:01:56.82,Role,,0,0,0,,{\an3\pos(960,660)\fad(1000,900)\blur7\t(0,1300,\blur0.6)}{\an5\fs77}وزارة الحكم المحلي — بلدية العجيلات
+Dialogue: 0,0:01:51.82,0:01:56.82,Role,,0,0,0,,{\an3\pos(960,712)\fad(1000,900)\blur7\t(0,1300,\blur0.6)}{\an5}عضو المجلس البلدي عن المرأة
+Dialogue: 0,0:01:52.32,0:01:56.82,Small,,0,0,0,,{\an5\pos(960,905)\fad(1000,900)\blur7\t(0,1300,\blur0.6)}لقطات الحفل: المنصة الليبية   ·   المادة الأرشيفية: قصص كفاح المرأة
