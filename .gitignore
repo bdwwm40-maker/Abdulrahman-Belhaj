@@ -3,3 +3,4 @@ opening/output/still_*.png
 opening/output/*.mp4
 opening/output/stems/
 __pycache__/
+!opening/output/Qisas_Kifah_AlMara_Opening_1080p_preview.mp4
