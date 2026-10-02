@@ -1,0 +1,5 @@
+opening/output/*.log
+opening/output/still_*.png
+opening/output/*.mp4
+opening/output/stems/
+__pycache__/
