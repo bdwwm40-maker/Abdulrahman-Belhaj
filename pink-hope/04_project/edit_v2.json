@@ -1,0 +1,659 @@
+{
+ "comment": "PINK HOPE v2 — hyper-edit in the style of the supplied reference (120 BPM). Times are in BEATS (1 beat = 0.5 s).",
+ "fps": 30,
+ "bpm": 120,
+ "source_dir": "../00_source",
+ "shots": [
+  {
+   "id": "A01",
+   "src": "VID-20261010-WA0140.mp4",
+   "in": 0.3,
+   "b": 0,
+   "len": 4,
+   "zoom": [
+    1.32,
+    1.0
+   ],
+   "ease": "in",
+   "flash": [
+    3.0
+   ],
+   "note": "Hospital entrance — PINK HOPE types in, flash, pull-back"
+  },
+  {
+   "id": "A02",
+   "src": "VID-20261010-WA0186.mp4",
+   "in": 2.4,
+   "b": 4,
+   "len": 4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "tr": "whip_l",
+   "poster": 1,
+   "note": "POSTER 1 — Pink October campaign roll-up"
+  },
+  {
+   "id": "A03",
+   "src": "VID-20261010-WA0145.mp4",
+   "in": 9.0,
+   "b": 8,
+   "len": 3,
+   "zoom": [
+    1.0,
+    1.9
+   ],
+   "focus": "pink",
+   "tr": "punch",
+   "note": "Pink balloon — push into it"
+  },
+  {
+   "id": "A04",
+   "src": "VID-20261010-WA0188.mp4",
+   "in": 0.8,
+   "b": 11,
+   "len": 4,
+   "zoom": [
+    1.04,
+    1.1
+   ],
+   "tr": "circle",
+   "neon": true,
+   "poster": 2,
+   "note": "POSTER 2 — Ministry / Women Support Office roll-up, lights on"
+  },
+  {
+   "id": "A05",
+   "src": "VID-20261010-WA0039.mp4",
+   "in": 1.8,
+   "b": 15,
+   "len": 3,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "rot": [
+    5,
+    0
+   ],
+   "tr": "roll",
+   "poster": 3,
+   "note": "POSTER 3 — National Volunteer Agency banner"
+  },
+  {
+   "id": "A06",
+   "src": "VID-20261010-WA0153.mp4",
+   "in": 5.0,
+   "b": 18,
+   "len": 1,
+   "zoom": [
+    1.05,
+    1.15
+   ],
+   "tr": "whip_r",
+   "note": "Ribbon bowl"
+  },
+  {
+   "id": "A07",
+   "src": "VID-20261010-WA0148.mp4",
+   "in": 0.5,
+   "b": 19,
+   "len": 1,
+   "zoom": [
+    1.05,
+    1.12
+   ],
+   "rot": [
+    -4,
+    -4
+   ],
+   "tr": "whip_l",
+   "note": "Hands writing"
+  },
+  {
+   "id": "A08",
+   "src": "VID-20261010-WA0163.mp4",
+   "in": 2.0,
+   "b": 20,
+   "len": 1,
+   "zoom": [
+    1.05,
+    1.1
+   ],
+   "tr": "punch",
+   "note": "Reviewing forms"
+  },
+  {
+   "id": "A09",
+   "src": "VID-20261010-WA0165.mp4",
+   "in": 1.2,
+   "b": 21,
+   "len": 2,
+   "zoom": [
+    1.1,
+    1.18
+   ],
+   "pan": [
+    0,
+    -0.03
+   ],
+   "tr": "whip_r",
+   "note": "Speaker explaining"
+  },
+  {
+   "id": "A10",
+   "src": "VID-20261010-WA0161.mp4",
+   "in": 0.2,
+   "b": 23,
+   "len": 3,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tr": "roll",
+   "note": "Ultrasound station"
+  },
+  {
+   "id": "A11",
+   "src": "VID-20261010-WA0181.mp4",
+   "in": 2.3,
+   "b": 26,
+   "len": 1.5,
+   "zoom": [
+    1.06,
+    1.14
+   ],
+   "tr": "whip_l",
+   "note": "Clinician handing paperwork"
+  },
+  {
+   "id": "A12",
+   "src": "VID-20261010-WA0173.mp4",
+   "in": 1.4,
+   "b": 27.5,
+   "len": 0.5,
+   "zoom": [
+    1.1,
+    1.2
+   ],
+   "rot": [
+    -6,
+    -6
+   ],
+   "tr": "punch",
+   "note": "Libyan Union Against Cancer vest"
+  },
+  {
+   "id": "A13",
+   "src": "VID-20261010-WA0171.mp4",
+   "in": 20.0,
+   "b": 28,
+   "len": 0.5,
+   "zoom": [
+    1.1,
+    1.18
+   ],
+   "tr": "whip_r",
+   "note": "Volunteer looks up"
+  },
+  {
+   "id": "A14",
+   "src": "VID-20261010-WA0201.mp4",
+   "in": 8.0,
+   "b": 28.5,
+   "len": 0.5,
+   "zoom": [
+    1.05,
+    1.12
+   ],
+   "rot": [
+    6,
+    6
+   ],
+   "tr": "roll",
+   "note": "Group"
+  },
+  {
+   "id": "A16",
+   "src": "VID-20261010-WA0036.mp4",
+   "in": 0.0,
+   "b": 29,
+   "len": 6,
+   "zoom": [
+    1.02,
+    1.12
+   ],
+   "tr": "flash",
+   "slowmo": 4.0,
+   "ramp": [
+    [
+     0.4,
+     4.0
+    ],
+    [
+     3.0,
+     1.0
+    ]
+   ],
+   "note": "Speed ramp: real speed then 4x true slow motion (120 fps source)"
+  },
+  {
+   "id": "A17",
+   "src": "VID-20261010-WA0201.mp4",
+   "in": 13.2,
+   "b": 35,
+   "len": 3,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tr": "punch",
+   "note": "Women gathered under the campaign banner (drop)"
+  },
+  {
+   "id": "A18",
+   "src": "VID-20261010-WA0186.mp4",
+   "in": 4.0,
+   "b": 38,
+   "len": 1,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "tr": "flash",
+   "poster": 1,
+   "note": "POSTER 1 reprise"
+  },
+  {
+   "id": "A19",
+   "src": "VID-20261010-WA0188.mp4",
+   "in": 2.2,
+   "b": 39,
+   "len": 1,
+   "zoom": [
+    1.04,
+    1.1
+   ],
+   "tr": "whip_l",
+   "poster": 2,
+   "note": "POSTER 2 reprise"
+  },
+  {
+   "id": "A20",
+   "src": "VID-20261010-WA0039.mp4",
+   "in": 3.0,
+   "b": 40,
+   "len": 1,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "tr": "whip_r",
+   "poster": 3,
+   "note": "POSTER 3 reprise"
+  },
+  {
+   "id": "A21",
+   "src": "VID-20261010-WA0171.mp4",
+   "in": 21.0,
+   "b": 41,
+   "len": 1,
+   "zoom": [
+    1.08,
+    1.16
+   ],
+   "tr": "punch",
+   "note": "Volunteer"
+  },
+  {
+   "id": "A22",
+   "src": "VID-20261010-WA0153.mp4",
+   "in": 8.0,
+   "b": 42,
+   "len": 1,
+   "zoom": [
+    1.05,
+    1.15
+   ],
+   "rot": [
+    -5,
+    -5
+   ],
+   "tr": "whip_l",
+   "note": "Ribbons"
+  },
+  {
+   "id": "A23",
+   "src": "VID-20261010-WA0201.mp4",
+   "in": 18.0,
+   "b": 43,
+   "len": 1,
+   "zoom": [
+    1.04,
+    1.12
+   ],
+   "tr": "roll",
+   "note": "Group, last shot before the card"
+  }
+ ],
+ "card": {
+  "b": 44,
+  "len": 10
+ },
+ "typing": [
+  {
+   "text": "PINK HOPE",
+   "b": 0.5,
+   "step": 0.2,
+   "y": 520,
+   "size": 132,
+   "where": "film",
+   "until": 3.85
+  },
+  {
+   "text": "PINK HOPE",
+   "b": 47.0,
+   "step": 0.3,
+   "y": 1300,
+   "size": 70,
+   "where": "card"
+  }
+ ],
+ "words": [
+  {
+   "group": "hook",
+   "y": 1330,
+   "lines": [
+    [
+     [
+      "لا",
+      8.3
+     ],
+     [
+      "تنتظري",
+      8.8
+     ]
+    ],
+    [
+     [
+      "ظهور",
+      9.4
+     ],
+     [
+      "الأعراض…",
+      10.0,
+      "hl"
+     ]
+    ]
+   ],
+   "until": 11.0
+  },
+  {
+   "group": "aware",
+   "y": 1350,
+   "lines": [
+    [
+     [
+      "الوعي",
+      18.1
+     ],
+     [
+      "يبدأ",
+      19.1
+     ],
+     [
+      "بالمعرفة",
+      20.1,
+      "hl"
+     ]
+    ]
+   ],
+   "until": 21.0
+  },
+  {
+   "group": "early",
+   "y": 1350,
+   "lines": [
+    [
+     [
+      "الكشف",
+      21.2
+     ],
+     [
+      "المبكر",
+      21.6
+     ],
+     [
+      "مهم",
+      22.1,
+      "hl"
+     ]
+    ]
+   ],
+   "until": 22.95
+  },
+  {
+   "group": "change",
+   "y": 1330,
+   "lines": [
+    [
+     [
+      "انتبهي",
+      23.2
+     ],
+     [
+      "لأي",
+      23.5
+     ],
+     [
+      "تغيّر",
+      23.8,
+      "hl"
+     ]
+    ],
+    [
+     [
+      "جديد",
+      24.2
+     ],
+     [
+      "في",
+      24.45
+     ],
+     [
+      "الثدي",
+      24.7
+     ]
+    ]
+   ],
+   "until": 25.95
+  },
+  {
+   "group": "consult",
+   "y": 1350,
+   "lines": [
+    [
+     [
+      "استشيري",
+      26.1
+     ],
+     [
+      "مختصاً",
+      26.5,
+      "hl"
+     ],
+     [
+      "صحياً",
+      26.9
+     ]
+    ]
+   ],
+   "until": 27.45,
+   "size": 84
+  },
+  {
+   "group": "alone",
+   "y": 1330,
+   "lines": [
+    [
+     [
+      "أنتِ",
+      30.0
+     ],
+     [
+      "لستِ",
+      30.8
+     ],
+     [
+      "وحدكِ",
+      31.6,
+      "hl"
+     ]
+    ]
+   ],
+   "until": 34.8
+  },
+  {
+   "group": "power",
+   "y": 1350,
+   "lines": [
+    [
+     [
+      "وعيكِ",
+      35.2
+     ],
+     [
+      "قوة",
+      36.0,
+      "hl"
+     ]
+    ]
+   ],
+   "until": 37.9
+  },
+  {
+   "group": "step",
+   "y": 1330,
+   "lines": [
+    [
+     [
+      "خطوة",
+      41.1
+     ],
+     [
+      "اليوم",
+      41.5
+     ]
+    ],
+    [
+     [
+      "تصنع",
+      42.1
+     ],
+     [
+      "فرقاً",
+      42.6,
+      "hl"
+     ]
+    ]
+   ],
+   "until": 43.9
+  }
+ ],
+ "card_words": [
+  {
+   "y": 700,
+   "size": 124,
+   "dark": true,
+   "lines": [
+    [
+     [
+      "الكشف",
+      44.5
+     ],
+     [
+      "المبكر",
+      44.9
+     ]
+    ],
+    [
+     [
+      "ينقذ",
+      45.5,
+      "hl"
+     ],
+     [
+      "الحياة",
+      45.9
+     ]
+    ]
+   ],
+   "until": 54
+  },
+  {
+   "y": 1010,
+   "size": 60,
+   "dark": true,
+   "soft": true,
+   "lines": [
+    [
+     [
+      "استشيري",
+      48.8
+     ],
+     [
+      "مختصاً",
+      49.0
+     ],
+     [
+      "صحياً",
+      49.2
+     ]
+    ],
+    [
+     [
+      "بشأن",
+      49.4
+     ],
+     [
+      "الفحص",
+      49.55
+     ],
+     [
+      "المناسب",
+      49.7
+     ],
+     [
+      "لكِ",
+      49.85
+     ]
+    ]
+   ],
+   "until": 54
+  },
+  {
+   "y": 1410,
+   "size": 66,
+   "dark": true,
+   "lines": [
+    [
+     [
+      "الأمل",
+      50.6
+     ],
+     [
+      "يبدأ",
+      50.9
+     ],
+     [
+      "بخطوة",
+      51.2,
+      "hl"
+     ]
+    ]
+   ],
+   "until": 54
+  }
+ ]
+}
