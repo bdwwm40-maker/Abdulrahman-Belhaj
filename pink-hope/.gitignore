@@ -4,3 +4,4 @@
 04_project/build/
 04_project/__pycache__/
 03_audio/*.wav
+01_analysis/reference/*.mp4
