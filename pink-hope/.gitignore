@@ -1,0 +1,6 @@
+# Original footage (kept locally, never modified) — regenerate exports with 04_project/build.sh
+00_source/*.mp4
+# Render intermediates and regenerable audio stems
+04_project/build/
+04_project/__pycache__/
+03_audio/*.wav

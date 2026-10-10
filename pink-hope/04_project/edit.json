@@ -1,0 +1,396 @@
+{
+ "fps": 30,
+ "source_dir": "../00_source",
+ "shots": [
+  {
+   "id": "S01",
+   "chapter": "1-Hook",
+   "src": "VID-20261010-WA0153.mp4",
+   "in": 4.0,
+   "dur": 3.6,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "pan": [
+    0.0,
+    0.0
+   ],
+   "grade": {
+    "bri": 0.0,
+    "sat": 1.04,
+    "warm": 0.0
+   },
+   "out": "xfade",
+   "xf": 8,
+   "note": "Overhead detail: pink ribbons bowl + brochures"
+  },
+  {
+   "id": "S02",
+   "chapter": "2-Awareness",
+   "src": "VID-20261010-WA0140.mp4",
+   "in": 1.0,
+   "dur": 2.1,
+   "zoom": [
+    1.04,
+    1.0
+   ],
+   "pan": [
+    0.0,
+    0.0
+   ],
+   "grade": {
+    "bri": 0.0,
+    "sat": 0.98,
+    "warm": -0.03
+   },
+   "out": "cut",
+   "note": "Establishing: Al-Ajeelat General Hospital entrance sign"
+  },
+  {
+   "id": "S03",
+   "chapter": "2-Awareness",
+   "src": "VID-20261010-WA0186.mp4",
+   "in": 2.6,
+   "dur": 2.3,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "pan": [
+    0.0,
+    0.0
+   ],
+   "grade": {
+    "bri": 0.0,
+    "sat": 1.0,
+    "warm": 0.0
+   },
+   "out": "cut",
+   "note": "Pink October campaign banner (camera move)"
+  },
+  {
+   "id": "S04",
+   "chapter": "2-Awareness",
+   "src": "VID-20261010-WA0176.mp4",
+   "in": 0.8,
+   "dur": 3.1,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "pan": [
+    0.0,
+    0.0
+   ],
+   "grade": {
+    "bri": 0.02,
+    "sat": 1.02,
+    "warm": 0.01
+   },
+   "out": "xfade",
+   "xf": 6,
+   "note": "Awareness desk: brochures, ribbons, balloon"
+  },
+  {
+   "id": "S05",
+   "chapter": "3-Medical",
+   "src": "VID-20261010-WA0165.mp4",
+   "in": 1.0,
+   "dur": 3.5,
+   "zoom": [
+    1.08,
+    1.13
+   ],
+   "pan": [
+    0.0,
+    -0.03
+   ],
+   "grade": {
+    "bri": 0.02,
+    "sat": 1.0,
+    "warm": 0.02
+   },
+   "out": "cut",
+   "note": "Speaker explaining at the awareness table"
+  },
+  {
+   "id": "S06",
+   "chapter": "3-Medical",
+   "src": "VID-20261010-WA0161.mp4",
+   "in": 0.0,
+   "dur": 3.3,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "pan": [
+    0.0,
+    0.0
+   ],
+   "grade": {
+    "bri": 0.01,
+    "sat": 1.0,
+    "warm": 0.01
+   },
+   "out": "cut",
+   "note": "Ultrasound station (bright portion only, before lights dim)"
+  },
+  {
+   "id": "S07",
+   "chapter": "3-Medical",
+   "src": "VID-20261010-WA0181.mp4",
+   "in": 2.0,
+   "dur": 3.6,
+   "zoom": [
+    1.06,
+    1.1
+   ],
+   "pan": [
+    0.0,
+    -0.02
+   ],
+   "grade": {
+    "bri": 0.02,
+    "sat": 1.0,
+    "warm": 0.02
+   },
+   "out": "xfade",
+   "xf": 8,
+   "note": "Clinician at desk handing paperwork"
+  },
+  {
+   "id": "S08",
+   "chapter": "4-Hope",
+   "src": "VID-20261010-WA0148.mp4",
+   "in": 0.4,
+   "dur": 2.5,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "pan": [
+    0.0,
+    0.0
+   ],
+   "grade": {
+    "bri": 0.0,
+    "sat": 1.02,
+    "warm": 0.01
+   },
+   "out": "cut",
+   "note": "Hands filling registration forms"
+  },
+  {
+   "id": "S09",
+   "chapter": "4-Hope",
+   "src": "VID-20261010-WA0171.mp4",
+   "in": 19.4,
+   "dur": 3.2,
+   "zoom": [
+    1.06,
+    1.12
+   ],
+   "pan": [
+    -0.04,
+    -0.02
+   ],
+   "grade": {
+    "bri": 0.02,
+    "sat": 1.0,
+    "warm": 0.02
+   },
+   "out": "cut",
+   "note": "Volunteer turns and looks to camera"
+  },
+  {
+   "id": "S10",
+   "chapter": "4-Hope",
+   "src": "VID-20261010-WA0201.mp4",
+   "in": 12.8,
+   "dur": 4.2,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "pan": [
+    0.0,
+    0.0
+   ],
+   "grade": {
+    "bri": 0.01,
+    "sat": 1.02,
+    "warm": 0.01
+   },
+   "out": "xfade",
+   "xf": 10,
+   "note": "Women gathered in front of the campaign banner"
+  },
+  {
+   "id": "S11",
+   "chapter": "4-Hope",
+   "src": "VID-20261010-WA0036.mp4",
+   "in": 0.0,
+   "dur": 3.0,
+   "zoom": [
+    1.02,
+    1.08
+   ],
+   "pan": [
+    0.0,
+    0.0
+   ],
+   "grade": {
+    "bri": 0.02,
+    "sat": 1.0,
+    "warm": 0.02
+   },
+   "slowmo": 4.0,
+   "out": "xfade",
+   "xf": 10,
+   "note": "True slow motion (120fps source conformed to 30fps)"
+  },
+  {
+   "id": "S12",
+   "chapter": "5-Closing",
+   "src": "VID-20261010-WA0201.mp4",
+   "in": 18.0,
+   "dur": 2.6,
+   "zoom": [
+    1.06,
+    1.1
+   ],
+   "pan": [
+    0.0,
+    0.0
+   ],
+   "grade": {
+    "bri": 0.03,
+    "sat": 0.96,
+    "warm": 0.02
+   },
+   "out": "card",
+   "xf": 18,
+   "note": "Calm wide of the group, dissolves into the end card"
+  }
+ ],
+ "card_dur": 6.4,
+ "titles": [
+  {
+   "shot": "S01",
+   "at": 0.45,
+   "dur": 3.0,
+   "lines": [
+    "لا تنتظري",
+    "ظهور الأعراض…"
+   ],
+   "hl": [
+    "الأعراض…"
+   ],
+   "style": "hero"
+  },
+  {
+   "shot": "S04",
+   "at": 0.15,
+   "dur": 2.75,
+   "lines": [
+    "الوعي يبدأ",
+    "بالمعرفة"
+   ],
+   "hl": [
+    "بالمعرفة"
+   ],
+   "style": "main"
+  },
+  {
+   "shot": "S05",
+   "at": 0.35,
+   "dur": 2.9,
+   "lines": [
+    "الكشف المبكر مهم"
+   ],
+   "hl": [
+    "مهم"
+   ],
+   "style": "main"
+  },
+  {
+   "shot": "S06",
+   "at": 0.25,
+   "dur": 2.9,
+   "lines": [
+    "انتبهي لأي تغيّر",
+    "جديد في الثدي"
+   ],
+   "hl": [
+    "تغيّر"
+   ],
+   "style": "main"
+  },
+  {
+   "shot": "S07",
+   "at": 0.25,
+   "dur": 3.0,
+   "lines": [
+    "استشيري مختصاً صحياً",
+    "بشأن الفحص المناسب لكِ"
+   ],
+   "hl": [
+    "مختصاً"
+   ],
+   "style": "sub"
+  },
+  {
+   "shot": "S08",
+   "at": 0.3,
+   "dur": 2.1,
+   "lines": [
+    "وعيكِ قوة"
+   ],
+   "hl": [
+    "قوة"
+   ],
+   "style": "main"
+  },
+  {
+   "shot": "S09",
+   "at": 0.35,
+   "dur": 2.7,
+   "lines": [
+    "خطوة اليوم",
+    "تصنع فرقاً"
+   ],
+   "hl": [
+    "فرقاً"
+   ],
+   "style": "main"
+  },
+  {
+   "shot": "S10",
+   "at": 0.6,
+   "dur": 3.2,
+   "lines": [
+    "أنتِ لستِ وحدكِ"
+   ],
+   "hl": [
+    "وحدكِ"
+   ],
+   "style": "main"
+  }
+ ],
+ "card": {
+  "slogan": [
+   "الكشف المبكر",
+   "ينقذ الحياة"
+  ],
+  "slogan_hl": [
+   "ينقذ"
+  ],
+  "cta": [
+   "استشيري مختصاً صحياً",
+   "بشأن الفحص المناسب لكِ"
+  ],
+  "brand_en": "PINK HOPE",
+  "brand_ar": "الأمل يبدأ بخطوة"
+ }
+}
