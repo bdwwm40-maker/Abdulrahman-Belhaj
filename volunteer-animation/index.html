@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إيثار وعطاء</title>
+<style>
+@font-face{font-family:Cairo;font-weight:700;src:url(assets/cairo-arabic-700.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+200C-200F;}
+@font-face{font-family:Cairo;font-weight:700;src:url(assets/cairo-latin-700.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F;}
+html,body{margin:0;background:#000;height:100%;overflow:hidden;}
+body{display:flex;align-items:center;justify-content:center;font-family:Cairo,sans-serif;}
+#stage{position:relative;width:1280px;height:720px;overflow:hidden;background:#000;transform-origin:center;}
+.scene{position:absolute;inset:0;overflow:hidden;opacity:0;}
+.cam{position:absolute;inset:0;transform-origin:50% 60%;}
+.abs{position:absolute;}
+.char{position:absolute;width:0;height:0;}
+.char img{position:absolute;bottom:0;display:none;}
+.char .sh{position:absolute;left:-60px;width:120px;height:18px;bottom:-9px;border-radius:50%;background:rgba(0,0,0,.18);}
+.cap{position:absolute;left:0;right:0;top:34px;text-align:center;color:#fff;opacity:0;}
+.cap .ar{font-size:42px;font-weight:700;direction:rtl;text-shadow:0 3px 14px rgba(0,0,0,.35);line-height:1.3;}
+.cap .en{font-size:20px;font-weight:700;letter-spacing:.5px;opacity:.92;text-shadow:0 2px 8px rgba(0,0,0,.35);}
+.cloud{position:absolute;background:#fff;border-radius:60px;opacity:.95;}
+.cloud:before,.cloud:after{content:"";position:absolute;background:#fff;border-radius:50%;}
+.cloud:before{width:55%;height:150%;left:15%;top:-70%;}
+.cloud:after{width:40%;height:120%;left:50%;top:-45%;}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;}
+#vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 60%,rgba(0,0,0,.28) 100%);}
+#play{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);font:700 16px Cairo,sans-serif;padding:8px 20px;border-radius:20px;border:0;background:#1d78c8;color:#fff;cursor:pointer;}
+</style>
+</head>
+<body>
+<div id="stage">
+  <!-- 1. Sunrise over the city -->
+  <div class="scene" id="s1"><div class="cam">
+    <div class="abs" id="s1sky" style="inset:0"></div>
+    <div class="abs" id="s1rays" style="width:1400px;height:1400px;border-radius:50%;background:repeating-conic-gradient(rgba(255,230,160,.18) 0 6deg,rgba(255,230,160,0) 6deg 18deg);"></div>
+    <div class="abs" id="s1sun" style="width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,#fff8d8 0 45%,#ffd36b 60%,rgba(255,180,60,0) 72%);box-shadow:0 0 120px 60px rgba(255,190,90,.55);"></div>
+    <svg class="abs" id="s1far" width="1400" height="720" style="left:-60px;top:0"></svg>
+    <svg class="abs" id="s1near" width="1500" height="720" style="left:-110px;top:0"></svg>
+    <div class="abs" id="s1birds" style="left:0;top:0"></div>
+  </div><div class="cap" id="c1"><div class="ar">مع إشراقة كل صباح… تولد فرصة جديدة للعطاء</div><div class="en">Every sunrise brings a new chance to give</div></div></div>
+
+  <!-- 2. Planting trees -->
+  <div class="scene" id="s2"><div class="cam">
+    <div class="abs" style="inset:0;background:linear-gradient(#7cc6f2,#c9ecff 70%,#e9f8ff);"></div>
+    <div class="abs" style="right:120px;top:60px;width:110px;height:110px;border-radius:50%;background:#ffe27a;box-shadow:0 0 80px 30px rgba(255,226,122,.6);"></div>
+    <div id="s2clouds"></div>
+    <svg class="abs" width="1400" height="720" style="left:-60px;top:0">
+      <ellipse cx="250" cy="560" rx="520" ry="170" fill="#a6d86b"/>
+      <ellipse cx="1050" cy="580" rx="600" ry="190" fill="#94cc5a"/>
+      <rect x="0" y="560" width="1400" height="200" fill="#7fbf45"/>
+      <g fill="#6aa83a"><ellipse cx="200" cy="640" rx="40" ry="6"/><ellipse cx="900" cy="690" rx="60" ry="7"/><ellipse cx="1200" cy="630" rx="30" ry="5"/></g>
+    </svg>
+    <div id="s2trees"></div>
+    <div id="s2chars"></div>
+    <svg class="abs" id="can" width="90" height="70" viewBox="0 0 90 70" style="overflow:visible">
+      <g stroke="#2a2a3a" stroke-width="3" stroke-linejoin="round">
+        <path d="M18 22 h40 v38 a6 6 0 0 1 -6 6 h-28 a6 6 0 0 1 -6 -6z" fill="#e85d4a"/>
+        <path d="M58 32 L84 14 L88 20 L62 42z" fill="#e85d4a"/>
+        <path d="M24 22 q14 -22 28 0" fill="none"/>
+      </g>
+    </svg>
+    <div id="drops"></div>
+  </div><div class="cap" id="c2"><div class="ar">نزرع اليوم… ليستظل الغد</div><div class="en">We plant today for a greener tomorrow</div></div></div>
+
+  <!-- 3. Helping the elderly cross -->
+  <div class="scene" id="s3"><div class="cam">
+    <div class="abs" style="inset:0;background:linear-gradient(#8fd0f5,#dff3ff);"></div>
+    <div id="s3clouds"></div>
+    <svg class="abs" id="s3city" width="1400" height="720" style="left:-60px;top:0"></svg>
+    <svg class="abs" width="1400" height="720" style="left:-60px;top:0">
+      <rect x="0" y="420" width="1400" height="60" fill="#d9d4c7"/>
+      <rect x="0" y="476" width="1400" height="8" fill="#b9b2a2"/>
+      <rect x="0" y="484" width="1400" height="190" fill="#4a4f5c"/>
+      <rect x="0" y="674" width="1400" height="60" fill="#d9d4c7"/>
+      <g id="zebra" fill="#f4f4f4"></g>
+      <g transform="translate(1120,250)">
+        <rect x="-5" y="0" width="10" height="230" fill="#3b3f4a"/>
+        <rect x="-24" y="-90" width="48" height="110" rx="10" fill="#2b2e36"/>
+        <circle id="tl-red" cx="0" cy="-60" r="13" fill="#5a1f1f"/>
+        <circle id="tl-green" cx="0" cy="-22" r="13" fill="#1f4a2a"/>
+      </g>
+    </svg>
+    <svg class="abs" id="car" width="260" height="120" viewBox="0 0 260 120" style="overflow:visible">
+      <g stroke="#2a2a3a" stroke-width="4" stroke-linejoin="round">
+        <path d="M14 78 q0 -22 26 -26 l34 -4 l30 -30 h70 l34 32 l32 6 q10 4 10 20 v14 h-236z" fill="#f2b632"/>
+        <path d="M110 24 h28 v28 h-56z" fill="#bfe6ff"/><path d="M146 24 h26 l26 28 h-52z" fill="#bfe6ff"/>
+        <circle cx="66" cy="92" r="20" fill="#333"/><circle cx="196" cy="92" r="20" fill="#333"/>
+        <circle cx="66" cy="92" r="7" fill="#ccc"/><circle cx="196" cy="92" r="7" fill="#ccc"/>
+      </g>
+      <circle cx="246" cy="70" r="6" fill="#fff6c2"/>
+    </svg>
+    <div id="s3chars"></div>
+    <div id="hearts"></div>
+  </div><div class="cap" id="c3"><div class="ar">نمدّ أيدينا لكبارنا</div><div class="en">We lend a hand to our elders</div></div></div>
+
+  <!-- 4. Packing relief boxes -->
+  <div class="scene" id="s4"><div class="cam">
+    <div class="abs" style="inset:0;background:linear-gradient(#fff2dc,#ffe2b8);"></div>
+    <div class="abs" style="left:0;right:0;top:0;height:70px;background:repeating-linear-gradient(90deg,#1d78c8 0 80px,#ffffff 80px 160px);clip-path:polygon(0 0,100% 0,100% 60%,0 60%);"></div>
+    <svg class="abs" width="1280" height="70" style="top:40px;left:0"><g id="bunting"></g></svg>
+        <div class="abs" style="left:0;right:0;top:560px;bottom:0;background:#e3c89c;"></div>
+    <div id="s4chars"></div>
+    <div class="abs" style="left:250px;top:500px;width:780px;height:26px;background:#a36a3b;border:3px solid #2a2a3a;border-radius:6px;"></div>
+    <div class="abs" style="left:262px;top:526px;width:756px;height:120px;background:#8c5a31;border:3px solid #2a2a3a;border-top:0;"></div>
+    <div class="abs" style="left:490px;top:552px;width:300px;height:58px;border-radius:12px;background:#2f9e5a;border:3px solid #2a2a3a;color:#fff;font:700 30px Cairo;text-align:center;line-height:56px;direction:rtl;">حملة إغاثة ❤</div>
+    <div id="boxes"></div>
+    <div id="items"></div>
+  </div><div class="cap" id="c4"><div class="ar" style="color:#1b4f84;text-shadow:none">معًا نصنع الفرق</div><div class="en" style="color:#1b4f84;text-shadow:none">Together, we make a difference</div></div></div>
+
+  <!-- 5. Finale: gathering + logo -->
+  <div class="scene" id="s5"><div class="cam">
+    <div class="abs" style="inset:0;background:linear-gradient(#ffb36b,#ffd9a0 55%,#fff1d6);"></div>
+    <svg class="abs" id="s5city" width="1400" height="720" style="left:-60px;top:0;opacity:.55"></svg>
+    <div class="abs" style="left:0;right:0;top:640px;bottom:0;background:#9fcf62;"></div>
+    <div class="abs" id="glow" style="left:390px;top:-50px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95) 0 30%,rgba(255,240,180,.6) 45%,rgba(255,220,140,0) 70%);"></div>
+    <div class="abs" id="rays5" style="left:140px;top:-300px;width:1000px;height:1000px;border-radius:50%;background:repeating-conic-gradient(rgba(255,255,255,.35) 0 5deg,rgba(255,255,255,0) 5deg 15deg);-webkit-mask:radial-gradient(circle,#000 20%,transparent 65%);mask:radial-gradient(circle,#000 20%,transparent 65%);"></div>
+    <div class="abs" id="logo" style="left:510px;top:70px;width:260px;height:260px;border-radius:50%;background:#fff;box-shadow:0 0 0 7px #1d78c8,0 0 0 11px #fff,0 0 60px 18px rgba(255,255,255,.9);overflow:hidden;">
+      <img src="assets/logo.png" style="width:100%;height:100%;display:block">
+      <div id="shine" class="abs" style="top:0;bottom:0;width:80px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.85),rgba(255,255,255,0));transform:skewX(-20deg);"></div>
+    </div>
+    <div id="sparkles"></div>
+    <div class="abs" id="t5a" style="left:0;right:0;top:352px;text-align:center;direction:rtl;color:#174a7c;font:700 38px Cairo;text-shadow:0 2px 0 rgba(255,255,255,.6)">الوكالة الوطنية للجهود التطوعية للشباب</div>
+    <div class="abs" id="t5b" style="left:0;right:0;top:405px;text-align:center;color:#174a7c;font:700 19px Cairo;letter-spacing:1px">NATIONAL AGENCY FOR YOUTH VOLUNTARY EFFORTS</div>
+    <div id="s5chars"></div>
+    <div class="abs" id="t5c" style="left:0;right:0;top:668px;text-align:center;direction:ltr;color:#fff;font:700 26px Cairo;text-shadow:0 2px 8px rgba(0,0,0,.3)"><bdi dir="rtl">كن متطوعًا… كن أثرًا</bdi> &nbsp;•&nbsp; <bdi dir="ltr">Volunteer. Make an impact.</bdi></div>
+  </div></div>
+
+  <div id="vignette"></div>
+  <div id="flash"></div>
+</div>
+<button id="play">▶ تشغيل / Play</button>
+
+<script>
+const DUR = 34;
+const $ = id => document.getElementById(id);
+const clamp = (v,a=0,b=1) => Math.min(b,Math.max(a,v));
+const lerp = (a,b,t) => a+(b-a)*t;
+const seg = (t,a,b) => clamp((t-a)/(b-a));
+const ease = t => t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;
+const easeOut = t => 1-Math.pow(1-t,3);
+const back = t => { const c=1.70158; return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2); };
+const hex = h => [1,3,5].map(i=>parseInt(h.substr(i,2),16));
+const mix = (a,b,t) => { a=hex(a); b=hex(b); return `rgb(${a.map((v,i)=>Math.round(lerp(v,b[i],t))).join(',')})`; };
+let seed = 7; const rnd = () => (seed = (seed*16807)%2147483647)/2147483647;
+
+// ---------- characters ----------
+const BODY = {boy:144, hijabblue:158, capboy:144, hijaborange:158};
+const POSES = ['idle','wave','talk','pointR','pointL'];
+function makeChar(parent, name, scale){
+  const el = document.createElement('div'); el.className='char';
+  el.innerHTML = '<div class="sh"></div>' + POSES.map(p=>`<img data-p="${p}" src="assets/${name}_${p}.png">`).join('');
+  $(parent).appendChild(el);
+  const c = {el, name, scale, pose:null};
+  c.set = (x, y, pose='idle', opts={}) => {
+    const rot = opts.rot||0, sx = opts.flip?-1:1;
+    el.style.transform = `translate(${x}px,${y}px) scale(${scale*sx},${scale}) rotate(${rot}deg)`;
+    el.style.opacity = opts.op ?? 1;
+    if (pose !== c.pose){
+      c.pose = pose; const half = BODY[name]/2;
+      el.querySelectorAll('img').forEach(img=>{
+        const on = img.dataset.p===pose; img.style.display = on?'block':'none';
+        if (!on) return;
+        img.style.left = img.style.right = 'auto'; img.style.transform='';
+        if (pose==='wave'||pose==='pointR') img.style.left = (-half)+'px';
+        else if (pose==='talk'||pose==='pointL') img.style.right = (-half)+'px';
+        else { img.style.left='0'; img.style.transform='translateX(-50%)'; }
+      });
+    }
+  };
+  return c;
+}
+const bob = (t,f=2.2,a=7) => -Math.abs(Math.sin(t*Math.PI*f))*a;
+
+// ---------- elderly man (SVG, matching flat style) ----------
+function makeElder(parent){
+  const el = document.createElement('div'); el.className='char';
+  el.innerHTML = `<svg width="200" height="330" viewBox="0 0 200 330" style="position:absolute;left:-100px;bottom:0;overflow:visible">
+   <g stroke="#2a2a3a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+    <g id="eleg1"><rect x="78" y="215" width="26" height="100" rx="6" fill="#6b5a4a"/><path d="M74 312 h36 v12 h-40z" fill="#3a2f28"/></g>
+    <g id="eleg2"><rect x="104" y="215" width="26" height="100" rx="6" fill="#5d4e40"/><path d="M100 312 h36 v12 h-40z" fill="#3a2f28"/></g>
+    <path d="M66 110 q36 -18 76 0 l8 112 h-92z" fill="#c9b18a"/>
+    <path d="M88 110 v108" stroke="#9c8762" fill="none"/>
+    <circle cx="94" cy="140" r="3" fill="#2a2a3a"/><circle cx="94" cy="170" r="3" fill="#2a2a3a"/>
+    <line x1="168" y1="186" x2="176" y2="322" stroke="#7a4a24" stroke-width="7"/>
+    <path d="M140 116 q24 30 28 72" fill="none" stroke="#c9b18a" stroke-width="22"/>
+    <path d="M140 116 q24 30 28 72" fill="none" stroke="#2a2a3a" stroke-width="4" opacity="0"/>
+    <circle cx="168" cy="190" r="11" fill="#e8b98f"/>
+    <rect x="94" y="86" width="22" height="22" fill="#e8b98f"/>
+    <ellipse cx="104" cy="58" rx="42" ry="46" fill="#e8b98f"/>
+    <path d="M62 50 q4 -40 42 -42 q38 2 42 42 q-8 -14 -18 -16 q-24 -10 -48 0 q-12 2 -18 16z" fill="#e9e9ee"/>
+    <path d="M76 84 q28 34 56 0 q-4 22 -28 26 q-24 -4 -28 -26z" fill="#f2f2f5"/>
+    <circle cx="88" cy="58" r="4" fill="#2a2a3a"/><circle cx="120" cy="58" r="4" fill="#2a2a3a"/>
+    <path d="M94 76 q10 7 20 0" fill="none"/>
+    <path d="M78 45 h18 M112 45 h18" stroke="#bbb"/>
+    <circle cx="80" cy="70" r="6" fill="#f4a6a0" stroke="none" opacity=".7"/><circle cx="128" cy="70" r="6" fill="#f4a6a0" stroke="none" opacity=".7"/>
+   </g></svg><div class="sh" style="left:-55px;width:110px"></div>`;
+  $(parent).appendChild(el);
+  return {el, set(x,y,t,walking){
+    el.style.transform = `translate(${x}px,${y}px) scale(.92) rotate(${walking?Math.sin(t*6)*1.5:0}deg)`;
+    const s = walking?Math.sin(t*6)*5:0;
+    el.querySelector('#eleg1').setAttribute('transform',`rotate(${s} 91 215)`);
+    el.querySelector('#eleg2').setAttribute('transform',`rotate(${-s} 117 215)`);
+  }};
+}
+
+// ---------- scenery builders ----------
+function skyline(svg, n, base, minH, maxH, color, windows){
+  let x=0, s='';
+  while (x < +svg.getAttribute('width')){
+    const w = 50+rnd()*70, h = minH+rnd()*(maxH-minH);
+    s += `<rect x="${x}" y="${base-h}" width="${w}" height="${h+300}" fill="${color}"/>`;
+    if (rnd()<.3) s += `<rect x="${x+w/2-3}" y="${base-h-30}" width="6" height="30" fill="${color}"/>`;
+    if (windows) for (let wy=base-h+14; wy<base-10; wy+=22) for (let wx=x+10; wx<x+w-14; wx+=18)
+      if (rnd()<.55) s += `<rect class="win" data-k="${rnd().toFixed(3)}" x="${wx}" y="${wy}" width="8" height="11" fill="#ffd56b"/>`;
+    x += w + rnd()*6;
+  }
+  svg.innerHTML = s;
+}
+skyline($('s1far'),0,500,70,190,'#2e3a66',false);
+skyline($('s1near'),0,600,60,210,'#1d2340',true);
+skyline($('s3city'),0,425,60,200,'#a9c3dc',false);
+skyline($('s5city'),0,640,80,230,'#e08d5a',false);
+const wins = [...$('s1near').querySelectorAll('.win')];
+
+// birds
+for (let i=0;i<6;i++){ const b=document.createElement('div'); b.className='abs';
+  b.innerHTML='<svg width="30" height="14" viewBox="0 0 30 14"><path d="M1 8 q7 -8 14 0 q7 -8 14 0" fill="none" stroke="#2a2a3a" stroke-width="2.5" stroke-linecap="round"/></svg>';
+  b.dataset.o = i; $('s1birds').appendChild(b); }
+
+// clouds
+function clouds(parent, list){ return list.map(([x,y,w])=>{ const c=document.createElement('div'); c.className='cloud';
+  c.style.cssText += `left:${x}px;top:${y}px;width:${w}px;height:${w*.32}px`; $(parent).appendChild(c); return {c,x}; }); }
+const cl2 = clouds('s2clouds',[[80,90,180],[520,60,140],[860,150,200]]);
+const cl3 = clouds('s3clouds',[[150,70,160],[700,110,190],[1050,50,130]]);
+
+// trees
+const treeX = [300, 640, 980];
+const trees = treeX.map(x=>{ const d=document.createElement('div'); d.className='abs';
+  d.style.cssText=`left:${x-90}px;top:330px;width:180px;height:290px`;
+  d.innerHTML=`<svg width="180" height="290" viewBox="0 0 180 290" style="overflow:visible">
+    <ellipse cx="90" cy="282" rx="62" ry="14" fill="#7a4e2c" stroke="#2a2a3a" stroke-width="3" class="mound"/>
+    <g class="grow" style="transform-origin:90px 280px">
+      <path d="M84 280 q-4 -70 4 -150 h8 q6 80 2 150z" fill="#8a5a33" stroke="#2a2a3a" stroke-width="3"/>
+      <g class="leaves" style="transform-origin:90px 130px" stroke="#2a2a3a" stroke-width="3">
+        <circle cx="60" cy="120" r="38" fill="#4fae4a"/><circle cx="120" cy="118" r="40" fill="#4fae4a"/>
+        <circle cx="90" cy="80" r="48" fill="#5cc256"/><circle cx="74" cy="72" r="10" fill="#7ee077" stroke="none"/>
+      </g></g></svg>`;
+  $('s2trees').appendChild(d); return d; });
+for (let i=0;i<10;i++){ const d=document.createElement('div'); d.className='abs';
+  d.style.cssText='width:7px;height:11px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:#5ab8f0;'; $('drops').appendChild(d); }
+
+// zebra crossing
+let z=''; for (let i=0;i<9;i++){ const y=496+i*20; z+=`<polygon points="${440+i*6},${y} ${880+i*6},${y} ${886+i*6},${y+11} ${446+i*6},${y+11}"/>`; } $('zebra').innerHTML=z;
+for (let i=0;i<8;i++){ const h=document.createElement('div'); h.className='abs'; h.textContent='❤'; h.style.cssText='color:#ff5d7a;font-size:26px'; $('hearts').appendChild(h); }
+
+// bunting
+let bt=''; for (let i=0;i<22;i++){ const cols=['#e85d4a','#ffc93c','#2f9e5a','#1d78c8']; bt+=`<polygon points="${i*60},0 ${i*60+60},0 ${i*60+30},34" fill="${cols[i%4]}"/>`; } $('bunting').innerHTML=bt;
+
+// boxes
+function box(){ const d=document.createElement('div'); d.className='abs';
+  d.innerHTML=`<svg width="130" height="110" viewBox="0 0 130 110" style="overflow:visible"><g stroke="#2a2a3a" stroke-width="3" stroke-linejoin="round">
+    <rect x="5" y="20" width="120" height="88" fill="#d39a5c"/>
+    <rect x="57" y="20" width="16" height="88" fill="#e8c38f"/>
+    <path d="M65 52 c-14 -14 -30 6 0 24 c30 -18 14 -38 0 -24z" fill="#ff5d7a"/>
+    <g class="flapL" style="transform-origin:5px 20px"><rect x="5" y="2" width="60" height="18" fill="#c98d4e"/></g>
+    <g class="flapR" style="transform-origin:125px 20px"><rect x="65" y="2" width="60" height="18" fill="#c98d4e"/></g>
+  </g></svg>`; $('boxes').appendChild(d); return d; }
+const boxes = [box(),box(),box()];
+const itemCols=['#ffc93c','#4fae4a','#e85d4a','#1d78c8','#fff'];
+const items = []; for (let i=0;i<9;i++){ const d=document.createElement('div'); d.className='abs';
+  d.style.cssText=`width:${i%3?26:20}px;height:${i%3?32:40}px;border-radius:5px;border:3px solid #2a2a3a;background:${itemCols[i%5]}`; $('items').appendChild(d); items.push(d); }
+
+// sparkles
+for (let i=0;i<26;i++){ const s=document.createElement('div'); s.className='abs'; s.textContent=i%3?'✦':'●';
+  s.style.cssText=`color:${['#fff','#ffe27a','#ffffff','#9fdcff'][i%4]};font-size:${10+rnd()*18}px`; s.dataset.a=rnd()*6.28; s.dataset.r=150+rnd()*260; s.dataset.k=rnd(); $('sparkles').appendChild(s); }
+
+// characters per scene
+const S2 = {boy:makeChar('s2chars','boy',.66), cap:makeChar('s2chars','capboy',.66), hb:makeChar('s2chars','hijabblue',.66)};
+const S3 = {hb:makeChar('s3chars','hijabblue',.7), boy:makeChar('s3chars','boy',.62)};
+const elder = makeElder('s3chars');
+const S4 = {ho:makeChar('s4chars','hijaborange',.7), boy:makeChar('s4chars','boy',.7), cap:makeChar('s4chars','capboy',.7)};
+const S5 = ['boy','hijabblue','capboy','hijaborange'].map(n=>makeChar('s5chars',n,.5));
+
+// ---------- timeline ----------
+const SCENES = [['s1',0,6.6],['s2',6,13.6],['s3',13,20.6],['s4',20,26.6],['s5',26,DUR]];
+function caption(id,t,a,b){ const v = seg(t,a,a+.8)*(1-seg(t,b-.6,b)); const e=$(id); e.style.opacity=v; e.style.transform=`translateY(${(1-easeOut(seg(t,a,a+.8)))*20}px)`; }
+
+function render(t){
+  // scene crossfades
+  for (const [id,a,b] of SCENES){
+    const fadeIn = id==='s1' ? seg(t,0,1.2) : seg(t,a,a+.6), fadeOut = id==='s5' ? 1 : 1-seg(t,b-.6,b);
+    $(id).style.opacity = fadeIn*fadeOut; $(id).style.display = (t>=a && t<=b) ? 'block' : 'none'; }
+  $('flash').style.opacity = Math.max(0, .35*(1-Math.abs(t-26.3)/.4));
+  $('stage').style.filter = `brightness(${1-seg(t,DUR-1,DUR)})`;
+
+  // S1 sunrise
+  if (t<7){ const p = ease(seg(t,0,6.2));
+    $('s1sky').style.background = `linear-gradient(${mix('#241a4a','#5fb3f0',p)}, ${mix('#b2486a','#ffc98a',p)} 60%, ${mix('#ff9a5a','#fff0c9',p)})`;
+    const sy = lerp(520, 150, p); $('s1sun').style.left='565px'; $('s1sun').style.top=sy+'px';
+    $('s1rays').style.left=(640-700)+'px'; $('s1rays').style.top=(sy+75-700)+'px'; $('s1rays').style.transform=`rotate(${t*6}deg)`; $('s1rays').style.opacity=seg(t,1.5,4);
+    $('s1far').querySelectorAll('rect').forEach(r=>r.setAttribute('fill',mix('#2e3a66','#8fa6c8',p)));
+    $('s1near').querySelectorAll('rect:not(.win)').forEach(r=>r.setAttribute('fill',mix('#1d2340','#4c5f8c',p)));
+    wins.forEach(w=>{ const k=+w.dataset.k; w.setAttribute('opacity', seg(t,k*1.2,k*1.2+.3)*(1-seg(t,3+k*2,3.5+k*2))); });
+    $('s1far').style.transform=`translateX(${-t*3}px)`; $('s1near').style.transform=`translateX(${-t*7}px)`;
+    $('s1birds').querySelectorAll('.abs').forEach(b=>{ const o=+b.dataset.o; b.style.transform=`translate(${-80+(t-1)*120+o*38}px,${250-o%3*30+Math.sin(t*3+o)*8}px) scale(${1-o*.06})`; b.style.opacity=seg(t,1,2); });
+    $('s1').firstElementChild.style.transform=`scale(${lerp(1.12,1,ease(seg(t,0,6.6)))}) translateY(${lerp(30,0,p)}px)`;
+    caption('c1',t,2.6,6.4);
+  }
+
+  // S2 planting
+  if (t>5.5 && t<14){ const l=t-6;
+    $('s2').firstElementChild.style.transform=`scale(${lerp(1.04,1.1,ease(seg(l,0,7.6)))}) translateX(${lerp(16,-16,ease(seg(l,0,7.6)))}px)`;
+    cl2.forEach((o,i)=>o.c.style.transform=`translateX(${l*(8+i*4)}px)`);
+    trees.forEach((d,i)=>{ const g = back(seg(l,1.2+i*1.6,2.6+i*1.6)); const lv=back(seg(l,1.9+i*1.6,3+i*1.6));
+      d.querySelector('.grow').style.transform=`scale(${.15+.85*g},${g})`; d.querySelector('.leaves').style.transform=`scale(${lv})`;
+      d.querySelector('.mound').style.opacity=seg(l,.6+i*1.6,1+i*1.6); d.style.transform=`rotate(${Math.sin(l*2+i)*1.2*g}deg)`; d.style.transformOrigin='50% 100%'; });
+    // boy walks in then plants, cap boy waters, hijab girl waves
+    const bx = lerp(-80, 200, easeOut(seg(l,0,1.8)));
+    S2.boy.set(bx, 640+(l<1.8?bob(l):0), l<1.8?'idle':(l<4.2?'pointR':'wave'), {rot:l<1.8?Math.sin(l*14)*2:0});
+    const cx = lerp(1380, 1100, easeOut(seg(l,.6,2.6)));
+    S2.cap.set(cx, 640+(l>.6&&l<2.6?bob(l):0), l<2.6?'idle':'pointL', {rot:l<2.6?Math.sin(l*14)*2:0});
+    const hx = lerp(-120, 470, easeOut(seg(l,2.2,4.4)));
+    S2.hb.set(hx, 645+(l>2.2&&l<4.4?bob(l):0), l<4.4?'idle':(l<5.6?'talk':'wave'), {rot:l<4.4&&l>2.2?Math.sin(l*14)*2:0});
+    // watering can follows cap boy's reaching hand
+    const can=$('can'), tilt = l>2.8 ? -18-Math.sin(l*3)*4 : 0;
+    can.style.left=(cx-178)+'px'; can.style.top=(432)+'px'; can.style.transform=`scaleX(-1) rotate(${tilt}deg)`; can.style.opacity=seg(l,2.4,2.8);
+    [...$('drops').children].forEach((d,i)=>{ const ph=((l*1.4+i/10)%1); d.style.left=(cx-182-ph*14+(i%3)*6)+'px'; d.style.top=(452+ph*150)+'px'; d.style.opacity= l>3 ? (1-ph)*.9 : 0; });
+    caption('c2',t,7.2,13.4);
+  }
+
+  // S3 crossing
+  if (t>12.5 && t<21){ const l=t-13;
+    $('s3').firstElementChild.style.transform=`scale(${lerp(1.1,1.04,ease(seg(l,0,7.6)))}) translateX(${lerp(-20,10,ease(seg(l,0,7.6)))}px)`;
+    cl3.forEach((o,i)=>o.c.style.transform=`translateX(${l*(6+i*3)}px)`);
+    const red = l>0.8; $('tl-red').setAttribute('fill', red?'#ff4b4b':'#5a1f1f'); $('tl-green').setAttribute('fill', red?'#1f4a2a':'#3ee06a');
+    const carX = lerp(1400, 960, easeOut(seg(l,0,1.4))); $('car').style.left=carX+'px'; $('car').style.top='400px';
+    $('car').style.transform=`scaleX(-1) translateY(${l<1.4?Math.sin(l*30)*1:0}px)`;
+    const walk = seg(l,1.6,6.6), ex = lerp(330, 820, ease(walk)), walking = walk>0&&walk<1;
+    elder.set(ex+40, 610+(walking?bob(l,1.6,3):0), l, walking);
+    S3.hb.set(ex-100, 612+(walking?bob(l,1.6,5):0), l<1.4?'talk':'pointR', {rot:walking?Math.sin(l*10)*1.5:0});
+    S3.boy.set(lerp(60,230,easeOut(seg(l,4.4,6))), 440+(l>4.4&&l<6?bob(l):0), l<6.2?'idle':'wave', {op:seg(l,4.2,4.6)});
+    [...$('hearts').children].forEach((h,i)=>{ const ph=((l*.5+i/8)%1); h.style.left=(ex-60+Math.sin(i*2+l*2)*40+i*8)+'px'; h.style.top=(400-ph*160)+'px'; h.style.opacity= seg(l,2.5,3)*(1-ph)*(l<7?1:0); h.style.transform=`scale(${.6+ph})`; });
+    caption('c3',t,14,20.4);
+  }
+
+  // S4 relief boxes
+  if (t>19.5 && t<27){ const l=t-20;
+    $('s4').firstElementChild.style.transform=`scale(${lerp(1,1.06,ease(seg(l,0,6.6)))})`;
+    S4.ho.set(420, 560+bob(l,.5,3), (l%2.2)<1.1?'pointR':'idle');
+    S4.boy.set(860, 560+bob(l+.4,.5,3), l<3?'talk':'pointL');
+    S4.cap.set(lerp(1400,1190,easeOut(seg(l,2.6,4))), 640+(l>2.6&&l<4?bob(l):0), l<4.4?'idle':'wave', {op:seg(l,2.5,2.7)});
+    boxes.forEach((b,i)=>{ const st=.3+i*1.7;
+      const slideIn = easeOut(seg(l,st,st+.5)), fill=seg(l,st+.5,st+1.1), close=ease(seg(l,st+1.1,st+1.4)), out=ease(seg(l,st+1.4,st+1.9));
+      const x = lerp(160, 575, slideIn), y=392;
+      const fx = lerp(575, 985, out), fy = lerp(392, 560-110*(i+1)+0, out) ;
+      const finalY = 560-112*(i+1)+112;  // stack upward
+      const px = out>0 ? fx : x, py = out>0 ? lerp(392, finalY-0, out) : y;
+      b.style.left=px+'px'; b.style.top=(out>0?py-Math.sin(out*Math.PI)*60:py)+'px'; b.style.opacity=seg(l,st,st+.1);
+      b.querySelector('.flapL').style.transform=`rotate(${lerp(-120,0,close)}deg)`;
+      b.querySelector('.flapR').style.transform=`rotate(${lerp(120,0,close)}deg)`;
+      for (let k=0;k<3;k++){ const it=items[i*3+k], ph=seg(l,st+.5+k*.18,st+.85+k*.18);
+        it.style.left=(575+30+k*28)+'px'; it.style.top=lerp(250,410,easeOut(ph))+'px'; it.style.opacity= ph>0 && close<.6 ? 1:0; }
+    });
+    caption('c4',t,20.6,26.4);
+  }
+
+  // S5 finale
+  if (t>25.5){ const l=t-26;
+    $('s5').firstElementChild.style.transform=`scale(${lerp(1.1,1,ease(seg(l,0,4)))})`;
+    const ends=[200,420,860,1080], starts=[-120,-260,1400,1540];
+    S5.forEach((c,i)=>{ const p=easeOut(seg(l,.2+i*.15,2.4+i*.15)); const walking=p>0&&p<1;
+      c.set(lerp(starts[i],ends[i],p), 690+(walking?bob(l):0), l<4.2?(walking?'idle':'idle'):(i<2?'wave':(i===2?'pointL':'wave')), {rot:walking?Math.sin(l*14)*2:0}); });
+    const lg = back(seg(l,2.4,3.6)); const logo=$('logo');
+    logo.style.transform=`translateY(${lerp(-40,0,easeOut(seg(l,2.4,3.6)))}px) scale(${lg}) rotate(${lerp(-200,0,easeOut(seg(l,2.4,3.6)))}deg)`;
+    logo.style.opacity=seg(l,2.4,2.8);
+    $('shine').style.left = lerp(-120, 320, seg(l,4,5))+'px';
+    const pulse = .75+.25*Math.sin(l*2.4);
+    $('glow').style.opacity = seg(l,2.8,3.8)*pulse; $('glow').style.transform=`scale(${.8+.2*pulse})`;
+    $('rays5').style.opacity = seg(l,3,4)*.9; $('rays5').style.transform=`rotate(${l*8}deg)`;
+    [...$('sparkles').children].forEach(s=>{ const a=+s.dataset.a+l*.25, r=+s.dataset.r*easeOut(seg(l,3,4.4)), k=+s.dataset.k;
+      s.style.left=(640+Math.cos(a)*r)+'px'; s.style.top=(200+Math.sin(a)*r*.55)+'px';
+      s.style.opacity = seg(l,3,3.4)*(.4+.6*Math.abs(Math.sin(l*3+k*9))); });
+    $('t5a').style.opacity=seg(l,4,4.8); $('t5a').style.transform=`translateY(${(1-easeOut(seg(l,4,4.8)))*16}px)`;
+    $('t5b').style.opacity=seg(l,4.5,5.3);
+    $('t5c').style.opacity=seg(l,5.2,6);
+  }
+}
+window.render = render; window.DUR = DUR;
+
+// fit to window + live playback
+function fit(){ const s=Math.min(innerWidth/1280, innerHeight/720); $('stage').style.transform=`scale(${s})`; }
+addEventListener('resize',fit); fit();
+let t0=null, playing=false;
+function loop(ts){ if(!playing) return; if(t0===null) t0=ts; const t=(ts-t0)/1000; render(Math.min(t,DUR)); if(t<DUR) requestAnimationFrame(loop); else { playing=false; $('play').style.display='block'; } }
+$('play').onclick=()=>{ $('play').style.display='none'; t0=null; playing=true; requestAnimationFrame(loop); };
+if (location.hash==='#record'){ $('play').remove(); $('stage').style.transform='none'; removeEventListener('resize',fit); }
+render(0);
+</script>
+</body>
+</html>
