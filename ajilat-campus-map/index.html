@@ -1,0 +1,1389 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>خريطة كلية الاقتصاد العجيلات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Kufi+Arabic:wght@600;800&display=swap">
+<style>
+/* Layout: full-screen 3D canvas, floating panels — quick navigation on the right (RTL start), details on the left, bottom sheets on phones. */
+:root {
+  --ink: #142640;          /* navy of the faculty sign */
+  --ink-soft: #4b5b72;
+  --paper: #fbfaf6;
+  --line: #e3ddd0;
+  --accent: #1d5fbf;       /* selection blue, also used for 3D highlight */
+  --accent-soft: #e4ecf9;
+  --ochre: #c98a3a;        /* building facades */
+  --sky: #a9cbea;
+  --f-display: "Noto Kufi Arabic", "Segoe UI", Tahoma, sans-serif;
+  --f-body: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  --shadow: 0 10px 30px rgba(20, 38, 64, .16), 0 2px 6px rgba(20, 38, 64, .08);
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: var(--sky);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 14px;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+#stage { position: fixed; inset: 0; }
+#stage canvas { display: block; touch-action: none; }
+#labels { position: absolute; inset: 0; pointer-events: none; direction: ltr; } /* CSS2DRenderer positions from the left edge */
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- top bar ---------- */
+.topbar {
+  position: fixed; z-index: 20;
+  top: calc(12px + var(--sat)); right: calc(12px + var(--sar)); left: calc(12px + var(--sal));
+  display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  pointer-events: none;
+}
+.brand, .tools { pointer-events: auto; }
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+  padding: 8px 14px 8px 10px; box-shadow: var(--shadow);
+}
+.emblem {
+  width: 40px; height: 40px; border-radius: 10px; flex: none;
+  background: var(--ink); display: grid; place-items: center;
+}
+.brand h1 { font-family: var(--f-display); font-weight: 800; font-size: 17px; margin: 0; line-height: 1.35; text-wrap: balance; }
+.brand p { margin: 0; color: var(--ink-soft); font-size: 12px; }
+.tools { display: flex; gap: 6px; flex-wrap: wrap; }
+.tbtn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 11px;
+  padding: 9px 13px; font-weight: 600; font-size: 13px; box-shadow: var(--shadow);
+  transition: background .15s, color .15s, border-color .15s;
+}
+.tbtn:hover { border-color: #c9c0ad; }
+.tbtn[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.tbtn svg { width: 16px; height: 16px; flex: none; }
+.only-mobile { display: none; }
+
+/* ---------- panels ---------- */
+.panel {
+  position: fixed; z-index: 15;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow);
+}
+.nav {
+  top: calc(84px + var(--sat)); right: calc(12px + var(--sar)); bottom: calc(12px + var(--sab));
+  width: 270px; display: flex; flex-direction: column; overflow: hidden;
+}
+.nav-head { padding: 14px 14px 10px; border-bottom: 1px solid var(--line); }
+.nav-head h2 { font-family: var(--f-display); font-size: 14px; margin: 0 0 8px; }
+.search {
+  width: 100%; border: 1px solid var(--line); background: #fff; border-radius: 10px;
+  padding: 8px 10px; font: inherit;
+}
+.nav-list { overflow-y: auto; padding: 6px 8px 12px; flex: 1; min-height: 0; }
+.nav-group { margin-top: 10px; }
+.nav-group h3 {
+  margin: 0 6px 4px; font-size: 11px; font-weight: 600; letter-spacing: .02em; color: var(--ink-soft);
+}
+.nav-item {
+  display: flex; align-items: center; gap: 8px; width: 100%; text-align: right;
+  background: none; border: 0; border-radius: 9px; padding: 7px 8px; font-size: 13.5px;
+}
+.nav-item:hover { background: #f1ede3; }
+.nav-item[aria-current="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.nav-item .dot { width: 9px; height: 9px; border-radius: 3px; flex: none; }
+.nav-item .sub { color: var(--ink-soft); font-size: 11.5px; margin-inline-start: auto; }
+
+.details {
+  top: calc(84px + var(--sat)); left: calc(12px + var(--sal));
+  width: 360px; max-height: calc(100% - 96px - var(--sat) - var(--sab));
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.details-scroll { overflow-y: auto; min-height: 0; }
+.photo-wrap { position: relative; background: #e9e3d6; aspect-ratio: 4 / 3; max-width: 100%; }
+.photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+.photo-cap {
+  position: absolute; inset: auto 0 0 0; padding: 18px 12px 8px; color: #fff; font-size: 12px;
+  background: linear-gradient(transparent, rgba(10, 20, 35, .72));
+}
+.no-photo { display: grid; place-items: center; height: 100%; color: var(--ink-soft); font-size: 13px; padding: 20px; text-align: center; }
+.thumbs { display: flex; gap: 6px; padding: 8px 12px 0; overflow-x: auto; }
+.thumbs button { border: 2px solid transparent; padding: 0; border-radius: 8px; overflow: hidden; width: 64px; height: 48px; flex: none; background: none; }
+.thumbs button[aria-pressed="true"] { border-color: var(--accent); }
+.thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.details-body { padding: 14px 16px 16px; display: grid; gap: 10px; }
+.chip {
+  justify-self: start; font-size: 11.5px; font-weight: 600; letter-spacing: .02em;
+  padding: 3px 9px; border-radius: 999px; background: #f1ede3; color: var(--ink-soft);
+}
+.details h2 { font-family: var(--f-display); font-size: 20px; margin: 0; line-height: 1.4; text-wrap: balance; }
+.details p { margin: 0; line-height: 1.85; color: #2c3a50; max-width: 65ch; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 12.5px; margin: 0; }
+.facts dt { color: var(--ink-soft); }
+.facts dd { margin: 0; font-weight: 500; }
+.row-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn-primary {
+  border: 0; border-radius: 10px; background: var(--ink); color: #fff; padding: 9px 14px; font-weight: 600;
+}
+.btn-ghost { border: 1px solid var(--line); border-radius: 10px; background: #fff; padding: 9px 14px; font-weight: 600; }
+.close {
+  position: absolute; top: 10px; left: 10px; z-index: 2; width: 34px; height: 34px; border-radius: 50%;
+  border: 0; background: rgba(255, 255, 255, .92); box-shadow: var(--shadow); display: grid; place-items: center;
+}
+
+/* ---------- compass & hint ---------- */
+.compass {
+  position: fixed; z-index: 14; left: calc(16px + var(--sal)); bottom: calc(16px + var(--sab));
+  width: 58px; height: 58px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line);
+  box-shadow: var(--shadow); display: grid; place-items: center;
+}
+.compass svg { width: 44px; height: 44px; transition: transform .05s linear; }
+.hint {
+  position: fixed; z-index: 14; bottom: calc(18px + var(--sab)); left: 50%; transform: translateX(-50%);
+  background: rgba(20, 38, 64, .82); color: #fff; padding: 8px 14px; border-radius: 999px; font-size: 12.5px;
+  white-space: nowrap; transition: opacity .6s;
+}
+
+/* ---------- 3D labels ---------- */
+.lbl {
+  pointer-events: auto; cursor: pointer; user-select: none;
+  direction: rtl; font-family: var(--f-body); font-weight: 600; font-size: 12.5px; white-space: nowrap;
+  background: rgba(251, 250, 246, .94); color: var(--ink);
+  border: 1px solid rgba(20, 38, 64, .14); border-radius: 8px; padding: 3px 9px;
+  box-shadow: 0 3px 10px rgba(20, 38, 64, .18);
+  transition: opacity .25s, background .15s, color .15s;
+  position: relative;
+}
+.lbl::after {
+  content: ""; position: absolute; left: 50%; bottom: -5px; margin-left: -5px;
+  border: 5px solid transparent; border-bottom: 0; border-top-color: rgba(251, 250, 246, .94);
+}
+.lbl.minor { font-size: 11px; font-weight: 500; padding: 2px 7px; }
+.lbl.far { opacity: 0; pointer-events: none; }
+.lbl.hover { background: #fff; color: var(--accent); }
+.lbl.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.lbl.active::after { border-top-color: var(--accent); }
+
+/* ---------- modal / lightbox / loading ---------- */
+.modal {
+  position: fixed; inset: 0; z-index: 40; background: rgba(12, 22, 38, .45);
+  display: grid; place-items: center;
+  padding: calc(16px + var(--sat)) max(16px, var(--sar)) calc(16px + var(--sab)) max(16px, var(--sal));
+}
+.modal-card {
+  position: relative; background: var(--paper); border-radius: 18px; box-shadow: var(--shadow);
+  width: min(560px, 100%); max-height: 100%; overflow-y: auto;
+}
+.modal-card .inner { padding: 20px; display: grid; gap: 12px; }
+.modal-card h2 { font-family: var(--f-display); margin: 0; font-size: 19px; }
+.coords {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 6px 12px; align-items: center;
+  background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px;
+}
+.coords code { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 13px; direction: ltr; text-align: left; font-variant-numeric: tabular-nums; user-select: all; }
+.coords .k { color: var(--ink-soft); font-size: 12.5px; }
+.copy { border: 1px solid var(--line); background: var(--paper); border-radius: 8px; padding: 4px 9px; font-size: 12px; }
+.plan-img { width: 100%; border-radius: 12px; border: 1px solid var(--line); cursor: zoom-in; display: block; }
+.muted { color: var(--ink-soft); font-size: 12.5px; line-height: 1.7; margin: 0; }
+a.link { color: var(--accent); font-weight: 600; }
+.lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(8, 14, 24, .9); display: grid; place-items: center; padding: 20px; cursor: zoom-out; }
+.lightbox img { max-width: 100%; max-height: 100%; border-radius: 8px; }
+.loading {
+  position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; background: var(--sky);
+  transition: opacity .6s;
+}
+.loading .box { text-align: center; display: grid; gap: 10px; justify-items: center; padding: 20px; }
+.loading .bar { width: 180px; height: 4px; background: rgba(20, 38, 64, .15); border-radius: 4px; overflow: hidden; }
+.loading .bar i { display: block; height: 100%; width: 40%; background: var(--ink); border-radius: 4px; animation: slide 1.1s ease-in-out infinite; }
+@keyframes slide { from { transform: translateX(160%); } to { transform: translateX(-260%); } }
+.loading h2 { font-family: var(--f-display); margin: 0; font-size: 18px; }
+
+/* ---------- phones ---------- */
+@media (max-width: 760px) {
+  .brand { padding: 6px 10px 6px 8px; }
+  .brand h1 { font-size: 14px; }
+  .brand p { display: none; }
+  .emblem { width: 32px; height: 32px; }
+  .tbtn { padding: 8px 10px; font-size: 12px; }
+  .tbtn .t { display: none; }
+  .only-mobile { display: inline-flex; }
+  .only-mobile .t { display: inline; }
+  .nav {
+    top: auto; left: calc(8px + var(--sal)); right: calc(8px + var(--sar)); bottom: calc(8px + var(--sab));
+    width: auto; max-height: 52%;
+  }
+  .nav.collapsed { display: none; }
+  .details {
+    top: auto; left: calc(8px + var(--sal)); right: calc(8px + var(--sar)); bottom: calc(8px + var(--sab));
+    width: auto; max-height: 58%;
+  }
+  .details .photo-wrap { aspect-ratio: 16 / 8; }
+  .compass { bottom: auto; top: calc(70px + var(--sat)); left: calc(10px + var(--sal)); width: 48px; height: 48px; }
+  .compass svg { width: 36px; height: 36px; }
+  .hint { bottom: auto; top: calc(124px + var(--sat)); font-size: 11.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="stage"><div id="labels"></div></div>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="emblem" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"><path d="M3 20h18M5 20V10l7-5 7 5v10M9 20v-6h6v6"/></svg>
+    </div>
+    <div>
+      <h1>كلية الاقتصاد – العجيلات</h1>
+      <p>جامعة الزاوية · خريطة الحرم ثلاثية الأبعاد</p>
+    </div>
+  </div>
+  <div class="tools">
+    <button class="tbtn only-mobile" id="btnNav" aria-pressed="false" aria-controls="nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="t">المرافق</span>
+    </button>
+    <button class="tbtn" id="btnView" aria-pressed="false" title="التبديل بين المنظور ثلاثي الأبعاد والخريطة العلوية">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4zM3 12l9 4 9-4M3 17l9 4 9-4"/></svg><span class="t" id="viewLabel">خريطة علوية 2D</span>
+    </button>
+    <button class="tbtn" id="btnReset" title="العودة إلى العرض الكامل">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v6h6M20 20v-6h-6M5 15a7 7 0 0 0 12 3M19 9A7 7 0 0 0 7 6"/></svg><span class="t">العرض الكامل</span>
+    </button>
+    <button class="tbtn" id="btnInfo" title="الموقع الجغرافي والمخطط">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span class="t">الموقع</span>
+    </button>
+  </div>
+</header>
+
+<nav class="panel nav collapsed" id="nav" aria-label="انتقال سريع">
+  <div class="nav-head">
+    <h2>انتقال سريع إلى المرافق</h2>
+    <input class="search" id="search" type="search" placeholder="ابحث: قاعة، مسرح، بوابة…" autocomplete="off">
+  </div>
+  <div class="nav-list" id="navList"></div>
+</nav>
+
+<aside class="panel details" id="details" hidden aria-live="polite">
+  <button class="close" id="btnClose" aria-label="إغلاق">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="details-scroll">
+    <div class="photo-wrap" id="photoWrap"></div>
+    <div class="thumbs" id="thumbs"></div>
+    <div class="details-body">
+      <span class="chip" id="dCat"></span>
+      <h2 id="dTitle"></h2>
+      <p id="dDesc"></p>
+      <dl class="facts" id="dFacts"></dl>
+      <div class="row-btns">
+        <button class="btn-primary" id="btnFocus">تكبير على المرفق</button>
+        <button class="btn-ghost" id="btnFromGate">الطريق من البوابة</button>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<div class="compass" title="الشمال">
+  <svg viewBox="0 0 44 44" id="compassSvg" aria-label="اتجاه الشمال">
+    <circle cx="22" cy="22" r="20" fill="none" stroke="#e3ddd0"/>
+    <path d="M22 5l6 17h-12z" fill="#c0392b"/>
+    <path d="M22 39l-6-17h12z" fill="#b7c0cc"/>
+    <text x="22" y="17.5" text-anchor="middle" font-size="7" font-weight="700" fill="#fff" font-family="sans-serif">N</text>
+  </svg>
+</div>
+<div class="hint" id="hint">اسحب للتدوير · مرّر أو اقرص للتكبير · انقر على أي مبنى</div>
+
+<div class="modal" id="info" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+    <button class="close" id="btnInfoClose" aria-label="إغلاق">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="inner">
+      <h2 id="infoTitle">موقع الكلية</h2>
+      <p class="muted">كلية الاقتصاد – العجيلات، جامعة الزاوية، ليبيا. الإحداثيات مستخرجة من رمز الموقع في خرائط Google.</p>
+      <div class="coords">
+        <span class="k">خط العرض</span><code id="cLat">32.75896° N</code><span></span>
+        <span class="k">خط الطول</span><code id="cLng">12.36195° E</code><span></span>
+        <span class="k">GPS</span><code id="cBoth">32.75896, 12.36195</code><button class="copy" id="btnCopy">نسخ</button>
+        <span class="k">Plus Code</span><code>Q956+HQP</code><span></span>
+      </div>
+      <p class="muted">
+        <a class="link" href="https://maps.app.goo.gl/eJUqo8ZEWg5Sx2S26" target="_blank" rel="noopener">فتح الموقع في خرائط Google</a>
+        &nbsp;·&nbsp;
+        <a class="link" href="https://www.google.com/maps/dir/?api=1&amp;destination=32.75896,12.36195" target="_blank" rel="noopener">الاتجاهات إلى الكلية</a>
+      </p>
+      <h2 style="font-size:15px">المخطط الهيكلي المعتمد في النموذج</h2>
+      <img class="plan-img" id="planImg" src="assets/photos/site-plan.jpg" alt="المخطط الهيكلي ثنائي الأبعاد لكلية الاقتصاد العجيلات">
+      <p class="muted">النموذج ثلاثي الأبعاد مبني على هذا المخطط والصور الميدانية. الأبعاد والارتفاعات تقريبية وغرضها التوضيح.</p>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" hidden><img id="lightImg" alt=""></div>
+
+<div class="loading" id="loading">
+  <div class="box">
+    <h2>جارٍ بناء المجسم…</h2>
+    <div class="bar"><i></i></div>
+    <p class="muted" id="loadMsg">كلية الاقتصاد – العجيلات</p>
+  </div>
+</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+/* =====================================================================
+   1. Coordinates — the scene is laid out in the pixel space of the
+   site plan (assets/photos/site-plan.jpg, at 2000 px wide) and scaled
+   so that 10 plan pixels ≈ 1 scene unit (≈ 1 m). +x = east, +z = south.
+   ===================================================================== */
+const SCALE = 0.1, CX = 1050, CZ = 800;
+const wx = px => (px - CX) * SCALE;
+const wz = py => (py - CZ) * SCALE;
+const rect = ([a, b, c, d]) => {
+  const x1 = wx(a), z1 = wz(b), x2 = wx(c), z2 = wz(d);
+  return { x1, z1, x2, z2, w: x2 - x1, d: z2 - z1, cx: (x1 + x2) / 2, cz: (z1 + z2) / 2 };
+};
+const UP = new THREE.Vector3(0, 1, 0);
+const PHOTO = n => `assets/photos/${n}.jpg`;
+
+const C = {
+  ochre: 0xdcaa68, ochreDark: 0xc98f4c, theater: 0xe09a57, theaterDeep: 0xc97a3b,
+  beige: 0xe7cc98, entrance: 0xf0d9c2, trim: 0xf5e9cf, roof: 0xcbb999,
+  kiosk: 0xead6aa, block: 0xe2e1da, concrete: 0xd9d2c3, glass: 0x2a3644,
+  wall: 0xe8c56f, stone: 0xd8d1c3, nwBody: 0xe3c58f, corridor: 0xd8b986,
+};
+
+/* =====================================================================
+   2. Facilities (names, descriptions, photos)
+   ===================================================================== */
+const CATS = {
+  entry: { name: 'المداخل', color: '#c0392b' },
+  main: { name: 'المبنى الرئيسي', color: '#c98a3a' },
+  nw: { name: 'المبنى التعليمي الفرعي', color: '#8a6d3b' },
+  service: { name: 'الساحات والخدمات', color: '#5d8a3a' },
+};
+
+const FACILITIES = [
+  { id: 'gate', cat: 'entry', name: 'البوابة الرئيسية', label: 'البوابة الرئيسية', major: true,
+    desc: 'المدخل الرئيسي للحرم في الطرف الجنوبي الشرقي من السور، ببوابة مقوسة تعلوها لافتة الكلية. من البوابة يمتد ممر مشاة مستقيم شمالاً إلى درج المبنى الرئيسي.',
+    facts: [['الموقع', 'السور الجنوبي – الجهة الشرقية'], ['يؤدي إلى', 'درج المدخل الرئيسي']], photos: [] },
+  { id: 'guard', cat: 'entry', name: 'غرفة الحرس', label: 'حرس', major: true,
+    desc: 'غرفة الحراسة ملاصقة للبوابة الرئيسية من جهة اليسار (غرب البوابة)، ومنها تُراقب حركة الدخول والخروج.',
+    facts: [['الموقع', 'غرب البوابة مباشرة']], photos: [] },
+  { id: 'kiosks', cat: 'service', name: 'الأكشاك', label: 'أكشاك', major: true,
+    desc: 'صف طويل من الأكشاك والمحال الخدمية يمتد بمحاذاة السور الجنوبي غرب غرفة الحرس، ويطل على ممر المشاة الجنوبي.',
+    facts: [['الموقع', 'بمحاذاة السور الجنوبي']], photos: [{ s: 'kiosks-street', c: 'صف الأكشاك والممر المحاذي لها' }] },
+  { id: 'front-yard', cat: 'service', name: 'الساحة الأمامية', label: 'ساحة', major: true,
+    desc: 'ساحة مفتوحة مرصوفة في الزاوية الجنوبية الشرقية من الحرم، على يمين البوابة الرئيسية وأمام واجهة المكاتب الإدارية.',
+    facts: [['الموقع', 'الزاوية الجنوبية الشرقية']], photos: [{ s: 'facade-wide', c: 'الساحة أمام واجهة المبنى الرئيسي' }] },
+  { id: 'stairs', cat: 'entry', name: 'درج المدخل الرئيسي', label: 'درج', major: false,
+    desc: 'منصة ودرج عريض أمام الباب الرئيسي يقابل البوابة مباشرة. تظهر بجوار المدخل علامة ذوي الإعاقة.',
+    facts: [['يؤدي إلى', 'باب المدخل الرئيسي']], photos: [{ s: 'entrance-close', c: 'درج المدخل الرئيسي' }] },
+  { id: 'entrance', cat: 'main', name: 'المدخل الرئيسي والبهو', label: 'المدخل الرئيسي', major: true,
+    desc: 'مدخل المبنى الرئيسي تعلوه لافتة «جامعة الزاوية – كلية الاقتصاد العجيلات». يفتح على بهو واسع، ومنه إلى الممر الرئيسي والمكاتب الإدارية والمسرح.',
+    facts: [['الطوابق', 'طابق واحد'], ['يتصل بـ', 'الممر الرئيسي، المكاتب، المسرح']],
+    photos: [{ s: 'entrance', c: 'واجهة المدخل الرئيسي' }, { s: 'lobby', c: 'البهو من الداخل' }, { s: 'lobby-library', c: 'البهو – باتجاه المكتبة' }] },
+  { id: 'theater', cat: 'main', name: 'المسرح', label: 'المسرح', major: true,
+    desc: 'المسرح هو الكتلة الأعلى في واجهة المبنى، بواجهة برتقالية تتخللها تجاويف مقوسة، وتمتد أمامه مظلة معدنية للجلوس. يقع على يسار المدخل الرئيسي.',
+    facts: [['الموقع', 'يسار المدخل الرئيسي'], ['الارتفاع', 'الأعلى في المبنى']],
+    photos: [{ s: 'facade-wide', c: 'المسرح (يسار الصورة) والمدخل الرئيسي' }, { s: 'entrance', c: 'المسرح والمظلة المعدنية' }] },
+  { id: 'office', cat: 'main', name: 'مكتب (خلف المسرح)', label: 'مكتب', major: false,
+    desc: 'مكتب ملحق يقع خلف المسرح مباشرة، على الجانب الغربي من البهو.',
+    facts: [['الموقع', 'شمال المسرح']], photos: [] },
+  { id: 'admin-n', cat: 'main', name: 'المكاتب الإدارية – الجناح الشمالي', label: 'مكاتب', major: true,
+    desc: 'جناح من المكاتب الإدارية على يمين المدخل الرئيسي، يتصل بالبهو عبر ممر قصير يفصله عن الجناح الجنوبي.',
+    facts: [['الطوابق', 'طابق واحد'], ['الموقع', 'يمين المدخل']], photos: [{ s: 'east-side-path', c: 'الجهة الشرقية لجناح المكاتب' }] },
+  { id: 'admin-s', cat: 'main', name: 'المكاتب الإدارية – الجناح الجنوبي', label: 'مكاتب', major: true,
+    desc: 'الجناح الجنوبي من المكاتب الإدارية، بنوافذ عريضة تطل على الساحة الأمامية.',
+    facts: [['الطوابق', 'طابق واحد'], ['الموقع', 'يمين المدخل، على الساحة']], photos: [{ s: 'entrance', c: 'نوافذ المكاتب على يمين المدخل' }] },
+  { id: 'corridor', cat: 'main', name: 'الممر الرئيسي', label: 'الممر الرئيسي', major: false,
+    desc: 'الممر الذي يربط البهو بالأجنحة الدراسية ويمتد شمالاً حتى الباب الجانبي. تُعلّق فيه لوحات إرشادية إلى الأقسام والمكتبة، وفيه الدرج المؤدي إلى الطابق الثاني.',
+    facts: [['الطوابق', 'طابقان'], ['الاتجاه', 'جنوب ← شمال']], photos: [{ s: 'main-corridor', c: 'الممر الرئيسي واللوحات الإرشادية' }, { s: 'classrooms-corridor', c: 'امتداد الممر بين القاعات' }] },
+  { id: 'class-w', cat: 'main', name: 'قاعات دراسية – الجناح الغربي', label: 'قاعات دراسية', major: true,
+    desc: 'جناح طويل من القاعات الدراسية على الجانب الغربي من الممر الرئيسي، يمتد من خلف المسرح شمالاً.',
+    facts: [['الطوابق', 'طابقان'], ['يطل على', 'الساحة الوسطى']], photos: [{ s: 'classrooms-corridor', c: 'ممر القاعات الدراسية' }] },
+  { id: 'class-e', cat: 'main', name: 'قاعات دراسية – الجناح الأوسط', label: 'قاعات دراسية', major: true,
+    desc: 'جناح القاعات الدراسية المقابل على الجانب الشرقي من الممر الرئيسي.',
+    facts: [['الطوابق', 'طابقان']], photos: [{ s: 'classrooms-corridor', c: 'ممر القاعات الدراسية' }] },
+  { id: 'north-hall', cat: 'main', name: 'القاعة الشمالية', label: 'قاعة', major: true,
+    desc: 'قاعة في الطرف الشمالي من الممر الرئيسي، قرب الباب الجانبي.',
+    facts: [['الموقع', 'نهاية الممر شمالاً']], photos: [] },
+  { id: 'side-door', cat: 'entry', name: 'الباب الجانبي الشمالي', label: 'باب جانبي', major: false,
+    desc: 'باب جانبي في الركن الشمالي الغربي من المبنى الرئيسي، يفتح على المبنى الصغير المجاور والممر المرصوف المؤدي إلى المبنى التعليمي الفرعي.',
+    facts: [['يؤدي إلى', 'المبنى الملحق والمبنى الفرعي']], photos: [] },
+  { id: 'annex', cat: 'main', name: 'مبنى ملحق صغير', label: 'مبنى', major: true,
+    desc: 'مبنى صغير مستقل بجوار الباب الجانبي، يتصل بالممر المرصوف الذي يلتف حول المبنى التعليمي الفرعي.',
+    facts: [['الطوابق', 'طابق واحد']], photos: [] },
+  { id: 'departments', cat: 'main', name: 'الأقسام العلمية', label: 'أقسام', major: true,
+    desc: 'مكاتب الأقسام العلمية في الركن الشمالي الشرقي من المبنى. وفق اللوحات الإرشادية في الممر: قسم المحاسبة، الاقتصاد، الإدارة، التسويق، العلوم السياسية، التمويل والمصارف، وتحليل البيانات.',
+    facts: [['الطوابق', 'طابقان'], ['الموقع', 'الركن الشمالي الشرقي']], photos: [{ s: 'main-corridor', c: 'اللوحات الإرشادية إلى الأقسام' }, { s: 'east-wing-corridor', c: 'ممر الجناح الشرقي' }] },
+  { id: 'east-halls', cat: 'main', name: 'قاعات الجناح الشرقي', label: 'قاعات', major: true,
+    desc: 'قاعتان متقابلتان في وسط الجناح الشرقي يفصل بينهما ممر ينفتح على الخارج بباب شرقي.',
+    facts: [['الطوابق', 'طابقان'], ['المداخل', 'باب شرقي']], photos: [{ s: 'east-wing-corridor', c: 'ممر الجناح الشرقي' }] },
+  { id: 'east-service', cat: 'main', name: 'الدرج والمكاتب – الجناح الشرقي', label: 'درج ومكاتب', major: false,
+    desc: 'الجزء الجنوبي من الجناح الشرقي: درج إلى الطابق الثاني، وغرف خدمية، وصف من المكاتب الصغيرة.',
+    facts: [['يضم', 'درج، غرف خدمية، مكاتب']], photos: [{ s: 'east-wing-outside', c: 'الواجهة الشرقية للجناح' }] },
+  { id: 'nw', cat: 'nw', name: 'المبنى التعليمي الفرعي', label: 'المبنى الفرعي', major: true,
+    desc: 'مبنى تعليمي مستقل من طابق واحد في الشمال الغربي، له باب جنوبي على الساحة الوسطى وباب شمالي. يضم ثلاث قاعات وقسماً واحداً حول ممر داخلي على شكل حرف T.',
+    facts: [['الطوابق', 'طابق واحد'], ['يضم', '3 قاعات + قسم'], ['الأبواب', 'جنوبي وشمالي']],
+    photos: [{ s: 'yard-nw-building', c: 'المبنى الفرعي من الساحة' }, { s: 'central-yard', c: 'المبنى الفرعي (يسار) والمبنى الرئيسي (يمين)' }] },
+  { id: 'nw-h1', cat: 'nw', parent: 'nw', name: 'قاعة (الشمالية الغربية)', label: 'قاعة', major: false,
+    desc: 'قاعة في الركن الشمالي الغربي من المبنى الفرعي.', facts: [['المبنى', 'المبنى التعليمي الفرعي']], photos: [] },
+  { id: 'nw-h2', cat: 'nw', parent: 'nw', name: 'قاعة (الشمالية الشرقية)', label: 'قاعة', major: false,
+    desc: 'قاعة في الركن الشمالي الشرقي من المبنى الفرعي، بجوار الباب الشمالي.', facts: [['المبنى', 'المبنى التعليمي الفرعي']], photos: [] },
+  { id: 'nw-h3', cat: 'nw', parent: 'nw', name: 'قاعة (الجنوبية الشرقية)', label: 'قاعة', major: false,
+    desc: 'القاعة الكبرى في الجهة الجنوبية الشرقية من المبنى الفرعي، بجوار الباب الجنوبي.', facts: [['المبنى', 'المبنى التعليمي الفرعي']], photos: [] },
+  { id: 'nw-dept', cat: 'nw', parent: 'nw', name: 'قسم (الجنوبي الغربي)', label: 'قسم', major: false,
+    desc: 'مكتب قسم في الزاوية الجنوبية الغربية من المبنى الفرعي.', facts: [['المبنى', 'المبنى التعليمي الفرعي']], photos: [] },
+  { id: 'yard', cat: 'service', name: 'الساحة الوسطى', label: 'الساحة الوسطى', major: true,
+    desc: 'ساحة واسعة بمسطحات خضراء وممرات مشاة تربط البوابة بالمبنى الرئيسي والمبنى الفرعي، تحيط بها أعمدة إنارة عالية وأشجار صغيرة.',
+    facts: [['تربط بين', 'البوابة، المبنى الرئيسي، المبنى الفرعي']], photos: [{ s: 'central-yard', c: 'الساحة الوسطى' }, { s: 'yard-nw-building', c: 'الممرات داخل الساحة' }] },
+  { id: 'mosque', cat: 'service', name: 'مصلى غير مكتمل', label: 'مصلى (قيد الإنشاء)', major: true,
+    desc: 'مصلى قيد الإنشاء جنوب الساحة الوسطى: جدران من الطوب الإسمنتي وأعمدة خرسانية دون سقف حتى الآن.',
+    facts: [['الحالة', 'قيد الإنشاء']], photos: [{ s: 'mosque-site', c: 'جدران المصلى قيد الإنشاء (يمين الصورة)' }] },
+  { id: 'kiosk-c', cat: 'service', name: 'كشك (جنوب الساحة)', label: 'كشك', major: true,
+    desc: 'كشك صغير على يمين المصلى غير المكتمل، جنوب الساحة الوسطى.', facts: [['الموقع', 'شرق المصلى']], photos: [] },
+  { id: 'kiosk-w', cat: 'service', name: 'كشك (الجهة الغربية)', label: 'كشك', major: true,
+    desc: 'كشك في الطرف الشمالي من الجهة الغربية، فوق المبنى الجانبي الطويل.', facts: [['الموقع', 'الجهة الغربية']], photos: [] },
+  { id: 'west-bldg', cat: 'service', name: 'المبنى الجانبي الغربي', label: 'مبنى جانبي', major: true,
+    desc: 'مبنى طويل من طابق واحد يمتد بمحاذاة الجهة الغربية من الحرم، بين الكشك الغربي والمبنى المربع الصغير.',
+    facts: [['الطوابق', 'طابق واحد']], photos: [] },
+  { id: 'west-small', cat: 'service', name: 'مبنى مربع صغير', label: 'مبنى صغير', major: true,
+    desc: 'مبنى مربع صغير في الجهة الغربية جنوب المبنى الجانبي الطويل.', facts: [['الطوابق', 'طابق واحد']], photos: [] },
+];
+const DEF = Object.fromEntries(FACILITIES.map(f => [f.id, f]));
+
+/* =====================================================================
+   3. Renderer, scene, camera, controls
+   ===================================================================== */
+const stage = document.getElementById('stage');
+const isSmall = () => innerWidth <= 760;
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+} catch (e) {
+  document.getElementById('loadMsg').textContent = 'تعذّر تشغيل WebGL على هذا الجهاز أو المتصفح.';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+stage.prepend(renderer.domElement);
+
+const labelRenderer = new CSS2DRenderer({ element: document.getElementById('labels') });
+labelRenderer.setSize(innerWidth, innerHeight);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0xd5e3ef, 320, 760);
+
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.5, 2500);
+const HOME = { pos: new THREE.Vector3(70, 115, 165), target: new THREE.Vector3(2, 0, -2) };
+const HOME_PHONE = new THREE.Vector3(30, 245, 255);
+camera.position.copy(HOME.pos);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.copy(HOME.target);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.minDistance = 10;
+controls.maxDistance = 360;
+controls.maxPolarAngle = Math.PI * 0.46;
+controls.zoomToCursor = true;
+controls.update();
+
+/* Sky dome */
+{
+  const geo = new THREE.SphereGeometry(1400, 32, 16);
+  const mat = new THREE.ShaderMaterial({
+    side: THREE.BackSide, depthWrite: false, fog: false,
+    uniforms: { top: { value: new THREE.Color(0x2f78c8) }, bottom: { value: new THREE.Color(0xdbe9f3) } },
+    vertexShader: 'varying vec3 vP; void main(){ vP = (modelMatrix*vec4(position,1.)).xyz; gl_Position = projectionMatrix*viewMatrix*vec4(vP,1.); }',
+    fragmentShader: 'uniform vec3 top; uniform vec3 bottom; varying vec3 vP; void main(){ float h = clamp(normalize(vP).y*1.6, 0., 1.); gl_FragColor = vec4(mix(bottom, top, pow(h, .7)), 1.); }',
+  });
+  scene.add(new THREE.Mesh(geo, mat));
+}
+
+/* Daylight — Libyan midday sun from the south-east */
+scene.add(new THREE.HemisphereLight(0xdcecff, 0xc9b08a, 0.95));
+scene.add(new THREE.AmbientLight(0xffffff, 0.18));
+const sun = new THREE.DirectionalLight(0xfff1dc, 2.6);
+sun.position.set(90, 150, 110);
+sun.castShadow = true;
+sun.shadow.mapSize.set(isSmall() ? 2048 : 4096, isSmall() ? 2048 : 4096);
+Object.assign(sun.shadow.camera, { left: -115, right: 115, top: 115, bottom: -115, near: 20, far: 450 });
+sun.shadow.bias = -0.0004;
+sun.shadow.normalBias = 0.04;
+scene.add(sun);
+
+/* =====================================================================
+   4. Procedural textures
+   ===================================================================== */
+function canvasTex(w, h, draw, repeat = [1, 1]) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  draw(c.getContext('2d'), w, h);
+  const t = new THREE.CanvasTexture(c);
+  t.userData.redraw = () => { draw(c.getContext('2d'), w, h); t.needsUpdate = true; };
+  t.colorSpace = THREE.SRGBColorSpace;
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.repeat.set(...repeat);
+  t.anisotropy = 8;
+  return t;
+}
+function noise(ctx, w, h, base, amp, n = 9000) {
+  ctx.fillStyle = base; ctx.fillRect(0, 0, w, h);
+  for (let i = 0; i < n; i++) {
+    const v = (Math.random() - 0.5) * amp;
+    ctx.fillStyle = v > 0 ? `rgba(255,255,255,${v})` : `rgba(60,40,20,${-v})`;
+    ctx.fillRect(Math.random() * w, Math.random() * h, 2, 2);
+  }
+}
+const texConcrete = canvasTex(256, 256, (g, w, h) => {
+  noise(g, w, h, '#ddd5c5', 0.16);
+  g.strokeStyle = 'rgba(110,95,70,.35)'; g.lineWidth = 2;
+  g.strokeRect(0, 0, w, h);
+}, [40, 40]);
+const texSand = canvasTex(256, 256, (g, w, h) => noise(g, w, h, '#d3b98c', 0.22, 14000), [60, 60]);
+const texGrass = canvasTex(256, 256, (g, w, h) => {
+  noise(g, w, h, '#a3ad6a', 0.28, 16000);
+  for (let i = 0; i < 70; i++) { g.fillStyle = 'rgba(200,175,120,.35)'; g.beginPath(); g.arc(Math.random() * w, Math.random() * h, 4 + Math.random() * 10, 0, 7); g.fill(); }
+}, [1, 1]);
+const texBlock = canvasTex(256, 256, (g, w, h) => {
+  noise(g, w, h, '#e6e4dd', 0.12, 5000);
+  g.strokeStyle = 'rgba(120,118,110,.55)'; g.lineWidth = 2;
+  for (let r = 0; r < 8; r++) {
+    const y = r * 32; g.beginPath(); g.moveTo(0, y); g.lineTo(w, y); g.stroke();
+    for (let c = 0; c < 4; c++) { const x = c * 64 + (r % 2) * 32; g.beginPath(); g.moveTo(x, y); g.lineTo(x, y + 32); g.stroke(); }
+  }
+}, [1, 1]);
+const texCurb = canvasTex(64, 16, (g, w, h) => {
+  g.fillStyle = '#e8c21c'; g.fillRect(0, 0, w / 2, h);
+  g.fillStyle = '#2c2c2c'; g.fillRect(w / 2, 0, w / 2, h);
+});
+
+/* =====================================================================
+   5. Builders
+   ===================================================================== */
+const registry = new Map();   // id -> { def, group, center, radius, height, label }
+const pickables = [];
+const winMatrices = [];
+const mat = (color, o = {}) => new THREE.MeshStandardMaterial({ color, roughness: 0.88, metalness: 0.02, ...o });
+
+function shadowed(m, cast = true) { m.castShadow = cast; m.receiveShadow = true; return m; }
+
+function facilityGroup(id) {
+  let g = registry.get(id)?.group;
+  if (!g) { g = new THREE.Group(); g.name = id; scene.add(g); registry.set(id, { def: DEF[id], group: g }); }
+  return g;
+}
+function addPick(id, mesh) { mesh.userData.fid = id; pickables.push(mesh); return mesh; }
+
+function pushWindow(x, y, z, rotY, w, h) {
+  const m = new THREE.Matrix4();
+  m.compose(new THREE.Vector3(x, y, z), new THREE.Quaternion().setFromAxisAngle(UP, rotY), new THREE.Vector3(w, h, 0.22));
+  winMatrices.push(m);
+}
+function addWindows(r, h, floors, sides, o = {}) {
+  const fh = h / floors, ww = o.w ?? 1.6, step = o.step ?? 3.6;
+  const wh = o.h ?? Math.min(1.5, fh * 0.42);
+  const run = (len, cb) => {
+    const n = Math.max(1, Math.floor((len - 1.2) / step)), gap = len / n;
+    for (let i = 0; i < n; i++) cb(-len / 2 + gap * (i + 0.5));
+  };
+  for (let f = 0; f < floors; f++) {
+    const y = f * fh + fh * (o.y ?? 0.56);
+    if (sides.includes('s')) run(r.w, t => pushWindow(r.cx + t, y, r.z2, 0, ww, wh));
+    if (sides.includes('n')) run(r.w, t => pushWindow(r.cx + t, y, r.z1, 0, ww, wh));
+    if (sides.includes('e')) run(r.d, t => pushWindow(r.x2, y, r.cz + t, Math.PI / 2, ww, wh));
+    if (sides.includes('w')) run(r.d, t => pushWindow(r.x1, y, r.cz + t, Math.PI / 2, ww, wh));
+  }
+}
+
+/** A flat-roofed block with cornice, roof slab and optional floor band — the campus' building vocabulary. */
+function block(id, px, o = {}) {
+  const g = facilityGroup(id), r = rect(px);
+  const h = o.h ?? 4.2, color = o.color ?? C.ochre;
+  const body = shadowed(new THREE.Mesh(new THREE.BoxGeometry(r.w, h, r.d), mat(color)));
+  body.position.set(r.cx, h / 2, r.cz);
+  g.add(addPick(id, body));
+  const cornice = shadowed(new THREE.Mesh(new THREE.BoxGeometry(r.w + 0.35, 0.55, r.d + 0.35), mat(o.trim ?? C.trim)));
+  cornice.position.set(r.cx, h - 0.2, r.cz);
+  g.add(addPick(id, cornice));
+  const roof = shadowed(new THREE.Mesh(new THREE.BoxGeometry(Math.max(0.2, r.w - 0.7), 0.08, Math.max(0.2, r.d - 0.7)), mat(C.roof)), false);
+  roof.position.set(r.cx, h + 0.1, r.cz);
+  g.add(addPick(id, roof));
+  if ((o.floors ?? 1) > 1) {
+    const band = shadowed(new THREE.Mesh(new THREE.BoxGeometry(r.w + 0.6, 0.35, r.d + 0.6), mat(o.bandColor ?? C.ochreDark)));
+    band.position.set(r.cx, h / o.floors + 0.1, r.cz);
+    g.add(addPick(id, band));
+  }
+  if (o.plinth !== false) {
+    const plinth = shadowed(new THREE.Mesh(new THREE.BoxGeometry(r.w + 0.12, 0.7, r.d + 0.12), mat(C.stone)));
+    plinth.position.set(r.cx, 0.35, r.cz);
+    g.add(addPick(id, plinth));
+  }
+  if (o.win) addWindows(r, h, o.floors ?? 1, o.win, o.winOpts);
+  if (o.tanks) o.tanks.forEach(([tx, tz]) => waterTank(g, id, r.x1 + tx * r.w, h, r.z1 + tz * r.d));
+  return { g, r, h };
+}
+
+function waterTank(g, id, x, y, z) {
+  const t = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.8, 0.8, 1.6, 16), mat(0xf4f4f0, { roughness: 0.5 })));
+  t.position.set(x, y + 1.2, z);
+  const stand = shadowed(new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.4, 1.8), mat(0x8a8a86)));
+  stand.position.set(x, y + 0.3, z);
+  g.add(addPick(id, t), addPick(id, stand));
+}
+
+function door(g, id, x, z, rotY, w = 2.2, h = 2.6, color = 0x3b2a20) {
+  const d = new THREE.Mesh(new THREE.BoxGeometry(w, h, 0.3), mat(color, { roughness: 0.6 }));
+  d.position.set(x, h / 2 + 0.2, z); d.rotation.y = rotY;
+  g.add(addPick(id, d));
+  return d;
+}
+
+function archShape(w, h) {
+  const s = new THREE.Shape(), r = w / 2;
+  s.moveTo(-r, 0); s.lineTo(-r, h - r); s.absarc(0, h - r, r, Math.PI, 0, true); s.lineTo(r, 0); s.lineTo(-r, 0);
+  return s;
+}
+
+const signTextures = [];
+function textTexture(lines, w, h, o = {}) {
+  const t = canvasTex(w, h, (g) => {
+    g.fillStyle = o.bg ?? '#ffffff'; g.fillRect(0, 0, w, h);
+    if (o.band) { g.fillStyle = o.band; g.fillRect(0, h * 0.82, w, h * 0.18); }
+    g.direction = 'rtl'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    lines.forEach((ln, i) => {
+      g.fillStyle = ln.color ?? '#142640';
+      g.font = `${ln.weight ?? 700} ${ln.size}px "Noto Kufi Arabic", "IBM Plex Sans Arabic", sans-serif`;
+      g.fillText(ln.text, w / 2, ln.y);
+    });
+  });
+  signTextures.push(t);
+  return t;
+}
+
+/* Ground polygons — points given in plan pixels */
+function groundPoly(points, material, y, id) {
+  const s = new THREE.Shape(points.map(([px, py]) => new THREE.Vector2(wx(px), -wz(py))));
+  const geo = new THREE.ShapeGeometry(s);
+  geo.rotateX(-Math.PI / 2);
+  // world-space UVs so tiled textures keep a constant scale
+  const pos = geo.attributes.position, uv = geo.attributes.uv;
+  for (let i = 0; i < pos.count; i++) uv.setXY(i, pos.getX(i) / 8, pos.getZ(i) / 8);
+  const m = new THREE.Mesh(geo, material);
+  m.position.y = y; m.receiveShadow = true;
+  if (id) { facilityGroup(id).add(addPick(id, m)); } else scene.add(m);
+  return m;
+}
+function path(points, width, y = 0.06, color = 0xe2dccd) {
+  const m = mat(color, { roughness: 0.95 });
+  for (let i = 0; i < points.length - 1; i++) {
+    const a = new THREE.Vector3(wx(points[i][0]), y, wz(points[i][1]));
+    const b = new THREE.Vector3(wx(points[i + 1][0]), y, wz(points[i + 1][1]));
+    const len = a.distanceTo(b) + width * 0.5;
+    const seg = new THREE.Mesh(new THREE.BoxGeometry(width, 0.08, len), m);
+    seg.position.copy(a).add(b).multiplyScalar(0.5);
+    seg.rotation.y = Math.atan2(b.x - a.x, b.z - a.z);
+    seg.receiveShadow = true;
+    scene.add(seg);
+  }
+}
+function curb(points, closed = false) {
+  const pts = closed ? [...points, points[0]] : points;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const a = new THREE.Vector3(wx(pts[i][0]), 0.15, wz(pts[i][1]));
+    const b = new THREE.Vector3(wx(pts[i + 1][0]), 0.15, wz(pts[i + 1][1]));
+    const len = a.distanceTo(b);
+    const t = texCurb.clone(); t.needsUpdate = true; t.repeat.set(len / 1.2, 1);
+    const seg = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.3, len), new THREE.MeshStandardMaterial({ map: t, roughness: 0.8 }));
+    seg.position.copy(a).add(b).multiplyScalar(0.5);
+    seg.rotation.y = Math.atan2(b.x - a.x, b.z - a.z);
+    seg.receiveShadow = true;
+    scene.add(seg);
+  }
+}
+
+/* Vegetation & street furniture */
+const trunkMat = mat(0x7a5a3a), palmTrunkMat = mat(0x8c6b45, { roughness: 1 });
+const leafMats = [mat(0x5f7d3a), mat(0x6f8a40), mat(0x4f6e35)];
+const palmLeafMat = mat(0x5a7a35, { side: THREE.DoubleSide });
+function tree(x, z, s = 1, kind = 'round') {
+  const g = new THREE.Group();
+  if (kind === 'palm') {
+    const h = 3.2 * s;
+    const t = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.16 * s, 0.26 * s, h, 7), palmTrunkMat));
+    t.position.y = h / 2; g.add(t);
+    for (let i = 0; i < 9; i++) {
+      const leaf = shadowed(new THREE.Mesh(new THREE.ConeGeometry(0.32 * s, 2.4 * s, 4, 1, true), palmLeafMat));
+      leaf.scale.z = 0.25;
+      leaf.position.set(0, h, 0);
+      leaf.rotation.set(0, (i / 9) * Math.PI * 2, 0);
+      leaf.rotateZ(-1.9 + Math.random() * 0.4);
+      leaf.translateY(1.1 * s);
+      g.add(leaf);
+    }
+  } else if (kind === 'pine') {
+    const t = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.3 * s, 0.45 * s, 4 * s, 7), trunkMat));
+    t.position.y = 2 * s; g.add(t);
+    for (let i = 0; i < 4; i++) {
+      const f = shadowed(new THREE.Mesh(new THREE.IcosahedronGeometry((2.6 - i * 0.3) * s, 0), leafMats[2]));
+      f.position.set((Math.random() - 0.5) * 1.6 * s, (4.5 + i * 1.7) * s, (Math.random() - 0.5) * 1.6 * s);
+      f.scale.y = 0.75; g.add(f);
+    }
+  } else {
+    const t = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.12 * s, 0.18 * s, 1.8 * s, 6), trunkMat));
+    t.position.y = 0.9 * s; g.add(t);
+    const f = shadowed(new THREE.Mesh(new THREE.IcosahedronGeometry(1.25 * s, 1), leafMats[Math.floor(Math.random() * 2)]));
+    f.position.y = 2.4 * s; f.scale.set(1, 0.9, 1); f.rotation.y = Math.random() * 3; g.add(f);
+  }
+  g.position.set(wx(x), 0, wz(z));
+  g.rotation.y = Math.random() * Math.PI * 2;
+  scene.add(g);
+}
+const poleMat = mat(0x9aa0a6, { metalness: 0.6, roughness: 0.4 });
+const lampMat = new THREE.MeshStandardMaterial({ color: 0xfff6dc, emissive: 0xfff0c8, emissiveIntensity: 0.6 });
+function floodlight(x, z) {
+  const g = new THREE.Group();
+  const p = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.16, 11, 8), poleMat)); p.position.y = 5.5; g.add(p);
+  [-0.35, 0.35].forEach(o => { const l = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.35, 0.3), lampMat); l.position.set(o, 10.9, 0.1); g.add(l); });
+  g.position.set(wx(x), 0, wz(z)); scene.add(g);
+}
+function globeLamp(x, z) {
+  const g = new THREE.Group();
+  const p = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.09, 3.6, 6), mat(0x2b2b2b))); p.position.y = 1.8; g.add(p);
+  const b = new THREE.Mesh(new THREE.SphereGeometry(0.32, 14, 10), lampMat); b.position.y = 3.8; g.add(b);
+  g.position.set(wx(x), 0, wz(z)); scene.add(g);
+}
+function shelter(x, z) { // arched bench shelters seen along the east wall
+  const g = new THREE.Group();
+  const roof = shadowed(new THREE.Mesh(new THREE.CylinderGeometry(1.6, 1.6, 3.2, 16, 1, true, -Math.PI / 2, Math.PI), mat(0xd8dcd8, { side: THREE.DoubleSide, metalness: 0.3 })));
+  roof.rotation.x = Math.PI / 2; roof.rotation.z = Math.PI / 2; roof.scale.set(1, 1, 0.45); roof.position.y = 2.4; g.add(roof);
+  [[-1.4, -1.4], [1.4, -1.4], [-1.4, 1.4], [1.4, 1.4]].forEach(([a, b]) => { const p = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 2.4, 6), mat(0x333333)); p.position.set(a * 0.9, 1.2, b); g.add(p); });
+  const bench = shadowed(new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.5, 2.4), mat(0x8a6a48))); bench.position.y = 0.45; g.add(bench);
+  g.position.set(wx(x), 0, wz(z)); scene.add(g);
+}
+
+/* =====================================================================
+   6. Site: ground, wall, paving, green yard, paths
+   ===================================================================== */
+const WALL = [[170, 30], [1935, 72], [1925, 1555], [1420, 1555], [1310, 1555], [178, 1540]];
+{
+  const sand = new THREE.Mesh(new THREE.PlaneGeometry(1600, 1600), mat(0xffffff, { map: texSand, roughness: 1 }));
+  sand.rotation.x = -Math.PI / 2; sand.receiveShadow = true; scene.add(sand);
+  // asphalt road outside the south wall
+  const road = new THREE.Mesh(new THREE.PlaneGeometry(400, 14), mat(0x8d8a84, { roughness: 1 }));
+  road.rotation.x = -Math.PI / 2; road.position.set(0, 0.02, wz(1555) + 13); road.receiveShadow = true; scene.add(road);
+  groundPoly(WALL, mat(0xffffff, { map: texConcrete, roughness: 0.95 }), 0.03);
+  // light paving ring around the north-west building
+  groundPoly([[480, 300], [1080, 300], [1080, 710], [480, 690]], mat(0xe7e1d4, { roughness: 0.95 }), 0.045);
+}
+const grassMat = mat(0xffffff, { map: texGrass, roughness: 1 });
+const YARD_A = [[375, 745], [660, 745], [660, 712], [1085, 712], [1098, 530], [1150, 530], [1135, 650], [1115, 800], [1040, 880], [1028, 1000], [1045, 1150], [1100, 1220], [1100, 1265], [300, 1265], [300, 1180], [375, 1180]];
+const YARD_B = [[290, 1268], [1100, 1268], [1188, 1240], [1195, 1300], [1340, 1300], [1340, 1262], [1430, 1262], [1430, 1420], [1340, 1420], [1340, 1385], [290, 1385]];
+groundPoly(YARD_A, grassMat, 0.07, 'yard');
+groundPoly(YARD_B, grassMat, 0.065, 'yard');
+curb(YARD_A, true);
+// front yard (south-east) — clickable paved square
+groundPoly([[1490, 1160], [1925, 1160], [1925, 1555], [1430, 1555], [1430, 1262], [1490, 1258]], mat(0xffffff, { map: texConcrete, color: 0xf3eee4, roughness: 0.95 }), 0.05, 'front-yard');
+curb([[1430, 1262], [1430, 1420], [1340, 1420]]);
+
+// footpaths: dashed route on the plan, plus links to the buildings
+path([[300, 1325], [1388, 1325], [1388, 1555]], 2.4, 0.11);
+path([[710, 640], [710, 760], [858, 1150], [858, 1325]], 2.2, 0.11);
+path([[1100, 1205], [1275, 1205]], 2.2, 0.11);
+path([[1100, 1000], [1215, 1000]], 2, 0.11);
+path([[800, 345], [820, 255], [1075, 255], [1075, 450]], 2.6, 0.08, 0xd3e0ea); // paved loop to the annex (light blue on the plan)
+path([[1185, 490], [1215, 420]], 2.2, 0.11);
+
+/* Perimeter wall with the gate gap */
+{
+  const wallMat = mat(C.wall), capMat = mat(0xf2dc95);
+  for (let i = 0; i < WALL.length; i++) {
+    const a = WALL[i], b = WALL[(i + 1) % WALL.length];
+    if (a[0] === 1420 && b[0] === 1310) continue; // gate opening
+    const A = new THREE.Vector3(wx(a[0]), 0, wz(a[1])), B = new THREE.Vector3(wx(b[0]), 0, wz(b[1]));
+    const len = A.distanceTo(B), mid = A.clone().add(B).multiplyScalar(0.5), rot = Math.atan2(B.x - A.x, B.z - A.z);
+    const w = shadowed(new THREE.Mesh(new THREE.BoxGeometry(0.45, 2.8, len), wallMat));
+    w.position.set(mid.x, 1.4, mid.z); w.rotation.y = rot; scene.add(w);
+    const cap = shadowed(new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.15, len + 0.3), capMat));
+    cap.position.set(mid.x, 2.85, mid.z); cap.rotation.y = rot; scene.add(cap);
+    const n = Math.floor(len / 4.5);
+    for (let k = 1; k < n; k++) { // panel pilasters, as in the photos
+      const p = shadowed(new THREE.Mesh(new THREE.BoxGeometry(0.7, 2.9, 0.35), capMat));
+      p.position.copy(A.clone().lerp(B, k / n)); p.position.y = 1.45; p.rotation.y = rot; scene.add(p);
+    }
+  }
+}
+
+/* =====================================================================
+   7. Buildings
+   ===================================================================== */
+// --- South edge: gate, guard room, kiosks
+{
+  const id = 'gate', g = facilityGroup(id);
+  const xL = wx(1310), xR = wx(1420), z = wz(1555), span = xR - xL, cx = (xL + xR) / 2;
+  const pierMat = mat(C.trim), archMat = mat(C.ochre);
+  [xL - 0.6, xR + 0.6].forEach(x => {
+    const p = shadowed(new THREE.Mesh(new THREE.BoxGeometry(1.8, 6.2, 1.8), pierMat)); p.position.set(x, 3.1, z); g.add(addPick(id, p));
+    const capital = shadowed(new THREE.Mesh(new THREE.BoxGeometry(2.3, 0.5, 2.3), archMat)); capital.position.set(x, 6.45, z); g.add(addPick(id, capital));
+  });
+  const arch = shadowed(new THREE.Mesh(new THREE.TorusGeometry(span / 2 + 0.6, 0.55, 12, 40, Math.PI), archMat));
+  arch.position.set(cx, 6.4, z); arch.scale.y = 0.55; g.add(addPick(id, arch));
+  const signTex = textTexture([{ text: 'جامعة الزاوية', size: 46, y: 52 }, { text: 'كلية الاقتصاد – العجيلات', size: 62, y: 128 }], 1024, 200, { band: '#1b9aa5' });
+  const sign = new THREE.Mesh(new THREE.BoxGeometry(span * 0.78, 1.7, 0.2), [mat(0xffffff), mat(0xffffff), mat(0xffffff), mat(0xffffff), new THREE.MeshStandardMaterial({ map: signTex, roughness: 0.6 }), mat(0xffffff)]);
+  sign.position.set(cx, 7.1, z + 0.15); g.add(addPick(id, sign));
+  // half-open metal leaves
+  [[xL, 1], [xR, -1]].forEach(([x, s]) => {
+    const leaf = shadowed(new THREE.Mesh(new THREE.BoxGeometry(span / 2 - 0.2, 2.6, 0.12), mat(0x3f4a46, { metalness: 0.5, roughness: 0.5 })));
+    leaf.geometry.translate(s * (span / 4 - 0.1), 0, 0);
+    leaf.position.set(x, 1.4, z); leaf.rotation.y = s * -0.9; g.add(addPick(id, leaf));
+  });
+  // semicircular forecourt wall (the curved gatehouse on the plan)
+  const r = rect([1262, 1400, 1490, 1555]);
+  const R = 11.2, ringMat = mat(C.trim);
+  const arc = (a0, a1) => {
+    const s = new THREE.Shape();
+    s.absarc(0, 0, R, a0, a1, false); s.absarc(0, 0, R - 0.5, a1, a0, true);
+    const geo = new THREE.ExtrudeGeometry(s, { depth: 1.3, bevelEnabled: false, curveSegments: 24 });
+    geo.rotateX(-Math.PI / 2);
+    const m = shadowed(new THREE.Mesh(geo, ringMat));
+    m.position.set(r.cx, 0, z - 0.6); g.add(addPick(id, m));
+  };
+  arc(0, 1.3); arc(1.62, Math.PI); // opening where the footpath enters
+}
+{
+  const { g, r, h } = block('guard', [935, 1405, 1080, 1510], { h: 3.4, color: C.beige, win: 'ne', winOpts: { w: 1.4, step: 3 } });
+  const awn = shadowed(new THREE.Mesh(new THREE.BoxGeometry(r.w + 0.6, 0.45, 1.2), mat(0xc0392b)));
+  awn.position.set(r.cx, h - 0.6, r.z1 - 0.5); g.add(addPick('guard', awn));
+  door(g, 'guard', r.x2 - 2.5, r.z1 - 0.05, 0, 1.2, 2.3);
+}
+{
+  const id = 'kiosks';
+  const { g, r, h } = block(id, [330, 1385, 930, 1510], { h: 3.2, color: C.kiosk });
+  const shutterCols = [0x8b3a2b, 0x6b4a2b, 0x9a9a92, 0x7b2d26, 0xc9a227, 0x5f6b6d];
+  const n = 11, wSeg = r.w / n;
+  for (let i = 0; i < n; i++) {
+    const sh = new THREE.Mesh(new THREE.BoxGeometry(wSeg * 0.62, 2.3, 0.15), mat(shutterCols[i % shutterCols.length], { metalness: 0.3, roughness: 0.6 }));
+    sh.position.set(r.x1 + wSeg * (i + 0.5), 1.35, r.z1 - 0.05); g.add(addPick(id, sh));
+    if (i % 3 === 1) { const aw = new THREE.Mesh(new THREE.BoxGeometry(wSeg * 0.75, 0.15, 1.1), mat(0xe2b33a)); aw.position.set(r.x1 + wSeg * (i + 0.5), 2.75, r.z1 - 0.55); aw.rotation.x = 0.25; g.add(addPick(id, aw)); }
+  }
+  const divider = shadowed(new THREE.Mesh(new THREE.BoxGeometry(0.6, h + 0.6, r.d + 0.4), mat(C.trim)));
+  divider.position.set(wx(930), (h + 0.6) / 2, r.cz); g.add(addPick(id, divider));
+}
+
+// --- Main academic & administrative complex
+block('entrance', [1310, 930, 1455, 1150], { h: 4.9, color: C.entrance, tanks: [[0.7, 0.3]] });
+{
+  const id = 'entrance', g = facilityGroup(id), r = rect([1310, 930, 1455, 1150]);
+  // porch canopy and fascia carrying the faculty sign (photo 3)
+  const porch = shadowed(new THREE.Mesh(new THREE.BoxGeometry(r.w + 1, 1.3, 3.2), mat(C.entrance)));
+  porch.position.set(r.cx, 4.3, r.z2 + 1.2); g.add(addPick(id, porch));
+  [r.x1 + 0.1, r.x2 - 0.1].forEach(x => { const col = shadowed(new THREE.Mesh(new THREE.BoxGeometry(0.6, 3.7, 0.6), mat(C.entrance))); col.position.set(x, 1.85, r.z2 + 2.4); g.add(addPick(id, col)); });
+  const signTex = textTexture([
+    { text: 'دولة ليبيا · وزارة التعليم العالي والبحث العلمي', size: 30, y: 46, weight: 600 },
+    { text: 'جامعة الزاوية', size: 58, y: 118 },
+    { text: 'كلية الاقتصاد العجيلات', size: 64, y: 200 },
+  ], 1024, 300, { band: '#1b9aa5' });
+  const sign = new THREE.Mesh(new THREE.PlaneGeometry(7.6, 2.2), new THREE.MeshStandardMaterial({ map: signTex, roughness: 0.6 }));
+  sign.position.set(r.cx, 4.8, r.z2 + 2.82); g.add(addPick(id, sign));
+  // two double doors and a window, with painted murals on the side walls
+  door(g, id, r.cx - 2.6, r.z2 + 0.05, 0, 2.4, 2.8);
+  door(g, id, r.cx + 1.2, r.z2 + 0.05, 0, 2.4, 2.8);
+  pushWindow(r.cx + 4.6, 2.2, r.z2, 0, 2.6, 1.6);
+  const mural = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 2.4), mat(0xf2d33a, { roughness: 0.7 }));
+  mural.position.set(r.x1 - 0.06, 2.1, r.z2 + 1.3); mural.rotation.y = -Math.PI / 2; g.add(addPick(id, mural));
+}
+{
+  // stairs platform in front of the main door
+  const id = 'stairs', g = facilityGroup(id), r = rect([1275, 1150, 1490, 1255]);
+  const stone = mat(C.stone), top = mat(0xe9e4d9);
+  const plat = shadowed(new THREE.Mesh(new THREE.BoxGeometry(r.w, 0.9, r.d - 3), top));
+  plat.position.set(r.cx, 0.45, r.z1 + (r.d - 3) / 2); g.add(addPick(id, plat));
+  for (let i = 0; i < 3; i++) {
+    const s = shadowed(new THREE.Mesh(new THREE.BoxGeometry(r.w * 0.6, 0.3 * (3 - i), 1), stone));
+    s.position.set(r.cx - 1.5, 0.15 * (3 - i), r.z2 - 3 + i + 0.5); g.add(addPick(id, s));
+  }
+  const ramp = shadowed(new THREE.Mesh(new THREE.BoxGeometry(r.w * 0.3, 0.12, 4.2), stone));
+  ramp.position.set(r.x2 - r.w * 0.17, 0.42, r.z2 - 1.4); ramp.rotation.x = 0.2; g.add(addPick(id, ramp));
+}
+{
+  // Theater — tall orange volume with arched recesses on its south and west faces
+  const id = 'theater';
+  const { g, r, h } = block(id, [1115, 1000, 1310, 1140], { h: 11.5, color: C.theater, trim: 0xe9a868, plinth: false });
+  const recess = mat(C.theaterDeep), pil = mat(0xeaa465);
+  const facade = (len, n, place) => {
+    const bw = len / n;
+    for (let i = 0; i < n; i++) {
+      const a = new THREE.Mesh(new THREE.ShapeGeometry(archShape(bw * 0.5, h * 0.72), 16), recess);
+      place(a, -len / 2 + bw * (i + 0.5), 1.6); a.receiveShadow = true; g.add(addPick(id, a));
+    }
+    for (let i = 0; i <= n; i++) {
+      const p = shadowed(new THREE.Mesh(new THREE.BoxGeometry(bw * 0.3, h + 0.9, 0.7), pil));
+      place(p, -len / 2 + bw * i, (h + 0.9) / 2, true); g.add(addPick(id, p));
+    }
+  };
+  facade(r.w, 4, (m, t, y, isBox) => { m.position.set(r.cx + t, y, r.z2 + (isBox ? 0.3 : 0.03)); });
+  facade(r.d, 3, (m, t, y, isBox) => { m.position.set(r.x1 - (isBox ? 0.3 : 0.03), y, r.cz + t); m.rotation.y = -Math.PI / 2; });
+  addWindows({ ...r, w: r.w, d: r.d }, h, 1, 'n', { w: 1, h: 3, y: 0.6, step: 4 });
+  // metal shade canopy in front of the theater, extending west over the yard edge
+  const cr = rect([985, 1010, 1112, 1150]);
+  const roof = shadowed(new THREE.Mesh(new THREE.BoxGeometry(cr.w, 0.15, cr.d), mat(0xb7b9b6, { metalness: 0.5, roughness: 0.5 })));
+  roof.position.set(cr.cx, 4.5, cr.cz); roof.rotation.z = -0.05; g.add(addPick(id, roof));
+  const edge = new THREE.Mesh(new THREE.BoxGeometry(cr.w + 0.1, 0.35, 0.15), mat(0xc0392b)); edge.position.set(cr.cx, 4.4, cr.z2); g.add(addPick(id, edge));
+  const postMat = mat(0x9aa0a6, { metalness: 0.6, roughness: 0.4 });
+  for (let i = 0; i < 4; i++) for (let j = 0; j < 2; j++) {
+    const p = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 4.4, 6), postMat); p.castShadow = true;
+    p.position.set(cr.x1 + 0.6 + j * (cr.w - 1.2), 2.2, cr.z1 + 0.8 + i * (cr.d - 1.6) / 3); g.add(addPick(id, p));
+  }
+}
+block('office', [1115, 935, 1310, 1000], { h: 4.4, color: C.ochre, win: 'nw' });
+block('admin-n', [1455, 935, 1660, 1020], { h: 4.4, color: C.beige, win: 'ne', winOpts: { w: 2.4, step: 3.6 }, tanks: [[0.3, 0.4]] });
+block('admin-n', [1455, 1020, 1665, 1075], { h: 3.8, color: C.beige });
+door(facilityGroup('admin-n'), 'admin-n', wx(1665) + 0.05, wz(1048), Math.PI / 2, 2.2, 2.5);
+block('admin-s', [1455, 1075, 1665, 1145], { h: 4.4, color: C.beige, win: 'se', winOpts: { w: 2.6, step: 3.4 } });
+block('class-w', [1220, 465, 1310, 925], { h: 7.8, floors: 2, color: C.ochre, win: 'w', winOpts: { w: 1.8, step: 3.4 } });
+block('corridor', [1215, 370, 1365, 465], { h: 8.3, floors: 2, color: C.ochre, win: 'n' });
+block('corridor', [1310, 465, 1365, 930], { h: 8.3, floors: 2, color: C.corridor, trim: C.trim });
+block('class-e', [1365, 475, 1450, 935], { h: 7.8, floors: 2, color: C.ochre, win: 'e', winOpts: { w: 1.8, step: 3.4 } });
+block('north-hall', [1365, 385, 1520, 470], { h: 7.8, floors: 2, color: C.ochre, win: 'ne' });
+block('departments', [1575, 390, 1750, 515], { h: 7.8, floors: 2, color: C.ochre, win: 'ne', tanks: [[0.8, 0.3]] });
+block('departments', [1520, 390, 1575, 470], { h: 4.2, color: C.ochre });
+block('east-halls', [1490, 515, 1765, 695], { h: 7.8, floors: 2, color: C.ochre, win: 'ew' });
+door(facilityGroup('east-halls'), 'east-halls', wx(1765) + 0.05, wz(720), Math.PI / 2, 2.2, 2.6);
+block('east-service', [1490, 695, 1765, 880], { h: 7.8, floors: 2, color: C.ochre, win: 'esw', tanks: [[0.25, 0.5]] });
+{
+  // side door with a short landing at the corridor head
+  const id = 'side-door', g = facilityGroup(id);
+  const d = door(g, id, wx(1215) - 0.1, wz(418), Math.PI / 2, 2.4, 2.8, 0x4a3426);
+  const landing = shadowed(new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.5, 3.2), mat(C.stone)));
+  landing.position.set(wx(1215) - 1.3, 0.25, wz(418)); g.add(addPick(id, landing));
+  const hood = shadowed(new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.2, 3.4), mat(C.trim)));
+  hood.position.set(wx(1215) - 0.8, 3.4, wz(418)); g.add(addPick(id, hood));
+}
+block('annex', [1020, 450, 1185, 525], { h: 4, color: C.beige, win: 'sn', winOpts: { w: 1.4, step: 3.4 } });
+door(facilityGroup('annex'), 'annex', wx(1145), wz(525) + 0.05, 0, 1.4, 2.4);
+
+// --- North-west teaching building: 3 halls + 1 department around a T corridor
+block('nw-h1', [545, 355, 735, 465], { h: 5, color: C.nwBody, win: 'nw', winOpts: { w: 1.8 } });
+block('nw-h2', [750, 355, 975, 465], { h: 5, color: C.nwBody, win: 'ne', winOpts: { w: 1.8 } });
+block('nw-h3', [740, 520, 975, 635], { h: 5, color: C.nwBody, win: 'se', winOpts: { w: 1.8 } });
+block('nw-dept', [545, 520, 665, 630], { h: 5, color: C.nwBody, win: 'sw', winOpts: { w: 1.6 } });
+block('nw', [545, 465, 975, 520], { h: 4.2, color: C.corridor, win: 'ew', winOpts: { w: 1.2, step: 6 } });
+block('nw', [665, 520, 740, 635], { h: 4.2, color: C.corridor });
+block('nw', [735, 345, 750, 465], { h: 4.2, color: C.corridor });
+{
+  const g = facilityGroup('nw');
+  door(g, 'nw', wx(702), wz(635) + 0.05, 0, 2.6, 2.8);   // south door
+  door(g, 'nw', wx(790), wz(355) - 0.05, 0, 2.6, 2.8);   // north door
+  const steps = shadowed(new THREE.Mesh(new THREE.BoxGeometry(4, 0.45, 1.8), mat(C.stone)));
+  steps.position.set(wx(702), 0.22, wz(635) + 1); g.add(addPick('nw', steps));
+}
+
+// --- Yard, mosque and western service buildings
+{
+  // unfinished prayer hall: block walls of uneven height, concrete columns with rebar, no roof yet
+  const id = 'mosque', g = facilityGroup(id), r = rect([488, 1160, 825, 1270]);
+  const slab = shadowed(new THREE.Mesh(new THREE.BoxGeometry(r.w, 0.35, r.d), mat(0xc9c5bb)));
+  slab.position.set(r.cx, 0.175, r.cz); g.add(addPick(id, slab));
+  const colMat = mat(0xbdbab2), rebarMat = mat(0x6b4a3a, { metalness: 0.6 });
+  const wallSeg = (x1, z1, x2, z2, hgt) => {
+    const len = Math.hypot(x2 - x1, z2 - z1);
+    const t = texBlock.clone(); t.needsUpdate = true; t.repeat.set(len / 4, hgt / 2);
+    const w = shadowed(new THREE.Mesh(new THREE.BoxGeometry(len, hgt, 0.35), mat(0xffffff, { map: t })));
+    w.position.set((x1 + x2) / 2, 0.35 + hgt / 2, (z1 + z2) / 2); w.rotation.y = -Math.atan2(z2 - z1, x2 - x1);
+    g.add(addPick(id, w));
+  };
+  const nx = 6, nz = 2;
+  for (let i = 0; i < nx; i++) {
+    const xa = r.x1 + (r.w / nx) * i, xb = xa + r.w / nx;
+    wallSeg(xa, r.z1, xb, r.z1, 2.2 + ((i * 7) % 4) * 0.45);
+    if (i !== 2) wallSeg(xa, r.z2, xb, r.z2, 1.6 + ((i * 5) % 3) * 0.6);
+  }
+  for (let j = 0; j < nz; j++) {
+    const za = r.z1 + (r.d / nz) * j, zb = za + r.d / nz;
+    wallSeg(r.x1, za, r.x1, zb, 2.6 - j * 0.5);
+    wallSeg(r.x2, za, r.x2, zb, 3.1 - j * 0.9);
+  }
+  for (let i = 0; i <= nx; i++) for (const z of [r.z1, r.z2]) {
+    const x = r.x1 + (r.w / nx) * i;
+    const c = shadowed(new THREE.Mesh(new THREE.BoxGeometry(0.6, 4.2, 0.6), colMat)); c.position.set(x, 2.45, z); g.add(addPick(id, c));
+    for (let k = 0; k < 4; k++) { const rb = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.2, 4), rebarMat); rb.position.set(x + (k % 2 - 0.5) * 0.35, 5.1, z + (k > 1 ? 0.17 : -0.17)); g.add(rb); }
+  }
+  // building materials on site
+  const pile = shadowed(new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.8, 1.6), mat(0xd6d4cc))); pile.position.set(r.x2 - 3, 0.75, r.z2 - 2.5); g.add(addPick(id, pile));
+}
+block('kiosk-c', [890, 1162, 1000, 1270], { h: 3.2, color: C.kiosk, win: 'n', winOpts: { w: 2.4, step: 5 } });
+block('kiosk-w', [235, 595, 345, 685], { h: 3.2, color: C.kiosk, win: 'e', winOpts: { w: 2.4, step: 5 } });
+{
+  const { g, r } = block('west-bldg', [205, 685, 330, 1010], { h: 3.6, color: C.kiosk });
+  for (let i = 0; i < 8; i++) door(g, 'west-bldg', r.x2 + 0.05, r.z1 + 2 + i * (r.d - 4) / 7, Math.PI / 2, 1.3, 2.3, i % 2 ? 0x2d2d2d : 0x7b3b2b);
+}
+block('west-small', [190, 1055, 305, 1175], { h: 3.6, color: C.beige, win: 'e', winOpts: { w: 1.4, step: 4 } });
+
+/* Instanced windows (glass + light frame) */
+{
+  const glass = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshStandardMaterial({ color: C.glass, roughness: 0.25, metalness: 0.4 }), winMatrices.length);
+  const frame = new THREE.InstancedMesh(new THREE.BoxGeometry(1.16, 1.2, 0.8), mat(0xf4ead2), winMatrices.length);
+  winMatrices.forEach((m, i) => { glass.setMatrixAt(i, m); frame.setMatrixAt(i, m); });
+  frame.receiveShadow = true;
+  scene.add(frame, glass);
+  glass.geometry.scale(1, 1, 1.25); // glass sits slightly proud of the frame
+}
+
+/* Trees, palms, lamps, shelters */
+[[420, 800], [520, 820], [470, 960], [560, 1080], [640, 900], [760, 820], [900, 760], [980, 860], [950, 1010], [830, 980], [700, 1060], [400, 1120], [1010, 1120],
+ [500, 700], [600, 700], [880, 700], [1000, 690], [1070, 600], [560, 1350], [760, 1355], [960, 1350], [1180, 1290], [1250, 1295]].forEach(([x, z], i) => tree(x, z, 0.85 + (i % 4) * 0.12));
+[[1880, 200], [1885, 420], [1880, 640], [1880, 900], [1878, 1240], [1882, 1460], [1210, 1240], [1500, 1240], [1100, 1240], [1000, 565], [460, 1240]].forEach(([x, z]) => tree(x, z, 1.15, 'palm'));
+[[110, 420], [120, 640], [90, 900], [2010, 300], [2030, 900], [600, -40], [1200, -50], [60, 1300]].forEach(([x, z]) => tree(x, z, 1.4, 'pine'));
+[[1160, 720], [1150, 420], [1075, 1185], [700, 1150], [420, 1050]].forEach(([x, z]) => floodlight(x, z));
+[[1820, 300], [1820, 560], [1820, 820], [1830, 1100], [1820, 1380], [520, 1320], [1080, 1320], [1412, 1380], [1364, 1290]].forEach(([x, z]) => globeLamp(x, z));
+[[1885, 1040], [1885, 1100], [1885, 1160]].forEach(([x, z]) => shelter(x, z));
+
+/* =====================================================================
+   8. Labels and metrics per facility
+   ===================================================================== */
+const LABEL_LIFT = { yard: 1.5, 'front-yard': 1.5, gate: 1.2 };
+for (const [id, rec] of registry) {
+  const box = new THREE.Box3().setFromObject(rec.group);
+  rec.center = box.getCenter(new THREE.Vector3());
+  const size = box.getSize(new THREE.Vector3());
+  rec.radius = Math.max(size.x, size.z) / 2;
+  rec.height = size.y;
+  const el = document.createElement('div');
+  el.className = 'lbl' + (rec.def.major ? '' : ' minor');
+  el.textContent = rec.def.label;
+  el.dataset.fid = id;
+  el.addEventListener('click', e => { e.stopPropagation(); select(id, true); });
+  const obj = new CSS2DObject(el);
+  const anchor = { yard: [wx(690), wz(960)], 'front-yard': [wx(1720), wz(1370)] }[id];
+  obj.position.set(anchor ? anchor[0] : rec.center.x, box.max.y + (LABEL_LIFT[id] ?? 1.6), anchor ? anchor[1] : rec.center.z);
+  scene.add(obj);
+  rec.label = el; rec.labelObj = obj;
+  rec.group.traverse(o => { if (o.isMesh && o.material && !Array.isArray(o.material) && o.material.color) o.userData.baseColor = o.material.color.clone(); });
+}
+
+/* =====================================================================
+   9. Interaction: hover, select, focus, top view
+   ===================================================================== */
+const raycaster = new THREE.Raycaster();
+const ndc = new THREE.Vector2();
+let selected = null, hovered = null, topMode = false;
+const HIGHLIGHT = new THREE.Color(0x2f6fe0);
+
+/** Blend a facility's own colours toward the selection blue (level 0 restores them). */
+function tint(id, level) {
+  const rec = registry.get(id); if (!rec) return;
+  rec.group.traverse(o => {
+    const base = o.userData.baseColor;
+    if (!o.isMesh || !base || o.material.map) return;
+    o.material.color.copy(base).lerp(HIGHLIGHT, level);
+  });
+}
+function pick(ev) {
+  const r = renderer.domElement.getBoundingClientRect();
+  ndc.set(((ev.clientX - r.left) / r.width) * 2 - 1, -((ev.clientY - r.top) / r.height) * 2 + 1);
+  raycaster.setFromCamera(ndc, camera);
+  const hit = raycaster.intersectObjects(pickables, false)[0];
+  return hit ? hit.object.userData.fid : null;
+}
+function setHover(id) {
+  if (id === hovered) return;
+  if (hovered && hovered !== selected) { tint(hovered, 0); registry.get(hovered).label.classList.remove('hover'); }
+  hovered = id;
+  if (id && id !== selected) { tint(id, 0.25); registry.get(id).label.classList.add('hover'); }
+  renderer.domElement.style.cursor = id ? 'pointer' : '';
+}
+
+let downAt = null;
+renderer.domElement.addEventListener('pointerdown', e => { downAt = { x: e.clientX, y: e.clientY }; dismissHint(); });
+renderer.domElement.addEventListener('pointerup', e => {
+  if (!downAt) return;
+  const moved = Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y); downAt = null;
+  if (moved > 6) return;
+  const id = pick(e);
+  if (id) select(id, false); else clearSelection();
+});
+let hoverQueued = null;
+renderer.domElement.addEventListener('pointermove', e => {
+  if (e.pointerType !== 'mouse' || e.buttons) return;
+  hoverQueued = e;
+});
+
+const $ = s => document.getElementById(s);
+const details = $('details');
+let gallery = [], galleryIdx = 0;
+
+function select(id, fly) {
+  const rec = registry.get(id); if (!rec) return;
+  if (selected && selected !== id) { tint(selected, 0); registry.get(selected).label.classList.remove('active'); }
+  if (hovered === id) registry.get(id).label.classList.remove('hover');
+  selected = id;
+  tint(id, 0.6);
+  rec.label.classList.add('active'); rec.label.classList.remove('far');
+  showDetails(rec.def);
+  document.querySelectorAll('.nav-item').forEach(b => b.setAttribute('aria-current', b.dataset.fid === id ? 'true' : 'false'));
+  if (isSmall()) setNavOpen(false);
+  if (fly) focusOn(id);
+}
+function updateViewOffset() {
+  if (isSmall() && !details.hidden) camera.setViewOffset(innerWidth, innerHeight, 0, innerHeight * 0.24, innerWidth, innerHeight);
+  else camera.clearViewOffset();
+}
+function clearSelection() {
+  if (selected) { tint(selected, 0); registry.get(selected).label.classList.remove('active'); }
+  selected = null; details.hidden = true;
+  if (routeMesh) { scene.remove(routeMesh); routeMesh.geometry.dispose(); routeMesh = null; }
+  updateViewOffset();
+  document.querySelectorAll('.nav-item').forEach(b => b.setAttribute('aria-current', 'false'));
+}
+
+function showDetails(def) {
+  $('dCat').textContent = CATS[def.cat].name + (def.parent ? ' · ' + DEF[def.parent].name : '');
+  $('dTitle').textContent = def.name;
+  $('dDesc').textContent = def.desc;
+  $('dFacts').innerHTML = '';
+  (def.facts || []).forEach(([k, v]) => {
+    const dt = document.createElement('dt'); dt.textContent = k;
+    const dd = document.createElement('dd'); dd.textContent = v;
+    $('dFacts').append(dt, dd);
+  });
+  gallery = def.photos?.length ? def.photos : (def.parent ? DEF[def.parent].photos : []);
+  galleryIdx = 0;
+  renderGallery();
+  details.hidden = false;
+  updateViewOffset();
+  $('btnFromGate').hidden = def.id === 'gate';
+}
+function renderGallery() {
+  const wrap = $('photoWrap'), thumbs = $('thumbs');
+  wrap.innerHTML = ''; thumbs.innerHTML = '';
+  if (!gallery.length) {
+    wrap.innerHTML = '<div class="no-photo">لا تتوفر صورة ميدانية لهذا المرفق بعد.<br>يمكن إضافتها في مجلد assets/photos.</div>';
+    return;
+  }
+  const p = gallery[galleryIdx];
+  const img = document.createElement('img');
+  img.src = PHOTO(p.s); img.alt = p.c; img.loading = 'lazy';
+  img.addEventListener('click', () => openLightbox(img.src, p.c));
+  const cap = document.createElement('div'); cap.className = 'photo-cap'; cap.textContent = p.c;
+  wrap.append(img, cap);
+  if (gallery.length > 1) gallery.forEach((q, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-pressed', i === galleryIdx ? 'true' : 'false');
+    b.setAttribute('aria-label', q.c);
+    b.innerHTML = `<img src="${PHOTO(q.s)}" alt="">`;
+    b.addEventListener('click', () => { galleryIdx = i; renderGallery(); });
+    thumbs.append(b);
+  });
+}
+
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function flyTo(pos, target, fov, done) {
+  const d = reduceMotion ? 0.01 : 1.5;
+  gsap.killTweensOf(camera.position); gsap.killTweensOf(controls.target); gsap.killTweensOf(camera);
+  gsap.to(controls.target, { x: target.x, y: target.y, z: target.z, duration: d, ease: 'power2.inOut' });
+  gsap.to(camera.position, { x: pos.x, y: pos.y, z: pos.z, duration: d, ease: 'power2.inOut', onComplete: done });
+  if (fov) gsap.to(camera, { fov, duration: d, ease: 'power2.inOut', onUpdate: () => camera.updateProjectionMatrix() });
+}
+function focusOn(id) {
+  const rec = registry.get(id);
+  const target = new THREE.Vector3(rec.center.x, Math.min(rec.height * 0.35, 3), rec.center.z);
+  const dist = THREE.MathUtils.clamp(rec.radius * 2.6 + rec.height * 1.4, 26, 150);
+  if (topMode) { flyTo(new THREE.Vector3(target.x, dist * 1.6, target.z + 0.01), target); return; }
+  const off = camera.position.clone().sub(controls.target);
+  const sph = new THREE.Spherical().setFromVector3(off);
+  sph.radius = dist; sph.phi = THREE.MathUtils.clamp(sph.phi, 0.75, 1.1);
+  flyTo(new THREE.Vector3().setFromSpherical(sph).add(target), target);
+}
+function setTopMode(on) {
+  topMode = on;
+  $('btnView').setAttribute('aria-pressed', on ? 'true' : 'false');
+  $('viewLabel').textContent = on ? 'منظور ثلاثي 3D' : 'خريطة علوية 2D';
+  controls.enableRotate = !on;
+  controls.mouseButtons.LEFT = on ? THREE.MOUSE.PAN : THREE.MOUSE.ROTATE;
+  controls.touches.ONE = on ? THREE.TOUCH.PAN : THREE.TOUCH.ROTATE;
+  controls.screenSpacePanning = on;
+  const t = controls.target.clone(); t.y = 0;
+  if (on) {
+    controls.minPolarAngle = 0;
+    flyTo(new THREE.Vector3(t.x, isSmall() ? 300 : 225, t.z + 0.01), t, 38, () => { controls.maxPolarAngle = 0.0001; });
+  } else {
+    controls.maxPolarAngle = Math.PI * 0.46;
+    flyTo(new THREE.Vector3(t.x + 55, 105, t.z + 140), t, 45);
+  }
+}
+function goHome() {
+  if (topMode) { flyTo(new THREE.Vector3(2, isSmall() ? 300 : 225, -1.99), new THREE.Vector3(2, 0, -2)); return; }
+  flyTo(isSmall() ? HOME_PHONE.clone() : HOME.pos.clone(), HOME.target);
+}
+
+/* Route from the gate: waypoints follow the paved footpaths (plan px), drawn as a growing tube */
+let routeMesh = null;
+const MAIN_IDS = ['entrance', 'theater', 'office', 'admin-n', 'admin-s', 'corridor', 'class-w', 'class-e', 'north-hall', 'departments', 'east-halls', 'east-service', 'side-door', 'annex'];
+const routeMat = new THREE.MeshBasicMaterial({ color: 0xd2361f, depthTest: false, transparent: true, opacity: 0.92 });
+function routeFromGate(id) {
+  if (routeMesh) { scene.remove(routeMesh); routeMesh.geometry.dispose(); routeMesh = null; }
+  const rec = registry.get(id);
+  const dest = [rec.center.x / SCALE + CX, rec.center.z / SCALE + CZ];
+  const wp = [[1388, 1560], [1388, 1325]];
+  if (MAIN_IDS.includes(id)) {
+    wp.push([1388, 1240], [1338, 1150]);                 // up the stairs, through the main door
+    if (id !== 'entrance') wp.push([1338, Math.max(420, Math.min(dest[1], 1080))]);
+    if (id === 'annex') wp.push([1338, 420], [1200, 420], [1185, 500]);
+  } else if (['kiosks', 'guard', 'mosque', 'kiosk-c'].includes(id)) {
+    wp.push([dest[0], 1325]);
+  } else if (['front-yard', 'stairs'].includes(id)) {
+    if (id === 'stairs') wp.push([1388, 1240]);
+  } else if (['yard', 'nw', 'nw-h1', 'nw-h2', 'nw-h3', 'nw-dept'].includes(id)) {
+    wp.push([858, 1325], [858, 1150]);
+    if (id !== 'yard') wp.push([710, 760], [702, 650]);
+  } else { // western buildings
+    wp.push([360, 1325], [360, Math.min(dest[1], 1300)]);
+  }
+  wp.push(dest);
+  const pts = wp.map(([x, z]) => new THREE.Vector3(wx(x), 0.6, wz(z)));
+  const curve = new THREE.CatmullRomCurve3(pts, false, 'catmullrom', 0.02);
+  const geo = new THREE.TubeGeometry(curve, 240, 0.38, 8, false);
+  routeMesh = new THREE.Mesh(geo, routeMat); routeMesh.renderOrder = 10;
+  scene.add(routeMesh);
+  const total = geo.index.count;
+  geo.setDrawRange(0, 0);
+  const prog = { n: 0 };
+  gsap.to(prog, { n: total, duration: reduceMotion ? 0.01 : 2.2, ease: 'power1.inOut', onUpdate: () => geo.setDrawRange(0, Math.floor(prog.n / 3) * 3) });
+  const box = new THREE.Box3().setFromPoints(pts), c = box.getCenter(new THREE.Vector3()), sz = box.getSize(new THREE.Vector3());
+  const dist = Math.max(sz.x, sz.z) * 1.1 + 30;
+  if (topMode) flyTo(new THREE.Vector3(c.x, dist * 1.5, c.z + 0.01), new THREE.Vector3(c.x, 0, c.z));
+  else flyTo(new THREE.Vector3(c.x + dist * 0.35, dist * 0.9, c.z + dist * 0.85), new THREE.Vector3(c.x, 0, c.z));
+}
+
+/* =====================================================================
+   10. UI wiring
+   ===================================================================== */
+const navList = $('navList');
+function buildNav(filter = '') {
+  navList.innerHTML = '';
+  const q = filter.trim();
+  for (const [cat, info] of Object.entries(CATS)) {
+    const items = FACILITIES.filter(f => f.cat === cat && (!q || f.name.includes(q) || f.label.includes(q) || f.desc.includes(q)));
+    if (!items.length) continue;
+    const grp = document.createElement('div'); grp.className = 'nav-group';
+    const h = document.createElement('h3'); h.textContent = info.name; grp.append(h);
+    items.forEach(f => {
+      const b = document.createElement('button');
+      b.className = 'nav-item'; b.dataset.fid = f.id;
+      b.setAttribute('aria-current', f.id === selected ? 'true' : 'false');
+      b.innerHTML = `<span class="dot" style="background:${info.color}"></span><span></span>${f.parent ? '<span class="sub">داخل المبنى الفرعي</span>' : ''}`;
+      b.children[1].textContent = f.name;
+      b.addEventListener('click', () => select(f.id, true));
+      grp.append(b);
+    });
+    navList.append(grp);
+  }
+  if (!navList.children.length) navList.innerHTML = '<p class="muted" style="padding:12px">لا توجد نتائج. جرّب «قاعة» أو «مكاتب».</p>';
+}
+buildNav();
+$('search').addEventListener('input', e => buildNav(e.target.value));
+
+const nav = $('nav');
+function setNavOpen(open) {
+  nav.classList.toggle('collapsed', !open);
+  $('btnNav').setAttribute('aria-pressed', open ? 'true' : 'false');
+  if (open && isSmall()) { details.hidden = true; updateViewOffset(); }
+}
+if (!isSmall()) nav.classList.remove('collapsed');
+$('btnNav').addEventListener('click', () => setNavOpen(nav.classList.contains('collapsed')));
+$('btnView').addEventListener('click', () => setTopMode(!topMode));
+$('btnReset').addEventListener('click', () => { clearSelection(); goHome(); });
+$('btnClose').addEventListener('click', clearSelection);
+$('btnFocus').addEventListener('click', () => selected && focusOn(selected));
+$('btnFromGate').addEventListener('click', () => selected && routeFromGate(selected));
+$('btnInfo').addEventListener('click', () => { $('info').hidden = false; $('btnInfoClose').focus(); });
+$('btnInfoClose').addEventListener('click', () => { $('info').hidden = true; });
+$('info').addEventListener('click', e => { if (e.target.id === 'info') $('info').hidden = true; });
+$('planImg').addEventListener('click', () => openLightbox($('planImg').src, 'المخطط الهيكلي'));
+$('btnCopy').addEventListener('click', () => {
+  const txt = $('cBoth').textContent;
+  const done = () => { $('btnCopy').textContent = 'تم النسخ'; setTimeout(() => $('btnCopy').textContent = 'نسخ', 1600); };
+  navigator.clipboard?.writeText(txt).then(done, () => { getSelection().selectAllChildren($('cBoth')); });
+});
+function openLightbox(src, alt) { $('lightImg').src = src; $('lightImg').alt = alt; $('lightbox').hidden = false; }
+$('lightbox').addEventListener('click', () => { $('lightbox').hidden = true; });
+addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (!$('lightbox').hidden) $('lightbox').hidden = true;
+  else if (!$('info').hidden) $('info').hidden = true;
+  else clearSelection();
+});
+let hintGone = false;
+function dismissHint() { if (hintGone) return; hintGone = true; $('hint').style.opacity = '0'; setTimeout(() => $('hint').hidden = true, 700); }
+setTimeout(dismissHint, 9000);
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight; updateViewOffset(); camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight); labelRenderer.setSize(innerWidth, innerHeight);
+});
+
+/* =====================================================================
+   11. Render loop
+   ===================================================================== */
+const BOUNDS = { x1: wx(150), x2: wx(1960), z1: wz(20), z2: wz(1600) };
+const compass = $('compassSvg');
+const tmp = new THREE.Vector3();
+function tick() {
+  controls.update();
+  controls.target.x = THREE.MathUtils.clamp(controls.target.x, BOUNDS.x1, BOUNDS.x2);
+  controls.target.z = THREE.MathUtils.clamp(controls.target.z, BOUNDS.z1, BOUNDS.z2);
+  if (hoverQueued) { setHover(pick(hoverQueued)); hoverQueued = null; }
+  compass.style.transform = `rotate(${THREE.MathUtils.radToDeg(controls.getAzimuthalAngle())}deg)`;
+  // minor labels only when close; major ones fade at extreme distance
+  for (const rec of registry.values()) {
+    const d = camera.position.distanceTo(rec.labelObj.getWorldPosition(tmp));
+    const far = rec.def.major ? d > (topMode ? 520 : 420) : d > (topMode ? 170 : 110);
+    if (rec.label.classList.contains('far') !== far && rec.def.id !== selected) rec.label.classList.toggle('far', far);
+  }
+  renderer.render(scene, camera);
+  labelRenderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
+
+(async () => {
+  try {
+    await Promise.race([Promise.all([document.fonts.load('700 40px "Noto Kufi Arabic"'), document.fonts.ready]), new Promise(r => setTimeout(r, 2500))]);
+    signTextures.forEach(t => t.userData.redraw());
+  } catch (e) {}
+  if (isSmall()) camera.position.copy(HOME_PHONE);
+  tick();
+  const L = $('loading'); L.style.opacity = '0'; setTimeout(() => L.hidden = true, 650);
+  // honour a deep-link like index.html#theater
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (registry.has(h)) setTimeout(() => select(h, true), 400);
+})();
+</script>
+</body>
+</html>
