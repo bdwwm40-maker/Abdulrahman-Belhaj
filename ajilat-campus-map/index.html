@@ -208,6 +208,36 @@ a.link { color: var(--accent); font-weight: 600; }
 @keyframes slide { from { transform: translateX(160%); } to { transform: translateX(-260%); } }
 .loading h2 { font-family: var(--f-display); margin: 0; font-size: 18px; }
 
+/* ---------- guided tour ---------- */
+body.touring .topbar, body.touring .nav, body.touring .details, body.touring .compass, body.touring .hint, body.touring #labels { display: none !important; }
+.tour { position: fixed; inset: 0; z-index: 30; pointer-events: none; font-family: var(--f-body); }
+.tour > * { position: absolute; }
+.tour-kicker { font-size: 13px; font-weight: 600; letter-spacing: .04em; color: #7fd3da; margin: 0; }
+.tour-intro, .tour-outro {
+  inset: 0; display: grid; place-content: center; text-align: center; gap: 10px; color: #fff;
+  background: radial-gradient(ellipse at center, rgba(12, 24, 42, .72), rgba(12, 24, 42, .25) 70%);
+}
+.tour-intro h2, .tour-outro h2 { font-family: var(--f-display); font-size: clamp(30px, 5vw, 64px); margin: 0; text-shadow: 0 3px 18px rgba(0, 0, 0, .4); }
+.tour-intro p, .tour-outro p { margin: 0; font-size: clamp(14px, 1.8vw, 22px); color: #dbe6f2; }
+.tour-card {
+  top: calc(20px + var(--sat)); right: calc(20px + var(--sar)); width: min(380px, 44vw);
+  background: var(--paper); border-radius: 16px; overflow: hidden; box-shadow: 0 14px 40px rgba(10, 20, 35, .35);
+}
+.tour-card img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.tour-card-text { padding: 12px 16px 14px; display: grid; gap: 2px; }
+.tour-card-text .tour-kicker { color: var(--accent); }
+.tour-card h3 { font-family: var(--f-display); font-size: 24px; margin: 0; }
+.tour-card p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+.tour-cap {
+  bottom: calc(48px + var(--sab)); left: 50%; transform: translateX(-50%); margin: 0; white-space: nowrap;
+  background: rgba(20, 38, 64, .86); color: #fff; padding: 10px 22px; border-radius: 999px;
+  font-family: var(--f-display); font-size: clamp(15px, 2vw, 24px);
+}
+.tour-progress { left: 0; right: 0; bottom: 0; height: 5px; background: rgba(20, 38, 64, .25); }
+.tour-progress i { display: block; height: 100%; background: #d9822b; transform-origin: right; transform: scaleX(0); }
+.tour-stop { pointer-events: auto; top: calc(16px + var(--sat)); left: calc(16px + var(--sal)); }
+.recording .tour-stop { display: none; }
+
 /* ---------- phones ---------- */
 @media (max-width: 760px) {
   .brand { padding: 6px 10px 6px 8px; }
@@ -267,6 +297,9 @@ a.link { color: var(--accent); font-weight: 600; }
     <button class="tbtn" id="btnReset" title="العودة إلى العرض الكامل">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v6h6M20 20v-6h-6M5 15a7 7 0 0 0 12 3M19 9A7 7 0 0 0 7 6"/></svg><span class="t">العرض الكامل</span>
     </button>
+    <button class="tbtn" id="btnTour" title="جولة يمشي فيها طالب بين المرافق الرئيسية">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="t">جولة</span>
+    </button>
     <button class="tbtn" id="btnInfo" title="الموقع الجغرافي والمخطط">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span class="t">الموقع</span>
     </button>
@@ -308,6 +341,24 @@ a.link { color: var(--accent); font-weight: 600; }
     <path d="M22 39l-6-17h12z" fill="#b7c0cc"/>
     <text x="22" y="17.5" text-anchor="middle" font-size="7" font-weight="700" fill="#fff" font-family="sans-serif">N</text>
   </svg>
+</div>
+<div class="tour" id="tour" hidden>
+  <div class="tour-intro" id="tourIntro">
+    <p class="tour-kicker">جولة ثلاثية الأبعاد</p>
+    <h2>كلية الاقتصاد – العجيلات</h2>
+    <p>المسرح · المكاتب الإدارية · القاعات الدراسية · قسم المحاسبة</p>
+  </div>
+  <div class="tour-outro" id="tourOutro">
+    <h2>كلية الاقتصاد – العجيلات</h2>
+    <p>جامعة الزاوية</p>
+  </div>
+  <div class="tour-card" id="tourCard">
+    <img id="tourImg" alt="">
+    <div class="tour-card-text"><span class="tour-kicker">من الداخل</span><h3 id="tourTitle"></h3><p id="tourSub"></p></div>
+  </div>
+  <p class="tour-cap" id="tourCap"></p>
+  <div class="tour-progress"><i id="tourBar"></i></div>
+  <button class="tbtn tour-stop" id="btnTourStop">إيقاف الجولة</button>
 </div>
 <div class="hint" id="hint">اسحب للتدوير · مرّر أو اقرص للتكبير · انقر على أي مبنى</div>
 
@@ -1351,12 +1402,225 @@ addEventListener('resize', () => {
 });
 
 /* =====================================================================
+   10b. Guided tour — a student walks the footpaths and enters the
+   theater, the offices, the classrooms and the Accounting Department.
+   Buildings being entered turn see-through ("x-ray") so the walk inside
+   stays visible. tourStep(dt) is deterministic, so ?record can drive it
+   frame by frame to export a video.
+   ===================================================================== */
+const TOUR_SPEED = 4.2; // m/s, brisk so the tour stays short
+const TOUR_LEGS = [
+  { say: 'الدخول من البوابة الرئيسية', walk: [[1388, 1640], [1388, 1555], [1388, 1325], [1392, 1245], [1394, 1162]] },
+  { say: 'عبر البهو إلى المسرح', walk: [[1394, 1120], [1340, 1075], [1235, 1070]], xray: ['entrance', 'theater'],
+    stop: { title: 'المسرح', sub: 'مقاعد حمراء وخشبة بستائر', photo: 'theater-hall', dur: 4.5 } },
+  { say: 'إلى المكاتب الإدارية', walk: [[1340, 1068], [1440, 1048], [1600, 1048]], xray: ['entrance', 'admin-n', 'admin-s'],
+    stop: { title: 'المكاتب الإدارية', sub: 'الجناحان الشمالي والجنوبي', photo: 'admin-corridor', dur: 4.5 } },
+  { say: 'عبر الممر الرئيسي إلى القاعات الدراسية', walk: [[1440, 1048], [1338, 1040], [1338, 820], [1338, 660]], xray: ['entrance', 'corridor', 'class-w', 'class-e'], high: true,
+    stop: { title: 'القاعات الدراسية', sub: 'الجناح الغربي والجناح الأوسط', photo: 'central-corridor', dur: 4.5 } },
+  { say: 'الخروج من الباب الجانبي', walk: [[1338, 430], [1250, 418], [1198, 418]], xray: ['corridor', 'north-hall'], high: true },
+  { say: 'عبر الساحة إلى قسم المحاسبة', walk: [[1192, 470], [1170, 560], [1060, 640], [880, 700], [702, 705], [702, 650]] },
+  { say: 'داخل قسم المحاسبة', walk: [[702, 600], [702, 540], [620, 492]], xray: ['nw', 'nw-h1', 'nw-h2', 'nw-h3', 'nw-dept'], high: true,
+    stop: { title: 'قسم المحاسبة', sub: 'ثلاث قاعات ومكتب القسم', photo: 'yard-nw-building', dur: 4.5 } },
+  { say: 'العودة إلى الساحة الوسطى', walk: [[702, 520], [702, 660], [710, 760], [800, 1000]] },
+];
+const TOUR_INTRO = 4, TOUR_OUTRO = 6;
+
+/** A low-poly student: jointed legs and arms, backpack. Faces +z. */
+function buildStudent() {
+  const g = new THREE.Group();
+  const m = c => new THREE.MeshStandardMaterial({ color: c, roughness: 0.8 });
+  const shirt = m(0x2f6fb0), pants = m(0x2b2f3a), skin = m(0xc99a73), hair = m(0x2a1c14), bag = m(0x8a3b2a), shoe = m(0x1f1f1f);
+  const box = (w, h, d, mt) => { const o = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mt); o.castShadow = true; return o; };
+  const limb = (x, y, w, h, d, mt, footMt) => {
+    const pivot = new THREE.Group(); pivot.position.set(x, y, 0);
+    const l = box(w, h, d, mt); l.position.y = -h / 2; pivot.add(l);
+    if (footMt) { const f = box(w + 0.02, 0.1, d + 0.12, footMt); f.position.set(0, -h + 0.05, 0.06); pivot.add(f); }
+    g.add(pivot); return pivot;
+  };
+  const legL = limb(-0.12, 0.92, 0.17, 0.88, 0.2, pants, shoe), legR = limb(0.12, 0.92, 0.17, 0.88, 0.2, pants, shoe);
+  const torso = box(0.48, 0.62, 0.27, shirt); torso.position.y = 1.24; g.add(torso);
+  const armL = limb(-0.31, 1.52, 0.12, 0.6, 0.13, shirt), armR = limb(0.31, 1.52, 0.12, 0.6, 0.13, shirt);
+  [armL, armR].forEach(a => { const h = box(0.11, 0.11, 0.11, skin); h.position.y = -0.64; a.add(h); });
+  const neck = box(0.12, 0.08, 0.12, skin); neck.position.y = 1.58; g.add(neck);
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.17, 16, 12), skin); head.position.y = 1.77; head.castShadow = true; g.add(head);
+  const cap = new THREE.Mesh(new THREE.SphereGeometry(0.18, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2), hair); cap.position.set(0, 1.79, -0.01); g.add(cap);
+  const pack = box(0.36, 0.44, 0.16, bag); pack.position.set(0, 1.28, -0.21); g.add(pack);
+  const book = box(0.05, 0.28, 0.2, m(0xe9c46a)); book.position.set(0.04, -0.5, 0.06); armR.add(book);
+  g.scale.setScalar(1.6);
+  return { g, legL, legR, armL, armR };
+}
+
+const tour = { on: false, manual: false, last: 0, t: 0, segs: [], total: 0, xray: '', photo: '' };
+let student = null;
+
+function buildTourTimeline() {
+  const segs = [{ kind: 'intro', dur: TOUR_INTRO }];
+  let prev = null;
+  for (const leg of TOUR_LEGS) {
+    const pts = (prev ? [prev] : []).concat(leg.walk.map(([x, z]) => new THREE.Vector3(wx(x), 0, wz(z))));
+    const cum = [0];
+    for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + pts[i].distanceTo(pts[i - 1]));
+    const len = cum[cum.length - 1];
+    segs.push({ kind: 'walk', leg, pts, cum, len, dur: len / TOUR_SPEED });
+    prev = pts[pts.length - 1];
+    if (leg.stop) segs.push({ kind: 'stop', leg, at: prev.clone(), dur: leg.stop.dur });
+  }
+  segs.push({ kind: 'outro', dur: TOUR_OUTRO, at: prev.clone() });
+  let t = 0; segs.forEach(s => { s.t0 = t; t += s.dur; });
+  tour.segs = segs; tour.total = t;
+}
+
+/** Ground height under the walker: the entrance platform and its steps. */
+function groundY(p) {
+  const px = p.x / SCALE + CX, pz = p.z / SCALE + CZ;
+  if (px > 1275 && px < 1490 && pz > 1150 && pz < 1255) return pz > 1225 ? 0.9 * (1255 - pz) / 30 : 0.9;
+  return 0;
+}
+
+function setXray(ids) {
+  const key = ids.join(',');
+  if (key === tour.xray) return;
+  tour.xray = key;
+  for (const [id, rec] of registry) {
+    const on = ids.includes(id);
+    rec.group.traverse(o => {
+      if (!o.isMesh || !o.material || Array.isArray(o.material)) return;
+      if (o.userData.baseCast === undefined) o.userData.baseCast = o.castShadow;
+      const mt = o.material;
+      if (mt.transparent !== on) { mt.transparent = on; mt.needsUpdate = true; }
+      mt.opacity = on ? 0.09 : 1; mt.depthWrite = !on;
+      o.castShadow = on ? false : o.userData.baseCast;
+    });
+  }
+}
+
+function polyAt(seg, d) {
+  let i = 1; while (i < seg.cum.length - 1 && seg.cum[i] < d) i++;
+  const a = seg.pts[i - 1], b = seg.pts[i], span = seg.cum[i] - seg.cum[i - 1] || 1;
+  return { pos: a.clone().lerp(b, THREE.MathUtils.clamp((d - seg.cum[i - 1]) / span, 0, 1)), dir: b.clone().sub(a).normalize() };
+}
+
+const camState = { pos: new THREE.Vector3(), look: new THREE.Vector3(), heading: 0 };
+const tourEls = {};
+
+function tourStep(dt) {
+  tour.t = Math.min(tour.total, tour.t + dt);
+  const t = tour.t;
+  const seg = tour.segs.find(s => t < s.t0 + s.dur) || tour.segs[tour.segs.length - 1];
+  const local = t - seg.t0;
+  const s = student;
+  let pos = s.g.position.clone(), walking = false, phase = 0;
+
+  if (seg.kind === 'walk') {
+    const d = Math.min(seg.len, local * TOUR_SPEED);
+    const p = polyAt(seg, d);
+    pos = p.pos; walking = true; phase = d * 2.4;
+    s.g.rotation.y = Math.atan2(p.dir.x, p.dir.z);
+  } else if (seg.kind === 'intro') {
+    const first = tour.segs[1]; pos = first.pts[0].clone(); s.g.rotation.y = Math.PI;
+  } else if (seg.at) pos = seg.at.clone();
+  pos.y = groundY(pos);
+  s.g.position.copy(pos);
+
+  // walk cycle (limbs settle when standing)
+  const swing = walking ? Math.sin(phase) : 0;
+  s.legL.rotation.x = swing * 0.6; s.legR.rotation.x = -swing * 0.6;
+  s.armL.rotation.x = -swing * 0.5; s.armR.rotation.x = swing * 0.35;
+  s.g.position.y += walking ? Math.abs(Math.sin(phase)) * 0.06 : 0;
+
+  // see-through buildings while inside them
+  setXray((seg.kind === 'walk' || seg.kind === 'stop') && seg.leg.xray ? seg.leg.xray : []);
+
+  // camera: smoothed chase cam; orbit at stops; overview for intro/outro
+  const k = 1 - Math.exp(-dt * (seg.kind === 'intro' ? 0.9 : seg.kind === 'outro' ? 0.7 : 2.6));
+  let want, look;
+  if (seg.kind === 'outro') {
+    want = new THREE.Vector3(15, 120, 150); look = new THREE.Vector3(0, 0, -5);
+  } else {
+    let h = s.g.rotation.y;
+    let dh = h - camState.heading; dh = Math.atan2(Math.sin(dh), Math.cos(dh));
+    camState.heading += dh * (1 - Math.exp(-dt * 2));
+    const high = seg.leg && seg.leg.high;
+    if (seg.kind === 'stop') {
+      const a = camState.heading + Math.PI + 0.6 + local * 0.18;
+      want = pos.clone().add(new THREE.Vector3(Math.sin(a) * 11, 10, Math.cos(a) * 11));
+      look = pos.clone().add(new THREE.Vector3(0, 1.5, 0));
+    } else {
+      const back = high ? 10 : 12, up = high ? 11 : 7;
+      want = pos.clone().add(new THREE.Vector3(-Math.sin(camState.heading) * back, up, -Math.cos(camState.heading) * back));
+      look = pos.clone().add(new THREE.Vector3(Math.sin(camState.heading) * 3, 1.6, Math.cos(camState.heading) * 3));
+    }
+  }
+  camState.pos.lerp(want, k); camState.look.lerp(look, k);
+  camera.position.copy(camState.pos); camera.lookAt(camState.look);
+
+  // overlays: intro card, leg caption, place card with the real photo
+  const fade = (x, a, b) => THREE.MathUtils.clamp(Math.min((x - a) / 0.6, (b - x) / 0.6), 0, 1);
+  tourEls.intro.style.opacity = fade(t, -1, TOUR_INTRO - 0.3);
+  tourEls.outro.style.opacity = seg.kind === 'outro' ? THREE.MathUtils.clamp((local - 1.5) / 0.8, 0, 1) : 0;
+  const capText = seg.kind === 'walk' ? seg.leg.say : '';
+  if (tourEls.cap.textContent !== capText) tourEls.cap.textContent = capText;
+  tourEls.cap.style.opacity = seg.kind === 'walk' ? fade(local, 0, seg.dur + 0.3) : 0;
+  if (seg.kind === 'stop') {
+    const st = seg.leg.stop;
+    if (tour.photo !== st.photo) { tour.photo = st.photo; tourEls.img.src = PHOTO(st.photo); tourEls.title.textContent = st.title; tourEls.sub.textContent = st.sub; }
+    tourEls.card.style.opacity = fade(local, 0, seg.dur);
+  } else tourEls.card.style.opacity = 0;
+  tourEls.bar.style.transform = `scaleX(${t / tour.total})`;
+
+  renderer.render(scene, camera);
+  if (tour.t >= tour.total && !tour.manual) stopTour();
+}
+
+async function startTour(manual = false) {
+  if (tour.on) return;
+  clearSelection();
+  if (!student) { student = buildStudent(); scene.add(student.g); }
+  student.g.visible = true;
+  buildTourTimeline();
+  Object.assign(tour, { on: true, manual, t: 0, last: performance.now(), xray: '', photo: '' });
+  gsap.killTweensOf(camera.position); gsap.killTweensOf(controls.target);
+  camera.clearViewOffset(); camera.fov = 45; camera.updateProjectionMatrix();
+  camState.pos.copy(camera.position); camState.look.copy(controls.target); camState.heading = Math.PI;
+  document.body.classList.add('touring');
+  $('tour').hidden = false;
+  // make sure every place photo is decoded before it is needed
+  await Promise.all(TOUR_LEGS.filter(l => l.stop).map(l => { const im = new Image(); im.src = PHOTO(l.stop.photo); return im.decode().catch(() => {}); }));
+}
+function stopTour() {
+  if (!tour.on) return;
+  tour.on = false;
+  setXray([]);
+  if (student) student.g.visible = false;
+  document.body.classList.remove('touring');
+  $('tour').hidden = true;
+  controls.target.copy(camState.look); controls.target.y = 0;
+  controls.update();
+  goHome();
+}
+tourEls.intro = $('tourIntro'); tourEls.outro = $('tourOutro'); tourEls.cap = $('tourCap');
+tourEls.card = $('tourCard'); tourEls.img = $('tourImg'); tourEls.title = $('tourTitle'); tourEls.sub = $('tourSub'); tourEls.bar = $('tourBar');
+$('btnTour').addEventListener('click', () => startTour(false));
+$('btnTourStop').addEventListener('click', stopTour);
+addEventListener('keydown', e => { if (e.key === 'Escape' && tour.on && !tour.manual) stopTour(); });
+// frame-by-frame driver used to export the tour as a video (?record)
+window.__tour = { start: () => startTour(true), step: dt => tourStep(dt), total: () => tour.total };
+
+/* =====================================================================
    11. Render loop
    ===================================================================== */
 const BOUNDS = { x1: wx(150), x2: wx(1960), z1: wz(20), z2: wz(1600) };
 const compass = $('compassSvg');
 const tmp = new THREE.Vector3();
 function tick() {
+  if (tour.on) {
+    if (!tour.manual) {
+      const now = performance.now(), dt = Math.min(0.05, (now - tour.last) / 1000); tour.last = now;
+      tourStep(dt);
+    }
+    requestAnimationFrame(tick);
+    return;
+  }
   controls.update();
   controls.target.x = THREE.MathUtils.clamp(controls.target.x, BOUNDS.x1, BOUNDS.x2);
   controls.target.z = THREE.MathUtils.clamp(controls.target.z, BOUNDS.z1, BOUNDS.z2);
@@ -1383,7 +1647,9 @@ function tick() {
   const L = $('loading'); L.style.opacity = '0'; setTimeout(() => L.hidden = true, 650);
   // honour a deep-link like index.html#theater
   const h = decodeURIComponent(location.hash.slice(1));
-  if (registry.has(h)) setTimeout(() => select(h, true), 400);
+  if (h === 'tour') setTimeout(() => startTour(false), 600);
+  else if (registry.has(h)) setTimeout(() => select(h, true), 400);
+  if (new URLSearchParams(location.search).has('record')) document.body.classList.add('recording');
 })();
 </script>
 </body>
