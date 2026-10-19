@@ -72,8 +72,14 @@ def pad_music(total, sr=SR):
 
 
 def main():
-    script = json.loads((ROOT / "script.json").read_text())
-    timings = json.loads((ROOT / "audio" / "timings.json").read_text())
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--script", default="script.json")
+    ap.add_argument("--audio", default="audio")
+    a = ap.parse_args()
+
+    script = json.loads((ROOT / a.script).read_text())
+    timings = json.loads((ROOT / a.audio / "timings.json").read_text())
     build = ROOT / "build"
     build.mkdir(exist_ok=True)
 
@@ -81,7 +87,7 @@ def main():
     t = INTRO
     for s in script["scenes"]:
         tm = timings[s["id"]]
-        x = read_wav(ROOT / "audio" / f"{s['id']}.wav")
+        x = read_wav(ROOT / a.audio / f"{s['id']}.wav")
         start = t
         end = start + len(x) / SR
         clips.append((start, x))

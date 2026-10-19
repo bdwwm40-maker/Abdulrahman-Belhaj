@@ -1,10 +1,10 @@
-"""Generate the Libyan-Arabic voiceover, one clip per scene, with word timings.
+"""Generate the voiceover, one clip per scene, with word timings.
 
-Uses the Microsoft neural voice ar-LY-OmarNeural (Libyan Arabic, male) through
-edge-tts. Writes audio/<scene>.mp3 and audio/timings.json (scene durations and
-per-word offsets for subtitles).
+Uses a Microsoft neural voice through edge-tts (default ar-LY-OmarNeural, Libyan
+Arabic, male). Writes <out>/<scene>.mp3, <out>/<scene>.wav (pauses tightened) and
+<out>/timings.json (scene durations and per-word offsets for subtitles).
 
-usage: python3 voice.py [--rate -6%] [--pitch +0Hz]
+usage: python3 voice.py [--script script.json] [--voice ar-LY-OmarNeural] [--out audio] [--rate -6%]
 """
 import argparse
 import asyncio
@@ -32,8 +32,8 @@ def clean(text):
     return text.replace("«", "").replace("»", "").replace("…", "، ")
 
 
-async def synth(text, out, rate, pitch):
-    com = edge_tts.Communicate(clean(text), VOICE, rate=rate, pitch=pitch, boundary="WordBoundary", proxy=PROXY)
+async def synth(text, out, rate, pitch, voice=VOICE):
+    com = edge_tts.Communicate(clean(text), voice, rate=rate, pitch=pitch, boundary="WordBoundary", proxy=PROXY)
     words = []
     with open(out, "wb") as f:
         async for chunk in com.stream():
@@ -103,15 +103,18 @@ async def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--rate", default="-6%")
     ap.add_argument("--pitch", default="+0Hz")
+    ap.add_argument("--script", default="script.json")
+    ap.add_argument("--voice", default=VOICE)
+    ap.add_argument("--out", default="audio")
     a = ap.parse_args()
 
-    script = json.loads((ROOT / "script.json").read_text())
-    audio = ROOT / "audio"
+    script = json.loads((ROOT / a.script).read_text())
+    audio = ROOT / a.out
     audio.mkdir(exist_ok=True)
     timings = {}
     for s in script["scenes"]:
         out = audio / f"{s['id']}.mp3"
-        words = await synth(s["voice"], out, a.rate, a.pitch)
+        words = await synth(s["voice"], out, a.rate, a.pitch, a.voice)
         dur = tighten(out, audio / f"{s['id']}.wav", words)
         timings[s["id"]] = {"duration": round(dur, 3), "raw": duration(out), "words": words}
         print(f"{s['id']}: {dur:.2f}s (raw {timings[s['id']]['raw']:.2f}s), {len(words)} words")
