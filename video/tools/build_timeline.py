@@ -43,7 +43,8 @@ def chunks(text, words):
         k = len(p.split())
         # map text-word index to tts-word index (they normally match 1:1)
         j = min(n_tts - 1, round(i * n_tts / max(n_txt, 1)))
-        out.append({"text": p, "t": words[j]["t"]})
+        # captions read cleaner without short-vowel marks; the shadda stays
+        out.append({"text": re.sub(r"[ً-ِْ]", "", p), "t": words[j]["t"]})
         i += k
     return out
 
