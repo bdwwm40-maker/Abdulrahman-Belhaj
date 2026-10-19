@@ -46,6 +46,8 @@ def norm(t):
 
 
 def wer(ref, hyp):
+    """Letter error rate with spaces removed, so Whisper's word splitting doesn't count as an error."""
+    ref, hyp = "".join(ref), "".join(hyp)
     d = np.arange(len(hyp) + 1)
     for i, r in enumerate(ref, 1):
         prev = d.copy()
@@ -55,7 +57,7 @@ def wer(ref, hyp):
     return d[-1] / max(1, len(ref))
 
 
-def trim(x, sr=SR, thr_db=-42, pad=0.08, tail=0.25):
+def trim(x, sr=SR, thr_db=-42, pad=0.15, tail=0.25):
     """Cut leading/trailing silence."""
     hop = int(sr * 0.01)
     rms = np.sqrt(np.convolve(x ** 2, np.ones(hop) / hop, mode="same"))
@@ -74,6 +76,7 @@ def main():
     ap.add_argument("--out", default="audio-msa-xtts")
     ap.add_argument("--takes", type=int, default=3)
     ap.add_argument("--temperature", type=float, default=0.6)
+    ap.add_argument("--only", nargs="*", help="regenerate just these scenes, keep the rest")
     a = ap.parse_args()
 
     from TTS.api import TTS
@@ -89,7 +92,12 @@ def main():
     out.mkdir(exist_ok=True)
     script = json.loads((ROOT / a.script).read_text())
     timings, report = {}, {}
+    if a.only:
+        timings = json.loads((out / "timings.json").read_text())
+        report = json.loads((out / "takes.json").read_text())
     for s in script["scenes"]:
+        if a.only and s["id"] not in a.only:
+            continue
         text = s["voice"].replace("«", "").replace("»", "").replace("…", "، ")
         ref_words = norm(s["voice"])
         best = None
@@ -118,6 +126,7 @@ def main():
         for p in out.glob(f"{s['id']}.take*.wav"):
             p.unlink()
         print(f"{s['id']}: {len(x) / SR:.2f}s  best take wer {best[0] * 100:.0f}%  similarity {best[1]:.3f}", flush=True)
+    timings = {s["id"]: timings[s["id"]] for s in script["scenes"]}  # keep script order
     (out / "timings.json").write_text(json.dumps(timings, ensure_ascii=False, indent=1))
     (out / "takes.json").write_text(json.dumps(report, ensure_ascii=False, indent=1))
     total = sum(t["duration"] for t in timings.values())
