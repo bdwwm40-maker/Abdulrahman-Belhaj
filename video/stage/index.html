@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>الشباب والمستقبل — مكتب العجيلات</title>
+<link rel="stylesheet" href="stage.css">
+</head>
+<body>
+<div id="stage">
+  <div id="bg">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+    <div id="dots"></div>
+    <div id="sweep"></div>
+    <svg id="arcs" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <path id="arc1" d="M1920 120 C 1500 60, 1200 260, 1050 560" />
+      <path id="arc2" d="M0 980 C 420 1040, 760 860, 900 640" />
+    </svg>
+  </div>
+
+  <!-- intro -->
+  <div id="intro" class="layer">
+    <div class="rings"><i></i><i></i><i></i></div>
+    <img id="intro-logo" src="assets/logo.png" alt="">
+    <div id="intro-title">مشروع <b>الشباب والمستقبل</b></div>
+    <div id="intro-pill">الوثبة الثانية</div>
+  </div>
+
+  <div id="ground"></div>
+  <div id="char"><img src="assets/char.png" alt=""></div>
+  <div id="talk"><i></i><i></i><i></i><i></i><i></i></div>
+
+  <img id="bug" src="assets/logo.png" alt="">
+
+  <!-- s1 greeting -->
+  <div id="s1" class="panel">
+    <div class="kicker">رسالة إلى الشباب</div>
+    <h1>أهلاً يا شباب <span class="grad">العجيلات</span></h1>
+    <p class="sub">الوكالة الوطنية للجهود التطوعية للشباب</p>
+  </div>
+
+  <!-- s2 project -->
+  <div id="s2" class="panel">
+    <div class="kicker">مشروع</div>
+    <h1 class="huge"><span class="grad">الشباب والمستقبل</span></h1>
+    <div class="leap">
+      <div class="leap-num">2</div>
+      <div class="leap-txt"><b>الوثبة الثانية</b><span>نعود بنَفَسٍ جديد</span></div>
+    </div>
+    <p class="sub pin"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>مكتب الوكالة بالعجيلات</p>
+  </div>
+
+  <!-- s3 what it is -->
+  <div id="s3" class="panel">
+    <h1>دورات <span class="grad">تدريبية ومهنية</span></h1>
+    <p class="sub pin"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>لشباب مدينة العجيلات</p>
+    <div class="feats">
+      <div class="feat"><div class="fi c-blue"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div><b>طوّر نفسك</b></div>
+      <div class="feat"><div class="fi c-green"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2h5c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg></div><b>مهارات تنفعك</b></div>
+      <div class="feat"><div class="fi c-orange"><svg viewBox="0 0 24 24"><path d="M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.1 2.1 0 0 0-2.9-.1z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg></div><b>ابنِ مستقبلك</b></div>
+    </div>
+  </div>
+
+  <!-- s4 lead-in -->
+  <div id="s4" class="panel">
+    <h1>تعرّف على <span class="grad">الدورات</span></h1>
+    <div class="count"><span id="count-num">0</span><span class="count-lbl">دورات<br>تنتظرك</span></div>
+    <div class="minigrid" id="minigrid"></div>
+  </div>
+
+  <!-- c1..c8 course cards (filled by stage.js) -->
+  <div id="courses"></div>
+  <div id="progress"></div>
+
+  <!-- s5 call to action -->
+  <div id="s5" class="panel">
+    <h1 class="huge">لا تفوّت <span class="grad">الفرصة</span></h1>
+    <div class="cta"><span>سجّل الآن وتابعنا</span><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></div>
+    <p class="future">المستقبل يبدأ <b>منك</b></p>
+  </div>
+
+  <!-- s6 sign-off -->
+  <div id="s6" class="panel">
+    <img id="end-logo" src="assets/logo.png" alt="">
+    <h1 class="motto">إيثار وعطاء</h1>
+    <p class="sub">الوكالة الوطنية للجهود التطوعية للشباب</p>
+    <p class="sub pin"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>مكتب العجيلات</p>
+  </div>
+
+  <div id="caption"><span></span></div>
+  <div id="fade"></div>
+</div>
+<script src="../build/timeline.js"></script>
+<script src="stage.js"></script>
+</body>
+</html>
