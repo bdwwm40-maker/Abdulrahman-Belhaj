@@ -2,7 +2,7 @@
 
 Inputs : ../script.json, ../audio/<scene>.wav, ../audio/timings.json
 Outputs: ../build/voice.wav      full narration track
-         ../build/music.wav      quiet procedural pad (optional bed under the voice)
+         ../build/music.wav      procedural music bed under the voice (--music upbeat|pad)
          ../build/timeline.js    window.TL = {fps, duration, scenes[], captions[], env[]}
 """
 import json
@@ -72,11 +72,72 @@ def pad_music(total, sr=SR):
     return y / (np.abs(y).max() + 1e-9) * 32767 * 0.9
 
 
+MSR = 44100  # music is rendered at full bandwidth so the shaker stays crisp
+
+
+def upbeat_music(total, sr=MSR, bpm=112):
+    """Bright pop bed: C-G-Am-F in C major, plucked 8th-note arpeggio, bass, soft kick/clap/shaker."""
+    n = int(total * sr)
+    y = np.zeros(n)
+    beat = 60 / bpm
+    bar = 4 * beat
+    rng = np.random.default_rng(3)
+    hz = lambda m: 440 * 2 ** ((m - 69) / 12)
+    chords = [(48, [60, 64, 67, 72]), (43, [59, 62, 67, 71]), (45, [57, 60, 64, 69]), (41, [57, 60, 65, 69])]
+
+    def add(sig, t0, gain):
+        i = int(t0 * sr)
+        if i >= n:
+            return
+        j = min(n, i + len(sig))
+        y[i:j] += sig[:j - i] * gain
+
+    def tone(f, dur, decay, harm=(1, 0.35, 0.12)):
+        t = np.arange(int(dur * sr)) / sr
+        s = sum(a * np.sin(2 * np.pi * f * (k + 1) * t) for k, a in enumerate(harm))
+        return s * np.exp(-t / decay) * np.minimum(1, t / 0.004)
+
+    kick_t = np.arange(int(0.28 * sr)) / sr
+    kick = np.sin(2 * np.pi * (50 * kick_t + 70 * 0.04 * (1 - np.exp(-kick_t / 0.04)))) * np.exp(-kick_t / 0.11)
+    clap = rng.normal(0, 1, int(0.18 * sr)) * np.exp(-np.arange(int(0.18 * sr)) / sr / 0.045)
+    clap = np.convolve(clap, [1, -0.95], mode="same")  # crude high-pass
+    shake = rng.normal(0, 1, int(0.05 * sr)) * np.exp(-np.arange(int(0.05 * sr)) / sr / 0.012)
+    shake = np.convolve(shake, [1, -1], mode="same")
+
+    nbars = int(np.ceil(total / bar))
+    for b in range(nbars):
+        root, notes = chords[b % 4]
+        t0 = b * bar
+        # pad chord (soft, sustained)
+        for m in notes[:3]:
+            add(tone(hz(m), bar + 0.4, 1.6, (1, 0.2)), t0, 0.05)
+        # bass on the beat, octave pop on the off-beat
+        for k in range(8):
+            f = hz(root - 12 if k % 2 == 0 else root)
+            add(tone(f, beat * 0.5, 0.18, (1, 0.5, 0.25)), t0 + k * beat / 2, 0.20 if k % 2 == 0 else 0.11)
+        # plucked arpeggio, up-down pattern
+        pattern = [0, 1, 2, 3, 2, 1, 2, 3]
+        for k, p in enumerate(pattern):
+            add(tone(hz(notes[p] + 12), 0.5, 0.16), t0 + k * beat / 2, 0.075)
+        # drums
+        for k in range(4):
+            add(kick, t0 + k * beat, 0.32 if k % 2 == 0 else 0.18)
+            if k % 2 == 1:
+                add(clap, t0 + k * beat, 0.08)
+        for k in range(16):
+            add(shake, t0 + k * beat / 4, 0.035 if k % 2 else 0.02)
+
+    t = np.arange(n) / sr
+    y *= np.minimum(1, t / 1.5) * np.minimum(1, np.maximum(0, (total - t) / 2.5))
+    return y / (np.abs(y).max() + 1e-9) * 32767 * 0.9
+
+
 def main():
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument("--script", default="script.json")
     ap.add_argument("--audio", default="audio")
+    ap.add_argument("--music", default="upbeat", choices=["upbeat", "pad"])
     a = ap.parse_args()
 
     script = json.loads((ROOT / a.script).read_text())
@@ -111,7 +172,10 @@ def main():
         voice[i:i + len(x)] += x
     voice = voice[:int(total * SR)]
     write_wav(build / "voice.wav", voice)
-    write_wav(build / "music.wav", pad_music(total))
+    if a.music == "upbeat":
+        write_wav(build / "music.wav", upbeat_music(total), sr=MSR)
+    else:
+        write_wav(build / "music.wav", pad_music(total))
 
     # per-frame loudness envelope (0..1), lightly smoothed, drives the character's "talking" motion
     hop = SR // FPS

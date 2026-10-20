@@ -7,10 +7,26 @@
 
 | الملف | الصوت | المدة |
 |---|---|---|
+| `final/youth-future-ajaylat-fusha.mp4` | **صوت اصطناعي حماسي — عربية فصحى + موسيقى مبهجة** | 1:41 |
 | `final/youth-future-ajaylat-msa.mp4` | **بصوت عبد الرحمن (مستنسخ) — عربية فصحى** | 1:54 |
 | `final/youth-future-ajaylat.mp4` | صوت ليبي اصطناعي — لهجة ليبية | 1:43 |
 
 كلاهما 1920×1080، ‏30 إطاراً/ث، صوت AAC بمستوى ‎-16 LUFS، مع ترجمة عربية مدمجة أسفل الشاشة.
+
+### النسخة الفصحى بصوت اصطناعي (المعتمدة)
+
+- الصوت: ‏`ar-SA-HamedNeural` (صوت فصيح، الأوضح والأكثر تلويناً بين الأصوات العربية المجرَّبة)
+  بسرعة ‎+6% وطبقة ‎+6Hz لنبرة أكثر حيوية.
+- الموسيقى: مولَّدة برمجياً — سلّم دو الكبير (C-G-Am-F)، ‏112 نبضة/دقيقة، أربيجيو وإيقاع خفيف،
+  وتنخفض تلقائياً عند الكلام (`build_timeline.py --music upbeat`).
+
+```bash
+SSL_CERT_FILE=/root/.ccr/ca-bundle.crt python3 tools/voice.py --script script-msa.json \
+  --voice ar-SA-HamedNeural --out audio-msa-ai --rate=+6% --pitch=+6Hz
+python3 tools/build_timeline.py --script script-msa.json --audio audio-msa-ai --music upbeat
+NODE_PATH=$(npm root -g) node tools/render.mjs
+tools/mix.sh 0.14 final/youth-future-ajaylat-fusha.mp4
+```
 
 ### النسخة بصوتك (الفصحى)
 
