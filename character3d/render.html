@@ -1,0 +1,70 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Character render</title>
+<style>html,body{margin:0;background:transparent}</style>
+<script type="importmap">{"imports":{
+  "three":"./node_modules/three/build/three.module.js",
+  "three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
+import { buildCharacter, buildClips } from './character.js';
+
+const W = 1080, H = 1920;
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setSize(W, H);
+renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.add(new THREE.HemisphereLight(0xffffff, 0x8a7a6a, 1.4));
+const key = new THREE.DirectionalLight(0xfff2e0, 2.6);
+key.position.set(1.5, 3, 2.5); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048);
+Object.assign(key.shadow.camera, { left: -1, right: 1, top: 2.2, bottom: -0.2 });
+scene.add(key);
+const rim = new THREE.DirectionalLight(0xbfd4ff, 1.4); rim.position.set(-2, 2, -2); scene.add(rim);
+const ground = new THREE.Mesh(new THREE.CircleGeometry(1.2, 64), new THREE.ShadowMaterial({ opacity: 0.25 }));
+ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+
+const camera = new THREE.PerspectiveCamera(28, W / H, 0.1, 50);
+
+const loader = new THREE.TextureLoader();
+const [logoLeft, logoRight] = await Promise.all([
+  loader.loadAsync('assets/logo_left.png'), loader.loadAsync('assets/logo_right.png')]);
+const character = buildCharacter({ logoLeft, logoRight });
+scene.add(character);
+const clips = buildClips();
+const mixer = new THREE.AnimationMixer(character);
+
+window.renderView = (yaw, clipName = null, t = 0, opts = {}) => {
+  ground.visible = opts.ground !== false;
+  mixer.stopAllAction();
+  character.traverse(() => {});
+  if (clipName) {
+    const a = mixer.clipAction(clips.find((c) => c.name === clipName));
+    a.reset().play(); mixer.setTime(t);
+  } else {
+    mixer.setTime(0);
+    mixer.stopAllAction();
+  }
+  const r = opts.dist ?? 5.2, ty = opts.ty ?? 0.92;
+  camera.position.set(Math.sin(yaw) * r, ty + (opts.cy ?? 0.25), Math.cos(yaw) * r);
+  camera.lookAt(0, ty, 0);
+  renderer.render(scene, camera);
+  return renderer.domElement.toDataURL('image/png');
+};
+
+window.exportGLB = async () => {
+  mixer.stopAllAction(); mixer.setTime(0);
+  const res = await new GLTFExporter().parseAsync(character, { binary: true, animations: clips });
+  const bytes = new Uint8Array(res);
+  let s = ''; for (let i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return btoa(s);
+};
+window.ready = true;
+</script></body></html>
