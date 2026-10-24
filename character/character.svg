@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 1000" width="500" height="1000">
+  <!-- شخصية كرتونية بزي الفعالية — كل جزء في مجموعة مستقلة (id) لتسهيل التحريك -->
+  <defs>
+    <style>
+      .skin{fill:#E9B48E}.skin-sh{fill:#D39874}
+      .polo{fill:#2B3FC9}.polo-sh{fill:#1E2E9C}
+      .pants{fill:#D8CDB5}.pants-sh{fill:#BEB196}
+      .line{fill:none;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+
+  <!-- ظل أرضي -->
+  <ellipse id="shadow" cx="250" cy="958" rx="140" ry="16" fill="#000" opacity=".15"/>
+
+  <!-- الساقان والبنطال الكارغو -->
+  <g id="legs">
+    <g id="leg_right">
+      <path class="pants" d="M180 600 L252 600 L246 905 L186 905 Q176 760 180 600Z"/>
+      <path class="pants-sh" d="M232 650 L248 650 L244 905 L230 905Z"/>
+      <!-- جيب الكارغو مع الشعار -->
+      <rect x="168" y="700" width="58" height="88" rx="8" fill="#CFC3A8" stroke="#A89A7C" stroke-width="2.5"/>
+      <path d="M166 698 h62 v22 q-31 8 -62 0Z" fill="#C6B99C" stroke="#A89A7C" stroke-width="2.5"/>
+      <circle cx="197" cy="712" r="4" fill="#8C7F64"/>
+      <g id="pocket_logo" transform="translate(197 752)">
+        <circle r="13" fill="none" stroke="#2B3FC9" stroke-width="3.5"/>
+        <path d="M-11 4 q11 10 22 0" fill="none" stroke="#3FAE5A" stroke-width="3.5"/>
+        <path d="M-4 -18 q8 6 6 14" fill="none" stroke="#1B1B22" stroke-width="3"/>
+      </g>
+    </g>
+    <g id="leg_left">
+      <path class="pants" d="M248 600 L320 600 Q324 760 314 905 L254 905Z"/>
+      <path class="pants-sh" d="M296 640 L318 640 Q320 780 314 905 L300 905Z"/>
+    </g>
+    <path class="pants-sh" d="M178 596 h144 v18 h-144Z"/>
+  </g>
+
+  <!-- الحذاء (لوفر كحلي بنعل أبيض) -->
+  <g id="shoes">
+    <g id="shoe_right">
+      <path d="M180 900 h70 v18 q0 18 -18 22 h-72 q-14 -2 -10 -16 q6 -20 30 -24Z" fill="#2A3040"/>
+      <path d="M146 930 h106 v10 q-2 10 -14 10 h-82 q-12 0 -10 -20Z" fill="#F3F3F1"/>
+      <path class="line" d="M178 912 q20 -6 44 0" stroke="#4A5266" stroke-width="3"/>
+    </g>
+    <g id="shoe_left">
+      <path d="M250 900 h70 q24 4 30 24 q4 14 -10 16 h-72 q-18 -4 -18 -22Z" fill="#2A3040"/>
+      <path d="M248 930 h106 q2 20 -10 20 h-82 q-12 0 -14 -10Z" fill="#F3F3F1"/>
+      <path class="line" d="M278 912 q20 -6 44 0" stroke="#4A5266" stroke-width="3"/>
+    </g>
+  </g>
+
+  <!-- الذراع الأيمن (يسار الصورة) — نقطة الدوران عند الكتف 170,365 -->
+  <g id="arm_right">
+    <path class="skin" d="M146 455 q-14 70 -6 130 q4 22 22 20 q18 -2 18 -24 q-2 -60 8 -120Z"/>
+    <ellipse id="hand_right" class="skin" cx="160" cy="606" rx="22" ry="25"/>
+    <path class="skin-sh" d="M150 612 q10 10 22 2" fill="none" stroke="#C0855F" stroke-width="3"/>
+    <path class="polo" d="M178 352 q-40 8 -48 50 l-8 64 q30 14 66 6 l10 -110Z"/>
+    <path class="polo-sh" d="M124 450 q32 12 66 4 l-2 18 q-34 8 -66 -6Z"/>
+  </g>
+
+  <!-- الذراع الأيسر (يمين الصورة) — نقطة الدوران عند الكتف 330,365 -->
+  <g id="arm_left">
+    <path class="skin" d="M354 455 q14 70 6 130 q-4 22 -22 20 q-18 -2 -18 -24 q2 -60 -8 -120Z"/>
+    <ellipse id="hand_left" class="skin" cx="340" cy="606" rx="22" ry="25"/>
+    <path class="polo" d="M322 352 q40 8 48 50 l8 64 q-30 14 -66 6 l-10 -110Z"/>
+    <path class="polo-sh" d="M376 450 q-32 12 -66 4 l2 18 q34 8 66 -6Z"/>
+  </g>
+
+  <!-- الجذع: قميص بولو أزرق ملكي -->
+  <g id="torso">
+    <rect class="skin-sh" x="226" y="300" width="48" height="52" rx="10"/>
+    <path class="polo" d="M176 350 Q250 330 324 350 Q336 480 330 620 Q250 632 170 620 Q164 480 176 350Z"/>
+    <path class="polo-sh" d="M300 360 Q330 480 326 616 L306 618 Q312 480 292 362Z"/>
+    <!-- القميص الداخلي الأبيض والياقة -->
+    <path d="M232 344 L250 392 L268 344Z" fill="#F4F6FA"/>
+    <path d="M200 342 Q226 330 238 340 L250 372 L226 388Z" fill="#E4E8F0" stroke="#C3C9D6" stroke-width="2"/>
+    <path d="M300 342 Q274 330 262 340 L250 372 L274 388Z" fill="#E4E8F0" stroke="#C3C9D6" stroke-width="2"/>
+    <path d="M244 380 h12 v62 h-12Z" fill="#2536B0"/>
+    <circle cx="250" cy="398" r="4" fill="#F4F6FA"/>
+    <circle cx="250" cy="424" r="4" fill="#F4F6FA"/>
+    <!-- شعار الصدر الأبيض -->
+    <g id="chest_logo" transform="translate(296 418)" fill="#FFFFFF">
+      <path d="M-14 6 L4 -16 L8 -12 L-6 8Z"/>
+      <path d="M-4 10 L14 -8 L16 -2 L2 12Z"/>
+      <circle cx="10" cy="-20" r="2.4"/><circle cx="16" cy="-17" r="2.4"/><circle cx="21" cy="-12" r="2.4"/>
+      <rect x="-20" y="16" width="42" height="4" rx="2"/>
+    </g>
+  </g>
+
+  <!-- حزام البطاقة (لانيارد) والبطاقة الشفافة -->
+  <g id="lanyard">
+    <path class="line" d="M222 346 Q244 430 288 478" stroke="#13206E" stroke-width="7"/>
+    <path class="line" d="M276 346 Q290 420 292 478" stroke="#13206E" stroke-width="7"/>
+    <rect x="285" y="474" width="14" height="12" rx="3" fill="#E6E6E6"/>
+    <g id="badge">
+      <rect x="262" y="484" width="60" height="78" rx="6" fill="#DCE7F5" opacity=".9" stroke="#9FB2CC" stroke-width="2.5"/>
+      <rect x="270" y="494" width="44" height="58" rx="3" fill="#FFFFFF"/>
+      <circle cx="292" cy="516" r="9" fill="none" stroke="#2B3FC9" stroke-width="3"/>
+      <rect x="278" y="534" width="28" height="4" rx="2" fill="#B9C2D2"/>
+      <rect x="282" y="542" width="20" height="3" rx="1.5" fill="#CDD3DF"/>
+    </g>
+  </g>
+
+  <!-- الرأس -->
+  <g id="head">
+    <!-- شعر جانبي -->
+    <path d="M168 200 q-4 50 14 82 l14 -10 q-10 -34 -6 -70Z" fill="#2A1D15"/>
+    <path d="M332 200 q4 50 -14 82 l-14 -10 q10 -34 6 -70Z" fill="#2A1D15"/>
+    <!-- الأذنان -->
+    <ellipse class="skin-sh" cx="172" cy="244" rx="14" ry="20"/>
+    <ellipse class="skin-sh" cx="328" cy="244" rx="14" ry="20"/>
+    <!-- الوجه -->
+    <path class="skin" d="M176 190 Q176 130 250 130 Q324 130 324 190 L322 250 Q318 316 250 322 Q182 316 178 250Z"/>
+    <!-- لحية خفيفة -->
+    <path d="M182 258 Q190 318 250 322 Q310 318 318 258 Q300 300 250 302 Q200 300 182 258Z" fill="#6B4A36" opacity=".35"/>
+
+    <g id="eyebrows" fill="#2A1D15">
+      <path d="M190 202 q22 -12 46 -2 l-2 8 q-22 -6 -42 2Z"/>
+      <path d="M310 202 q-22 -12 -46 -2 l2 8 q22 -6 42 2Z"/>
+    </g>
+    <g id="eyes">
+      <ellipse cx="216" cy="234" rx="9" ry="11" fill="#2A1D15"/>
+      <ellipse cx="284" cy="234" rx="9" ry="11" fill="#2A1D15"/>
+      <circle cx="219" cy="230" r="3" fill="#fff"/>
+      <circle cx="287" cy="230" r="3" fill="#fff"/>
+    </g>
+    <!-- النظارة السوداء -->
+    <g id="glasses">
+      <rect x="182" y="210" width="68" height="50" rx="16" fill="#ffffff" fill-opacity=".12" stroke="#16161C" stroke-width="7"/>
+      <rect x="250" y="210" width="68" height="50" rx="16" fill="#ffffff" fill-opacity=".12" stroke="#16161C" stroke-width="7"/>
+      <path class="line" d="M244 226 q6 -5 12 0" stroke="#16161C" stroke-width="6"/>
+      <path class="line" d="M182 226 l-10 -4 M318 226 l10 -4" stroke="#16161C" stroke-width="6"/>
+    </g>
+    <path class="line" d="M246 254 q-6 18 2 24 q6 2 10 -2" stroke="#B9805C" stroke-width="4"/>
+    <!-- الشارب -->
+    <path id="mustache" d="M218 286 q14 -12 32 -6 q18 -6 32 6 q-14 6 -32 2 q-18 4 -32 -2Z" fill="#2A1D15"/>
+    <!-- الفم المبتسم -->
+    <g id="mouth">
+      <path d="M222 298 q28 26 56 0 q-28 8 -56 0Z" fill="#7A2E2A"/>
+      <path d="M226 299 q24 6 48 0 l-2 5 q-22 4 -44 0Z" fill="#FFFFFF"/>
+    </g>
+
+    <!-- القبعة البيضاء -->
+    <g id="cap">
+      <path d="M170 196 Q168 112 250 108 Q332 112 330 196 Q250 180 170 196Z" fill="#F5F6F8"/>
+      <path d="M250 110 L250 186" stroke="#D9DCE3" stroke-width="2.5"/>
+      <path d="M206 116 Q196 150 196 190 M294 116 Q304 150 304 190" fill="none" stroke="#D9DCE3" stroke-width="2.5"/>
+      <path d="M164 196 Q250 172 336 196 Q340 212 326 214 Q250 196 174 214 Q160 212 164 196Z" fill="#E6E8EE" stroke="#CBCFD8" stroke-width="2"/>
+      <circle cx="250" cy="105" r="6" fill="#E6E8EE"/>
+      <!-- شعار القبعة -->
+      <g id="cap_logo" transform="translate(250 154)">
+        <circle r="16" fill="#FFFFFF" stroke="#2B3FC9" stroke-width="4"/>
+        <path d="M-12 5 q12 12 24 0" fill="none" stroke="#3FAE5A" stroke-width="4"/>
+        <path d="M-8 -6 q8 -6 16 0" fill="none" stroke="#F08A24" stroke-width="3.5"/>
+        <rect x="-26" y="22" width="52" height="4" rx="2" fill="#2B3FC9" opacity=".7"/>
+      </g>
+    </g>
+  </g>
+</svg>
