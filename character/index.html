@@ -1,0 +1,444 @@
+<title>عبدالرحمن ثلاثي الأبعاد</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;600;700&display=swap">
+<style>
+  /* Layout: a tall studio stage with the character, and a compact control strip under it */
+  :root {
+    --bg: #eef1f5;
+    --panel: #ffffff;
+    --fg: #17213a;
+    --muted: #5d6781;
+    --line: #d5dbe5;
+    --accent: #1f6fd1;
+    --accent-ink: #ffffff;
+    --stage: #dfe5ee;
+    --font: "Readex Pro", "Segoe UI", Tahoma, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1420; --panel: #171e2e; --fg: #e8ecf4; --muted: #9aa5bd;
+      --line: #2a3448; --accent: #5b9cf0; --accent-ink: #0b1220; --stage: #1b2333;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1420; --panel: #171e2e; --fg: #e8ecf4; --muted: #9aa5bd;
+    --line: #2a3448; --accent: #5b9cf0; --accent-ink: #0b1220; --stage: #1b2333;
+    color-scheme: dark;
+  }
+  body { background: var(--bg); color: var(--fg); font-family: var(--font); }
+  .wrap {
+    max-width: 980px; margin: 0 auto;
+    padding-block: 20px 32px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid; gap: 14px;
+  }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+  h1 { margin: 0; font-size: 1.5rem; font-weight: 700; text-wrap: balance; }
+  header p { margin: 0; color: var(--muted); font-size: .9rem; }
+  .stage {
+    position: relative; background: var(--stage); border-radius: 14px; overflow: hidden;
+    height: min(72vh, 760px); min-height: 420px; border: 1px solid var(--line);
+  }
+  .stage canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  .hint { position: absolute; bottom: 10px; inset-inline-start: 12px; font-size: .75rem; color: var(--muted); pointer-events: none; }
+  .controls { display: flex; flex-wrap: wrap; gap: 16px 28px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .group { display: grid; gap: 8px; min-width: 0; }
+  .label { font-size: .75rem; color: var(--muted); letter-spacing: .02em; }
+  .seg { display: flex; flex-wrap: wrap; gap: 6px; }
+  .seg button {
+    font: inherit; font-size: .88rem; padding: 7px 14px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--line); background: transparent; color: var(--fg);
+  }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .notes { font-size: .88rem; color: var(--muted); line-height: 1.7; max-width: 70ch; }
+  .notes code { font-size: .82rem; background: var(--panel); border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; }
+  body.render .wrap > :not(.stage) { display: none; }
+  body.render .wrap { padding: 0; max-width: none; }
+  body.render .stage { border: 0; border-radius: 0; height: 100vh; }
+  body.render .hint { display: none; }
+</style>
+
+<div class="wrap" dir="rtl">
+  <header>
+    <h1>عبدالرحمن ثلاثي الأبعاد</h1>
+    <p>بولو بيج · كاب بيج · نظارة شمسية · بنطال كحلي · علم المعهد</p>
+  </header>
+
+  <div class="stage" id="stage">
+    <div class="hint">اسحب للتدوير · مرّر للتكبير</div>
+  </div>
+
+  <div class="controls">
+    <div class="group">
+      <span class="label">الحركة</span>
+      <div class="seg" id="modeSeg">
+        <button type="button" id="m-idle" data-mode="idle" aria-pressed="true">وقوف</button>
+        <button type="button" id="m-wave" data-mode="wave" aria-pressed="false">تلويح</button>
+        <button type="button" id="m-turn" data-mode="turn" aria-pressed="false">دوران 360°</button>
+      </div>
+    </div>
+    <div class="group">
+      <span class="label">الخلفية</span>
+      <div class="seg" id="bgSeg">
+        <button type="button" id="b-studio" data-bg="studio" aria-pressed="true">استوديو</button>
+        <button type="button" id="b-green" data-bg="green" aria-pressed="false">شاشة خضراء</button>
+        <button type="button" id="b-blue" data-bg="sky" aria-pressed="false">سماء</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="notes">
+    الشخصية مبنية من أجزاء منفصلة لها مفاصل (الرأس، الذراعان، المرفقان، الساقان، العلم)، لذلك يمكن تحريكها في Blender أو After Effects.
+    ملف <code>abdulrahman.glb</code> يحتوي على حركتي <code>Idle</code> و<code>Wave</code> جاهزتين، وفيديو بخلفية خضراء وآخر بخلفية شفافة للمونتاج.
+  </p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function () {
+  const params = new URLSearchParams(location.search);
+  const RENDER = params.has('render');
+  if (RENDER) document.body.classList.add('render');
+
+  const COLORS = {
+    skin: 0xc69574, polo: 0xc8af8b, poloDark: 0xb39a76, cap: 0xc9b08e,
+    navy: 0x1d2c52, shoe: 0x1b1b1f, hair: 0x17110e, stubble: 0xae8468,
+    lens: 0x0d0f14, frame: 0x111216, silver: 0xd9dde3, black: 0x16171a
+  };
+  const mat = (color, o = {}) => new THREE.MeshStandardMaterial(Object.assign({ color: new THREE.Color(color).convertSRGBToLinear(), roughness: 0.75, metalness: 0 }, o));
+  const M = {
+    skin: mat(COLORS.skin, { roughness: 0.6 }), polo: mat(COLORS.polo, { roughness: 0.9 }),
+    poloDark: mat(COLORS.poloDark, { roughness: 0.9 }), cap: mat(COLORS.cap, { roughness: 0.9 }),
+    navy: mat(COLORS.navy, { roughness: 0.8 }), shoe: mat(COLORS.shoe, { roughness: 0.5 }),
+    hair: mat(COLORS.hair, { roughness: 0.9 }), stubble: mat(COLORS.stubble, { roughness: 0.95 }),
+    lens: mat(COLORS.lens, { roughness: 0.08, metalness: 0.6 }), frame: mat(COLORS.frame, { roughness: 0.35 }),
+    silver: mat(COLORS.silver, { roughness: 0.25, metalness: 0.9 }), black: mat(COLORS.black, { roughness: 0.4, metalness: 0.4 }),
+    lip: mat(0x8a3b33, { roughness: 0.6 }), teeth: mat(0xf4f1ea, { roughness: 0.4 })
+  };
+
+  function mesh(geo, material, name) {
+    const m = new THREE.Mesh(geo, material);
+    m.castShadow = true; m.receiveShadow = true;
+    if (name) m.name = name;
+    return m;
+  }
+  function lathe(points, material, name) {
+    const g = new THREE.LatheGeometry(points.map(p => new THREE.Vector2(p[0], p[1])), 48);
+    return mesh(g, material, name);
+  }
+  function blob(rx, ry, rz, material, name) {
+    const m = mesh(new THREE.SphereGeometry(1, 32, 20), material, name);
+    m.scale.set(rx, ry, rz);
+    return m;
+  }
+
+  // ---------- textures drawn on canvas ----------
+  function drawEmblem(g, cx, cy, size) {
+    const s = size / 100, x = v => cx + (v - 50) * s, y = v => cy + (v - 50) * s;
+    g.lineCap = 'round';
+    g.strokeStyle = '#1f6fd1'; g.lineWidth = 9 * s;
+    g.beginPath(); g.arc(x(50), y(52), 32 * s, Math.PI * 0.35, Math.PI * 1.72); g.stroke();
+    g.strokeStyle = '#123c8c'; g.lineWidth = 5 * s;
+    g.beginPath(); g.arc(x(50), y(52), 20 * s, Math.PI * 0.6, Math.PI * 1.5); g.stroke();
+    g.fillStyle = '#6cc04a';
+    g.beginPath(); g.moveTo(x(30), y(68)); g.quadraticCurveTo(x(52), y(90), x(74), y(64));
+    g.quadraticCurveTo(x(52), y(74), x(36), y(60)); g.closePath(); g.fill();
+    g.fillStyle = '#f0642d';
+    g.beginPath(); g.arc(x(60), y(30), 7 * s, 0, Math.PI * 2); g.fill();
+    g.fillStyle = '#1c2233';
+    g.beginPath(); g.moveTo(x(50), y(42)); g.quadraticCurveTo(x(70), y(24), x(88), y(4));
+    g.quadraticCurveTo(x(80), y(30), x(56), y(48)); g.closePath(); g.fill();
+  }
+  function emblemTexture() {
+    const c = document.createElement('canvas'); c.width = c.height = 256;
+    drawEmblem(c.getContext('2d'), 128, 128, 240);
+    const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; return t;
+  }
+  function ribbonTexture() {
+    const c = document.createElement('canvas'); c.width = c.height = 256;
+    const g = c.getContext('2d');
+    g.strokeStyle = '#ffffff'; g.lineWidth = 26; g.lineCap = 'round'; g.lineJoin = 'round';
+    g.beginPath(); g.moveTo(70, 230); g.lineTo(140, 110);
+    g.bezierCurveTo(175, 50, 140, 20, 120, 28); g.bezierCurveTo(95, 40, 100, 80, 120, 110);
+    g.lineTo(190, 230); g.stroke();
+    const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; return t;
+  }
+  function flagTexture() {
+    const c = document.createElement('canvas'); c.width = 512; c.height = 768;
+    const g = c.getContext('2d');
+    g.fillStyle = '#ffffff'; g.fillRect(0, 0, 512, 768);
+    g.fillStyle = '#1565c8';
+    g.beginPath(); g.moveTo(0, 560); g.lineTo(512, 700); g.lineTo(512, 768); g.lineTo(0, 768); g.closePath(); g.fill();
+    g.fillStyle = '#0d4ea6';
+    g.beginPath(); g.moveTo(0, 640); g.lineTo(512, 740); g.lineTo(512, 768); g.lineTo(0, 768); g.closePath(); g.fill();
+    drawEmblem(g, 256, 270, 380);
+    const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; t.anisotropy = 4; return t;
+  }
+  function decal(tex, w, h, name) {
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h),
+      new THREE.MeshStandardMaterial({ map: tex, transparent: true, alphaTest: 0.4, roughness: 0.9 }));
+    m.name = name; return m;
+  }
+
+  // ---------- character ----------
+  function buildCharacter() {
+    const root = new THREE.Group(); root.name = 'Abdulrahman';
+    const J = {}; // joints
+
+    // pants / pelvis
+    const pelvis = lathe([[0, 0], [0.17, 0], [0.182, 0.08], [0.178, 0.2], [0, 0.2]], M.navy, 'Pelvis');
+    pelvis.scale.set(1.05, 1, 0.62); pelvis.position.y = 0.78; root.add(pelvis);
+
+    for (const side of [1, -1]) {
+      const hip = new THREE.Group(); hip.name = side > 0 ? 'Leg_L' : 'Leg_R';
+      hip.position.set(0.098 * side, 0.86, 0); root.add(hip);
+      const leg = mesh(new THREE.CylinderGeometry(0.09, 0.072, 0.8, 24), M.navy, 'Trouser');
+      leg.position.y = -0.4; hip.add(leg);
+      const crease = mesh(new THREE.CylinderGeometry(0.074, 0.074, 0.03, 24), M.navy);
+      crease.position.y = -0.78; hip.add(crease);
+      const shoe = blob(0.07, 0.045, 0.125, M.shoe, 'Shoe');
+      shoe.position.set(0, -0.815, 0.035); hip.add(shoe);
+      J[hip.name] = hip;
+    }
+
+    // torso (polo)
+    const torso = new THREE.Group(); torso.name = 'Torso'; torso.position.y = 0.88; root.add(torso); J.Torso = torso;
+    const body = lathe([[0, -0.07], [0.172, -0.07], [0.18, 0.02], [0.172, 0.16], [0.178, 0.28], [0.196, 0.4], [0.2, 0.46], [0.172, 0.52], [0.1, 0.56], [0.06, 0.575], [0, 0.575]], M.polo, 'Polo');
+    body.scale.set(1.3, 1, 0.72); torso.add(body);
+    const hem = mesh(new THREE.TorusGeometry(0.173, 0.012, 8, 48), M.poloDark, 'Hem');
+    hem.rotation.x = Math.PI / 2; hem.scale.set(1.3, 0.72, 1); hem.position.y = -0.065; torso.add(hem);
+
+    // collar + placket
+    const collar = mesh(new THREE.TorusGeometry(0.072, 0.02, 10, 32), M.polo, 'Collar');
+    collar.rotation.x = Math.PI / 2 - 0.25; collar.scale.set(1.15, 1, 1); collar.position.set(0, 0.555, 0.008); torso.add(collar);
+    for (const side of [1, -1]) {
+      const flap = mesh(new THREE.BoxGeometry(0.075, 0.05, 0.01), M.polo, 'CollarFlap');
+      flap.position.set(0.04 * side, 0.525, 0.112); flap.rotation.set(-0.45, 0.25 * side, 0.55 * side); torso.add(flap);
+    }
+    const placket = mesh(new THREE.BoxGeometry(0.038, 0.13, 0.008), M.poloDark, 'Placket');
+    placket.position.set(0, 0.455, 0.137); placket.rotation.x = -0.15; torso.add(placket);
+    [0.5, 0.455, 0.41].forEach((y, i) => {
+      const b = mesh(new THREE.CylinderGeometry(0.008, 0.008, 0.006, 12), M.poloDark, 'Button' + i);
+      b.rotation.x = Math.PI / 2 - 0.15; b.position.set(0, y, 0.143 - (y - 0.41) * 0.15); torso.add(b);
+    });
+
+    // chest logos (viewer-left: emblem, viewer-right: white ribbon)
+    const emb = decal(emblemTexture(), 0.085, 0.085, 'ChestEmblem');
+    emb.position.set(-0.095, 0.38, 0.132); emb.rotation.y = -0.23; torso.add(emb);
+    const rib = decal(ribbonTexture(), 0.08, 0.08, 'ChestLogo');
+    rib.position.set(0.1, 0.39, 0.13); rib.rotation.y = 0.25; torso.add(rib);
+
+    // arms
+    for (const side of [1, -1]) {
+      const sh = new THREE.Group(); sh.name = side > 0 ? 'Arm_L' : 'Arm_R';
+      sh.position.set(0.238 * side, 0.465, 0); torso.add(sh);
+      const cap = blob(0.078, 0.07, 0.07, M.polo, 'ShoulderCap'); sh.add(cap);
+      const sleeve = mesh(new THREE.CylinderGeometry(0.074, 0.075, 0.24, 24, 1, true), M.polo, 'Sleeve');
+      sleeve.material = M.polo.clone(); sleeve.material.side = THREE.DoubleSide;
+      sleeve.position.y = -0.1; sh.add(sleeve);
+      const cuff = mesh(new THREE.TorusGeometry(0.073, 0.009, 8, 24), M.poloDark, 'SleeveHem');
+      cuff.rotation.x = Math.PI / 2; cuff.position.y = -0.22; sh.add(cuff);
+      const upper = mesh(new THREE.CylinderGeometry(0.052, 0.046, 0.3, 20), M.skin, 'UpperArm');
+      upper.position.y = -0.14; sh.add(upper);
+      const elbow = new THREE.Group(); elbow.name = side > 0 ? 'Elbow_L' : 'Elbow_R';
+      elbow.position.y = -0.29; sh.add(elbow);
+      elbow.add(blob(0.047, 0.047, 0.047, M.skin));
+      const fore = mesh(new THREE.CylinderGeometry(0.045, 0.036, 0.25, 20), M.skin, 'Forearm');
+      fore.position.y = -0.125; elbow.add(fore);
+      const hand = blob(0.036, 0.062, 0.045, M.skin, 'Hand'); hand.position.y = -0.29; elbow.add(hand);
+      const thumb = blob(0.014, 0.03, 0.014, M.skin, 'Thumb');
+      thumb.position.set(0, -0.27, 0.04); thumb.rotation.x = -0.5; elbow.add(thumb);
+      if (side > 0) { const ring = mesh(new THREE.TorusGeometry(0.02, 0.003, 6, 16), M.silver, 'Ring'); ring.rotation.x = Math.PI / 2; ring.position.set(0.012, -0.32, 0); elbow.add(ring); }
+      J[sh.name] = sh; J[elbow.name] = elbow;
+    }
+
+    // neck + head
+    const neck = mesh(new THREE.CylinderGeometry(0.05, 0.055, 0.12, 20), M.skin, 'Neck');
+    neck.position.y = 0.58; torso.add(neck);
+    const head = new THREE.Group(); head.name = 'Head'; head.position.y = 0.6; torso.add(head); J.Head = head;
+    const skull = blob(0.112, 0.132, 0.12, M.skin, 'Face'); skull.position.y = 0.13; head.add(skull);
+    const jaw = mesh(new THREE.SphereGeometry(0.123, 32, 16, -Math.PI * 0.42, Math.PI * 0.84, Math.PI * 0.6, Math.PI * 0.26), M.stubble, 'Stubble');
+    jaw.scale.set(0.92, 1.08, 0.99); jaw.position.y = 0.13; head.add(jaw);
+    const hair = mesh(new THREE.SphereGeometry(0.124, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.6), M.hair, 'Hair');
+    hair.scale.set(0.93, 1.06, 0.97); hair.position.set(0, 0.135, -0.008); head.add(hair);
+    for (const side of [1, -1]) {
+      const ear = blob(0.018, 0.03, 0.014, M.skin, 'Ear'); ear.position.set(0.112 * side, 0.12, -0.005); head.add(ear);
+    }
+    const nose = blob(0.019, 0.024, 0.022, M.skin, 'Nose'); nose.position.set(0, 0.105, 0.118); head.add(nose);
+    for (const side of [1, -1]) {
+      const mo = blob(0.03, 0.01, 0.012, M.hair, 'Moustache');
+      mo.position.set(0.021 * side, 0.08, 0.112); mo.rotation.z = -0.28 * side; head.add(mo);
+    }
+    const smile = mesh(new THREE.TorusGeometry(0.022, 0.005, 8, 24, Math.PI), M.lip, 'Smile');
+    smile.rotation.z = Math.PI; smile.position.set(0, 0.066, 0.111); head.add(smile);
+    const teeth = mesh(new THREE.CircleGeometry(0.02, 24, Math.PI, Math.PI), M.teeth, 'Teeth');
+    teeth.position.set(0, 0.066, 0.109); head.add(teeth);
+
+    // sunglasses
+    const glasses = new THREE.Group(); glasses.name = 'Sunglasses'; glasses.position.y = 0.128; head.add(glasses);
+    for (const side of [1, -1]) {
+      const lens = mesh(new THREE.CylinderGeometry(0.031, 0.031, 0.008, 28), M.lens, 'Lens');
+      lens.rotation.x = Math.PI / 2; lens.scale.set(1.3, 1, 0.95);
+      const rim = mesh(new THREE.TorusGeometry(0.032, 0.005, 8, 28), M.frame, 'Rim'); rim.scale.set(1.3, 0.95, 1);
+      const eye = new THREE.Group(); eye.position.set(0.043 * side, 0, 0.12); eye.rotation.y = 0.18 * side;
+      eye.add(lens, rim); glasses.add(eye);
+      const arm = mesh(new THREE.BoxGeometry(0.006, 0.008, 0.13), M.frame, 'Temple');
+      arm.position.set(0.105 * side, 0.008, 0.045); arm.rotation.y = -0.12 * side; glasses.add(arm);
+    }
+    const bridge = mesh(new THREE.BoxGeometry(0.026, 0.006, 0.006), M.frame, 'Bridge');
+    bridge.position.set(0, 0.012, 0.127); glasses.add(bridge);
+
+    // cap
+    const cap = new THREE.Group(); cap.name = 'Cap'; cap.position.y = 0.16; head.add(cap);
+    const crown = mesh(new THREE.SphereGeometry(0.132, 36, 18, 0, Math.PI * 2, 0, Math.PI / 2), M.cap, 'Crown');
+    crown.scale.set(0.96, 0.86, 1.02); cap.add(crown);
+    const band = mesh(new THREE.CylinderGeometry(0.127, 0.127, 0.012, 36, 1, true), M.cap, 'Band');
+    band.material = M.cap.clone(); band.material.side = THREE.DoubleSide;
+    band.scale.set(0.96, 1, 1.02); band.position.y = 0.004; cap.add(band);
+    const brim = mesh(new THREE.CylinderGeometry(0.128, 0.128, 0.008, 36, 1, false, -Math.PI / 2, Math.PI), M.cap, 'Brim');
+    brim.scale.set(0.98, 1, 1.55); brim.rotation.x = 0.14; brim.position.set(0, 0.002, 0.005); cap.add(brim);
+    const knob = blob(0.012, 0.007, 0.012, M.cap, 'Button'); knob.position.y = 0.114; cap.add(knob);
+    const capLogo = decal(ribbonTexture(), 0.055, 0.055, 'CapLogo');
+    capLogo.position.set(0, 0.052, 0.122); capLogo.rotation.x = -0.42; cap.add(capLogo);
+
+    // ---- pose: right hand holds the flag pole ----
+    J.Arm_R.rotation.set(-0.42, 0, -0.22);
+    J.Elbow_R.rotation.set(-0.75, 0, 0);
+    J.Arm_L.rotation.set(0.04, 0, 0.1);
+    J.Elbow_L.rotation.set(-0.12, 0, 0);
+    root.updateMatrixWorld(true);
+    const handPos = new THREE.Vector3(0, -0.28, 0).applyMatrix4(J.Elbow_R.matrixWorld);
+
+    // flag pole (in the right hand) + cloth
+    const flag = new THREE.Group(); flag.name = 'Flag'; flag.position.set(handPos.x - 0.005, 0, handPos.z + 0.035); root.add(flag); J.Flag = flag;
+    const lower = mesh(new THREE.CylinderGeometry(0.016, 0.016, 1.1, 16), M.black, 'PoleLower'); lower.position.y = 0.55; flag.add(lower);
+    const upperPole = mesh(new THREE.CylinderGeometry(0.015, 0.015, 1.12, 16), M.silver, 'PoleUpper'); upperPole.position.y = 1.1 + 0.56; flag.add(upperPole);
+    const finial = blob(0.026, 0.026, 0.026, M.silver, 'Finial'); finial.position.y = 2.24; flag.add(finial);
+    const clothGeo = new THREE.PlaneGeometry(0.62, 0.92, 36, 28); clothGeo.translate(-0.31, -0.46, 0);
+    const cloth = new THREE.Mesh(clothGeo, new THREE.MeshStandardMaterial({ map: flagTexture(), side: THREE.DoubleSide, roughness: 0.85 }));
+    cloth.name = 'FlagCloth'; cloth.castShadow = true; cloth.position.set(-0.012, 2.2, 0); cloth.rotation.y = -0.25; flag.add(cloth);
+    const rest = Float32Array.from(clothGeo.attributes.position.array);
+
+    function waveCloth(t, amp = 1) {
+      const p = clothGeo.attributes.position;
+      for (let i = 0; i < p.count; i++) {
+        const x = rest[i * 3], y = rest[i * 3 + 1];
+        const d = -x / 0.62; // 0 at pole, 1 at free edge
+        const w = Math.sin(d * 7.5 - t * 4.2 + y * 1.6) * 0.055 + Math.sin(d * 3.1 - t * 2.3) * 0.03;
+        p.setZ(i, w * d * amp);
+        p.setX(i, x + Math.abs(w) * 0.25 * d * amp);
+        p.setY(i, y - d * d * 0.05 * amp);
+      }
+      p.needsUpdate = true; clothGeo.computeVertexNormals();
+    }
+
+    const base = {}; for (const k in J) base[k] = J[k].rotation.clone();
+
+    function pose(t, mode) {
+      for (const k in J) J[k].rotation.copy(base[k]);
+      J.Torso.scale.set(1, 1, 1);
+      J.Torso.position.y = 0.88 + Math.sin(t * 2.0) * 0.004;
+      J.Torso.rotation.y = Math.sin(t * 0.7) * 0.03;
+      J.Head.rotation.y = Math.sin(t * 0.6) * 0.14;
+      J.Head.rotation.x = Math.sin(t * 1.1) * 0.025;
+      J.Arm_L.rotation.z = base.Arm_L.z + Math.sin(t * 2.0) * 0.02;
+      if (mode === 'wave') {
+        const k = Math.min(1, t * 2.5);
+        J.Arm_L.rotation.z = THREE.MathUtils.lerp(base.Arm_L.z, 2.55, k);
+        J.Arm_L.rotation.x = THREE.MathUtils.lerp(base.Arm_L.x, -0.15, k);
+        J.Elbow_L.rotation.z = Math.sin(t * 8) * 0.45 * k + 0.25 * k;
+        J.Elbow_L.rotation.x = THREE.MathUtils.lerp(base.Elbow_L.x, -0.1, k);
+        J.Head.rotation.z = -Math.sin(t * 4) * 0.04 * k;
+      }
+      waveCloth(t);
+    }
+
+    root.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+    return { root, J, pose };
+  }
+
+  // ---------- scene ----------
+  const stage = document.getElementById('stage');
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: RENDER });
+  renderer.setPixelRatio(RENDER ? 1 : Math.min(2, window.devicePixelRatio || 1));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  stage.prepend(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(30, 1, 0.05, 50);
+  camera.position.set(0.7, 1.35, 4.3);
+
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x8a7f72, 0.75));
+  const key = new THREE.DirectionalLight(0xfff3e2, 1.35);
+  key.position.set(2.5, 4.5, 3.5); key.castShadow = true;
+  key.shadow.mapSize.set(2048, 2048);
+  Object.assign(key.shadow.camera, { left: -1.6, right: 1.6, top: 3, bottom: -0.5, near: 0.5, far: 12 });
+  key.shadow.bias = -0.0005; scene.add(key);
+  const rim = new THREE.DirectionalLight(0xbfd8ff, 0.7); rim.position.set(-3, 3, -3); scene.add(rim);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.3); fill.position.set(-2, 1.5, 4); scene.add(fill);
+
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), new THREE.ShadowMaterial({ opacity: 0.22 }));
+  ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; ground.name = 'ShadowCatcher'; scene.add(ground);
+
+  const ch = buildCharacter();
+  const box = new THREE.Box3().setFromObject(ch.root);
+  ch.root.position.y = -box.min.y;
+  const pivot = new THREE.Group(); pivot.add(ch.root); scene.add(pivot);
+
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.target.set(-0.12, 1.12, 0); controls.enableDamping = true;
+  controls.minDistance = 1.5; controls.maxDistance = 9; controls.maxPolarAngle = Math.PI * 0.55;
+  controls.update();
+
+  const BGS = { studio: null, green: 0x00b140, sky: 0x9cc8ef };
+  let mode = 'idle', bg = 'studio', t0 = performance.now();
+  function setBg(name) {
+    bg = name;
+    scene.background = BGS[name] == null ? null : new THREE.Color(BGS[name]);
+    ground.material.opacity = name === 'green' ? 0.0 : 0.22;
+  }
+
+  function resize() {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+  }
+  new ResizeObserver(resize).observe(stage); resize();
+
+  function frame(t) {
+    ch.pose(t, mode);
+    pivot.rotation.y = mode === 'turn' ? t * 0.7 : 0;
+    renderer.render(scene, camera);
+  }
+
+  function bindSeg(id, attr, fn) {
+    const seg = document.getElementById(id);
+    seg.addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      seg.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+      fn(b.dataset[attr]);
+    });
+  }
+  bindSeg('modeSeg', 'mode', m => { mode = m; t0 = performance.now(); });
+  bindSeg('bgSeg', 'bg', setBg);
+
+  // hooks used by the offline renderer/exporter
+  window.__char = { THREE, scene, camera, renderer, controls, ch, pivot, ground, setBg, resize,
+    setMode: m => { mode = m; }, frame };
+
+  if (!RENDER) {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    (function loop() {
+      controls.update();
+      frame(reduce && mode === 'idle' ? 0 : (performance.now() - t0) / 1000);
+      requestAnimationFrame(loop);
+    })();
+  }
+})();
+</script>
