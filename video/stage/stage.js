@@ -86,6 +86,26 @@
     }
     return st;
   }
+  // ---- hand wave: forearm swings up from the elbow, the hand waves at the wrist (char px) ----
+  const WAVE = {"elbow": [13.8, 689.5], "wrist": [43.7, 405.1], "body": [26, 3, 727, 2194], "forearm": [-63, 402, 159, 343], "hand": [-16, 167, 174, 252]};
+  const WAVES = [{ t0: sc.s1.start + 0.3, dur: 2.9 }, { t0: sc.s6.start + 0.35, dur: 2.7 }];
+  const easeOutCubic = (k) => 1 - Math.pow(1 - k, 3), easeInCubic = (k) => k * k * k;
+  const smooth = (k) => k * k * (3 - 2 * k);
+  function waveAt(t) {
+    for (const w of WAVES) {
+      const u = t - w.t0, D = w.dur;
+      if (u < 0 || u > D) continue;
+      const up = easeOutCubic(seg(u, 0, 0.42)), down = easeInCubic(seg(u, D - 0.42, D));
+      const env = clamp(Math.min((u - 0.3) / 0.25, (D - 0.45 - u) / 0.2));
+      const ph = 2 * Math.PI * 2.3 * (u - 0.3);
+      return {
+        mix: smooth(seg(u, 0, 0.14)) * (1 - smooth(seg(u, D - 0.14, D))),
+        fore: 155 * (1 - up) + 155 * down + 2.5 * (1 - Math.cos(ph)) / 2 * env,   // degrees, + = towards the body
+        hand: 14 * Math.sin(ph) * env,
+      };
+    }
+    return null;
+  }
   const envAt = (t) => TL.env[clamp(Math.round(t * TL.fps), 0, TL.env.length - 1)] || 0;
 
   // ---- helpers for panel in/out ----
@@ -113,6 +133,11 @@
     fade: $('#fade'), blobs: [...document.querySelectorAll('.blob')], sweep: $('#sweep'), arcs: [$('#arc1'), $('#arc2')],
     progress: $('#progress'), pbars: [...document.querySelectorAll('#progress i b')], face: $('#face'),
   };
+  const place = (el, [x, y, w, h]) => Object.assign(el.style, { left: x + 'px', top: y + 'px', width: w + 'px', height: h + 'px' });
+  place($('#poseB'), WAVE.body); place($('#forearm'), WAVE.forearm); place($('#hand'), WAVE.hand);
+  Object.assign(els, { baseA: $('#baseA'), poseB: $('#poseB'), fore: $('#fore'), handrig: $('#handrig') });
+  els.fore.style.transformOrigin = `${WAVE.elbow[0]}px ${WAVE.elbow[1]}px`;
+  els.handrig.style.transformOrigin = `${WAVE.wrist[0]}px ${WAVE.wrist[1]}px`;
   const RIG = window.FACE || null;
   if (RIG) Object.assign(els.face.style, { left: RIG.box[0] + 'px', top: RIG.box[1] + 'px', width: RIG.box[2] + 'px', height: RIG.box[3] + 'px' });
   els.arcs.forEach((p) => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.dataset.len = L; });
@@ -159,6 +184,14 @@
     const s = st.s * (1 + 0.004 * breathe + 0.008 * env);
     const y = st.y + breathe * 3 - env * 7 * (st.s / 0.92);
     els.char.style.transform = `translate(${st.x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(${tilt.toFixed(3)}deg) scale(${s.toFixed(4)})`;
+    // greeting / goodbye wave
+    const wv = waveAt(t);
+    const mix = wv ? wv.mix : 0;
+    els.baseA.style.opacity = (1 - mix).toFixed(3);
+    els.poseB.style.opacity = mix.toFixed(3);
+    els.fore.style.opacity = mix.toFixed(3);
+    els.fore.style.transform = `rotate(${(wv ? wv.fore : 155).toFixed(2)}deg)`;
+    els.handrig.style.transform = `rotate(${(wv ? wv.hand : 0).toFixed(2)}deg)`;
     // ground shadow only when the feet are on screen
     const full = clamp((0.92 - st.s) / 0.5);
     const footX = st.x + CHAR_W * st.s / 2, footY = st.y + 2200 * st.s - 22;

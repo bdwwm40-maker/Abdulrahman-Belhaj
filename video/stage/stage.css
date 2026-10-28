@@ -47,6 +47,12 @@ html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--
 #char { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
 #char img { display: block; width: 756px; height: 2200px; }
 #char #face { position: absolute; width: auto; height: auto; display: none; }
+/* wave pose: crossfade original <-> raised-arm body without the background showing through */
+#bases { position: relative; isolation: isolate; }
+#char .lyr { position: absolute; display: block; }
+#poseB { mix-blend-mode: plus-lighter; opacity: 0; }
+#char .rig { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+#fore { opacity: 0; }
 #ground { position: absolute; left: 0; top: 0; width: 420px; height: 46px; border-radius: 50%;
   background: radial-gradient(ellipse at center, rgba(20,30,45,.30), rgba(20,30,45,0) 70%); }
 #talk { position: absolute; left: 0; top: 0; transform-origin: 0 50%; display: flex; align-items: center; gap: 7px; height: 64px; padding: 0 18px;
