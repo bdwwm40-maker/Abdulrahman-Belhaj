@@ -46,6 +46,7 @@ html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--
 /* character */
 #char { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
 #char img { display: block; width: 756px; height: 2200px; }
+#char #face { position: absolute; width: auto; height: auto; display: none; }
 #ground { position: absolute; left: 0; top: 0; width: 420px; height: 46px; border-radius: 50%;
   background: radial-gradient(ellipse at center, rgba(20,30,45,.30), rgba(20,30,45,0) 70%); }
 #talk { position: absolute; left: 0; top: 0; transform-origin: 0 50%; display: flex; align-items: center; gap: 7px; height: 64px; padding: 0 18px;
@@ -110,8 +111,13 @@ h1.huge { font-size: 112px; line-height: 1.2; white-space: nowrap; }
 .course-lbl { font-size: 32px; font-weight: 800; color: var(--accent); }
 .course-ico { width: 190px; height: 190px; border-radius: 52px; display: flex; align-items: center; justify-content: center; position: relative; }
 .course-ico svg { width: 110px; height: 110px; }
-.course h2 { position: relative; z-index: 1; margin-top: 30px; font-size: 76px; line-height: 1.25; font-weight: 900; }
+.course h2 { position: relative; z-index: 1; margin-top: 30px; font-size: 76px; line-height: 1.25; font-weight: 900; text-wrap: balance; }
 .course p { position: relative; z-index: 1; margin-top: 10px; font-size: 40px; font-weight: 700; color: var(--muted); }
+.chips { display: flex; gap: 18px; direction: rtl; margin-top: 8px; }
+.chip { display: inline-flex; align-items: center; gap: 12px; padding: 8px 26px 10px 12px; border-radius: 40px;
+  font-size: 38px; font-weight: 800; color: #fff; background: var(--chip); box-shadow: 0 10px 24px rgba(0,0,0,.14); direction: ltr; }
+.chip b { width: 50px; height: 50px; border-radius: 14px; background: rgba(255,255,255,.95); color: var(--chip);
+  display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 900; font-family: Arial, sans-serif; }
 .course p .en { direction: ltr; unicode-bidi: isolate; display: inline-block; color: var(--accent); font-weight: 800; letter-spacing: .5px; }
 #progress { position: absolute; right: 110px; top: 806px; width: 940px; display: flex; gap: 12px; direction: rtl; }
 #progress i { flex: 1; height: 12px; border-radius: 6px; background: rgba(3,117,186,.14); overflow: hidden; position: relative; }

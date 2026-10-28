@@ -187,6 +187,8 @@ def main():
     tl = {"fps": FPS, "duration": round(total, 3), "intro": INTRO, "scenes": scenes,
           "captions": captions, "env": [round(float(v), 3) for v in sm]}
     (build / "timeline.js").write_text("window.TL = " + json.dumps(tl, ensure_ascii=False) + ";\n")
+    # face patches belong to the previous timeline; face_frames.py writes a new set
+    (build / "face.js").unlink(missing_ok=True)
     print(f"duration {total:.2f}s, {len(scenes)} scenes, {len(captions)} captions, {n} frames")
 
 
