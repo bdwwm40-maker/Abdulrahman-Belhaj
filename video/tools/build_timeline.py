@@ -138,7 +138,11 @@ def main():
     ap.add_argument("--script", default="script.json")
     ap.add_argument("--audio", default="audio")
     ap.add_argument("--music", default="upbeat", choices=["upbeat", "pad"])
+    ap.add_argument("--gap", type=float, help="same pause after every scene (0 for one continuous take)")
+    ap.add_argument("--sr", type=int, default=SR, help="sample rate of the scene clips")
     a = ap.parse_args()
+    sr = a.sr
+    gap = {"s": a.gap, "c": a.gap} if a.gap is not None else GAP
 
     script = json.loads((ROOT / a.script).read_text())
     timings = json.loads((ROOT / a.audio / "timings.json").read_text())
@@ -151,14 +155,14 @@ def main():
         tm = timings[s["id"]]
         x = read_wav(ROOT / a.audio / f"{s['id']}.wav")
         start = t
-        end = start + len(x) / SR
+        end = start + len(x) / sr
         clips.append((start, x))
         scenes.append({"id": s["id"], "start": round(start, 3), "end": round(end, 3),
                        "title": s["title"], "subtitle": s.get("subtitle", ""),
                        "words": [{"t": round(start + w["t"], 3), "w": w["w"]} for w in tm["words"]]})
         for c in chunks(s["voice"], tm["words"]):
             captions.append({"t": round(start + c["t"], 3), "text": c["text"], "scene": s["id"]})
-        t = end + GAP[s["id"][0]]
+        t = end + gap[s["id"][0]]
     total = scenes[-1]["end"] + OUTRO
     # caption end = next caption start (or its scene end + 0.4s)
     for i, c in enumerate(captions):
@@ -166,19 +170,19 @@ def main():
         nxt = captions[i + 1]["t"] if i + 1 < len(captions) and captions[i + 1]["scene"] == c["scene"] else sc["end"] + 0.25
         c["end"] = round(nxt, 3)
 
-    voice = np.zeros(int(total * SR) + SR)
+    voice = np.zeros(int(total * sr) + sr)
     for start, x in clips:
-        i = int(start * SR)
+        i = int(round(start * sr))
         voice[i:i + len(x)] += x
-    voice = voice[:int(total * SR)]
-    write_wav(build / "voice.wav", voice)
+    voice = voice[:int(total * sr)]
+    write_wav(build / "voice.wav", voice, sr=sr)
     if a.music == "upbeat":
         write_wav(build / "music.wav", upbeat_music(total), sr=MSR)
     else:
         write_wav(build / "music.wav", pad_music(total))
 
     # per-frame loudness envelope (0..1), lightly smoothed, drives the character's "talking" motion
-    hop = SR // FPS
+    hop = sr // FPS
     n = int(total * FPS)
     rms = np.array([np.sqrt(np.mean(voice[i * hop:(i + 1) * hop] ** 2) + 1e-9) for i in range(n)])
     env = np.clip(rms / (np.percentile(rms[rms > 50], 95) + 1e-9), 0, 1)

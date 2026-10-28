@@ -1,0 +1,103 @@
+{
+ "angle": "Libyan dialect, ElevenLabs v4 'excited' narration supplied by the client (one continuous take). voice = caption text as spoken; roman = the same words romanized as pronounced, for forced alignment and lip sync.",
+ "scenes": [
+  {
+   "id": "s1",
+   "voice": "السلام عليكم يا شباب العجيلات! معاكم خوكم من الوكالة الوطنية للجهود التطوعية للشباب، وجايبلكم معاي خبر يفرّح!",
+   "roman": "assalamu alaykum ya shabab l'ujaylat ma'akum khukum min alwakala alwataniyya liljuhud attatawwu'iyya lishshabab wjaybilkum ma'ay khbar yfarrah",
+   "title": "أهلاً يا شباب العجيلات",
+   "subtitle": "الوكالة الوطنية للجهود التطوعية للشباب"
+  },
+  {
+   "id": "s2",
+   "voice": "مشروع الشباب والمستقبل، من مكتب الوكالة في العجيلات، رجعلكم من جديد، وتوّا بدينا في انطلاقته وموسمه الثاني!",
+   "roman": "mashru' ashshabab walmustaqbal min maktab alwakala fi l'ujaylat rja'ilkum min jdid utawwa bdina fi intilagtah umawsimah aththani",
+   "title": "مشروع الشباب والمستقبل",
+   "subtitle": "الوثبة الثانية — مكتب الوكالة بالعجيلات"
+  },
+  {
+   "id": "s3",
+   "voice": "المشروع يقدّم في دورات تدريبية ومهنية لشباب مدينة العجيلات. علاش؟ باش تطوّر من روحك، وتكسب مهارات تنفعك، وتبني مستقبلك بيدك.",
+   "roman": "almashru' yqaddim fi dawrat tadribiyya umihniyya lishabab mdinat l'ujaylat 'alash bash ttawwir min ruhik utiksib maharat tinfa'ik utibni mustaqbalik bidik",
+   "title": "دورات تدريبية ومهنية",
+   "subtitle": "لشباب مدينة العجيلات"
+  },
+  {
+   "id": "s4",
+   "voice": "تبي تعرف شن هي الدورات؟ هيا تبّع معاي!",
+   "roman": "tibbi ta'raf shin hiyya addawrat hayya tabba' ma'ay",
+   "title": "تعرّف على الدورات",
+   "subtitle": "ثماني دورات تنتظرك"
+  },
+  {
+   "id": "c1",
+   "voice": "فن الإلقاء والحديث قدام الناس، باش تتكلم بكل ثقة، ومن غير أي خوف أو ارتباك.",
+   "roman": "fann al'ilqa' walhadith gddam annas bash titkallam bkull thiqa umin ghir ayy khuf aw irtibak",
+   "title": "فن الإلقاء والتحدث أمام الجمهور",
+   "subtitle": "تحدّث بثقة وبلا خوف"
+  },
+  {
+   "id": "c2",
+   "voice": "التصوير الفوتوغرافي، باش تاخذ صور احترافية كيف المصورين الكبار.",
+   "roman": "attaswir alfutughrafi bash takhudh suwar ihtirafiyya kif almusawwirin alkbar",
+   "title": "التصوير الفوتوغرافي",
+   "subtitle": "التقط صوراً كالمحترفين"
+  },
+  {
+   "id": "c3",
+   "voice": "المحادثة، باش تتواصل وتتفاهم مع الناس بكل سهولة.",
+   "roman": "almuhadatha bash tatwasal utatfaham ma' annas bkull suhula",
+   "title": "المحادثة",
+   "subtitle": "The Conversation"
+  },
+  {
+   "id": "c4",
+   "voice": "فن الحوار والمناظرة، باش تناقش بثقة وهدوء، وتقنع اللي قدامك بالحجة والدليل.",
+   "roman": "fann alhiwar walmunadhara bash tnaqish bthiqa uhudu' utiqni' alli gddamak bilhujja waddalil",
+   "title": "فن الحوار والمناظرة",
+   "subtitle": "حاوِر بثقة وهدوء وأقنِع بالحجة"
+  },
+  {
+   "id": "c5",
+   "voice": "التسويق الإلكتروني، باش توصّل فكرتك أو مشروعك لأكبر عدد من الناس.",
+   "roman": "attaswiq al'iliktruni bash twassil fikrtak aw mashru'ak la'akbar 'adad min annas",
+   "title": "التسويق الإلكتروني",
+   "subtitle": "فكرتك تصل إلى الجميع"
+  },
+  {
+   "id": "c6",
+   "voice": "الاجتماعات الفعّالة: وقت أقل، ونتيجة أكبر وأحسن.",
+   "roman": "alijtima'at alfa''ala wagt agall unatija akbar wahsan",
+   "title": "الاجتماعات الفعّالة",
+   "subtitle": "وقت أقل… نتيجة أكبر"
+  },
+  {
+   "id": "c7",
+   "voice": "أساسيات الكمبيوتر، وبتتعلم فيها برامج: وورد، وإكسل، وباوربوينت.",
+   "roman": "asasiyyat alkombyutar ubittit'allam fiha baramij word weksel upawerpoynt",
+   "title": "أساسيات الحاسب الآلي",
+   "subtitle": "Word • Excel • PowerPoint"
+  },
+  {
+   "id": "c8",
+   "voice": "الذكاء الاصطناعي في سوق العمل، باش تكون واتي وجاهز لوظائف المستقبل.",
+   "roman": "adhdhaka' alistina'i fi sug al'amal bash tkun wati ujahiz liwadha'if almustaqbal",
+   "title": "الذكاء الاصطناعي في سوق العمل",
+   "subtitle": "AI — جاهز لوظائف المستقبل"
+  },
+  {
+   "id": "s5",
+   "voice": "شن تراجي؟ هذي فرصة ذهبية ما تتفوّتش! سجّل توّا، وقول لصحابك، وتابعنا باش يوصلك كل جديد، لأن المستقبل يبدا منك إنتَ!",
+   "roman": "shin traji hadhi fursa dhahabiyya ma titfawwatsh sajjil tawwa ugul lisahabik utabi'na bash yuslik kull jdid li'an almustaqbal yibda minnak inta",
+   "title": "لا تفوّت الفرصة",
+   "subtitle": "سجّل الآن وتابعنا"
+  },
+  {
+   "id": "s6",
+   "voice": "نراجوا فيكم يا شباب! الوكالة الوطنية للجهود التطوعية للشباب، مكتب العجيلات: إيثار وعطاء!",
+   "roman": "nraju fikum ya shabab alwakala alwataniyya liljuhud attatawwu'iyya lishshabab maktab l'ujaylat ithar u'ata'",
+   "title": "إيثار وعطاء",
+   "subtitle": "الوكالة الوطنية للجهود التطوعية للشباب — مكتب العجيلات"
+  }
+ ]
+}
