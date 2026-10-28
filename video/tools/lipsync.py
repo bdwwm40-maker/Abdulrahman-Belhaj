@@ -6,7 +6,8 @@ long vowels / shadda / tanween / sun letters / pausal endings are handled. The p
 are romanized and aligned to <audio>/<scene>.wav with torchaudio's MMS forced aligner
 (multilingual wav2vec2, CTC), which gives each phone a start and end time.
 
-Writes <audio>/phones.json: {scene: [{"p": phone, "v": viseme, "t": start, "e": end}, ...]}
+Writes <audio>/phones.json: {scene: [{"p": phone, "v": viseme, "l": letter, "t": start, "e": end}, ...]}
+(l is the written consonant for consonant phones, empty for vowels)
 
 Visemes: A open vowel, I spread vowel, U rounded vowel, M closed lips (b m),
 F lip-to-teeth (f), W rounded glide (w), S teeth (s z t d n l r ...), K back consonant.
@@ -111,9 +112,9 @@ def word_phones(word, first_in_phrase):
         rom, vis = CONS.get(ch, ("", "S"))
         if not rom:
             continue
-        ph.append((rom, vis))
+        ph.append((rom, vis, ch))
         if SHADDA in marks:
-            ph.append((rom, vis))                     # geminate
+            ph.append((rom, vis, ch))                 # geminate
         if vowel:
             ph.append((vowel, VIS_OF_VOWEL[vowel]))
         elif tanw:
@@ -153,7 +154,7 @@ def main():
     out = {}
     for s in script["scenes"]:
         words = [(w, ph) for w, ph in line_phones(s["voice"]) if ph]
-        roman = ["".join(r for r, _ in ph) for _, ph in words]
+        roman = ["".join(r for r, *_ in ph) for _, ph in words]
         x = load(ROOT / a.audio / f"{s['id']}.wav")
         with torch.inference_mode():
             em, _ = model(x[None])
@@ -163,10 +164,11 @@ def main():
         phones = []
         for (w, ph), sp in zip(words, spans):
             k = 0
-            for r, v in ph:
+            for r, v, *letter in ph:
                 chunk = sp[k:k + len(r)]
                 k += len(r)
-                phones.append({"p": r, "v": v, "t": round(chunk[0].start * sec, 3), "e": round(chunk[-1].end * sec, 3)})
+                phones.append({"p": r, "v": v, "l": letter[0] if letter else "",
+                               "t": round(chunk[0].start * sec, 3), "e": round(chunk[-1].end * sec, 3)})
         out[s["id"]] = phones
         score = float(np.mean([t.score for sp in spans for t in sp]))
         print(f"{s['id']}: {len(phones)} phones, {len(words)} words, align score {score:.2f}")

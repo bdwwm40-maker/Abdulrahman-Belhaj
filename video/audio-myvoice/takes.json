@@ -1,0 +1,2352 @@
+{
+ "s1": [
+  {
+   "phrase": "السَّلامُ عَلَيْكُمْ يا شَبابَ العُجَيْلاتْ!",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.08,
+     "similarity": 0.92,
+     "heard": "السلام عليكم يا شداث العجيلات"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.904,
+     "heard": "السلام عليكم يا شباب العجيلات"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.911,
+     "heard": "السلام عليكم يا شباب العجيلات"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.91,
+     "heard": "السلام عليكم يا شباب العجيلات"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.919,
+     "heard": "السلام عليكم يا شباب العجيلات"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.08,
+     "similarity": 0.909,
+     "heard": "السلام عليكم يا شداد العجيلات"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.909,
+     "heard": "السلام عليكم يا شباب العجيلات"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.912,
+     "heard": "السلام عليكم يا شباب العجيلات"
+    }
+   ]
+  },
+  {
+   "phrase": "أَنا صَديقُكُمْ مِنَ الوَكالَةِ الوَطَنِيَّةِ لِلْجُهودِ التَّطَوُّعِيَّةِ لِلشَّبابْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.1111,
+     "similarity": 0.92,
+     "heard": "أنا صديقكم من الوكالة الوطنيات للجهود التطوعيات للشباد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.1111,
+     "similarity": 0.904,
+     "heard": "أنا صديقكم من الوكالة الوطنيات للجهود التطوعيات للشباد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.1111,
+     "similarity": 0.911,
+     "heard": "أنا صديقكم من الوكالة الوطنيات للجهود التطوعيات للشباد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.1111,
+     "similarity": 0.91,
+     "heard": "أنا صديقكم من الوكالة الوطنيات للجهود التطوعيات للشباد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.1333,
+     "similarity": 0.919,
+     "heard": "أنا صديقكم من الوكالة الوطنيات للجهود التطوعيات للشبهات"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.1111,
+     "similarity": 0.909,
+     "heard": "انا صديقكم من الوكالة الوطنيات للجهود التطوعيات للشباد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.1333,
+     "similarity": 0.909,
+     "heard": "أنا صديقكم من الوكالة الوطنيات للجهود التطوعيات للشهاد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.1333,
+     "similarity": 0.912,
+     "heard": "أنا صديقكم من الوكالة الوطنيات للجهود التطوعيات للشبهد"
+    }
+   ]
+  },
+  {
+   "phrase": "وَأَحْمِلُ إِلَيْكُمْ خَبَرًا سارًّا!",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.92,
+     "heard": "وأحمل إليكم خبرًا سارًا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0556,
+     "similarity": 0.904,
+     "heard": "وأحمد إليكم خبرًا سارًا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.2222,
+     "similarity": 0.911,
+     "heard": "وأحمدوا إليكم خبراً سارنا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.1111,
+     "similarity": 0.91,
+     "heard": "وأحملوا إليكم خبرًا سارًا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.2222,
+     "similarity": 0.919,
+     "heard": "وأحمدوا إليكم خبرًا سارنا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0556,
+     "similarity": 0.909,
+     "heard": "وأحمد إليكم خبرًا سارًا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.2222,
+     "similarity": 0.909,
+     "heard": "وأحمدوا إليكم خبراً سارنا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.1111,
+     "similarity": 0.912,
+     "heard": "وأحملوا إليكم خبرًا سارًا"
+    }
+   ]
+  }
+ ],
+ "s2": [
+  {
+   "phrase": "مَشْروعُ الشَّبابِ وَالمُسْتَقْبَلْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.909,
+     "heard": "مشروع الشباب والمستقبل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.931,
+     "heard": "مشروع الشباب والمستقبل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.927,
+     "heard": "مشروع الشباب والمستقبل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.901,
+     "heard": "مشروع الشباب والمستقبل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.906,
+     "heard": "مشروع الشباب والمستقبل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.923,
+     "heard": "مشروع الشباب والمستقبل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.92,
+     "heard": "مشروع الشباب والمستقبل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.895,
+     "heard": "مشروع الشباب والمستقبل"
+    }
+   ]
+  },
+  {
+   "phrase": "مِنْ مَكْتَبِ الوَكالَةِ بِالعُجَيْلاتْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0455,
+     "similarity": 0.909,
+     "heard": "من نكتب الوكالة بالعجيلات؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0455,
+     "similarity": 0.931,
+     "heard": "من نكتب الوكالة بالعجيلات."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0455,
+     "similarity": 0.927,
+     "heard": "من نكتب الوكالة بالعجيلات"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0455,
+     "similarity": 0.901,
+     "heard": "من نكتب الوكالة بالعجيلات"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0455,
+     "similarity": 0.906,
+     "heard": "من نكتب الوكالة بالعجيلات؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0455,
+     "similarity": 0.923,
+     "heard": "من نكتب الوكالة بالعجيلات؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0455,
+     "similarity": 0.92,
+     "heard": "من نكتب الوكالة بالعجيلات؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0455,
+     "similarity": 0.895,
+     "heard": "من نكتب الوكالة بالعجيلات؟"
+    }
+   ]
+  },
+  {
+   "phrase": "يَعودُ إِلَيْكُمْ مِنْ جَديدْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.1333,
+     "similarity": 0.909,
+     "heard": "يعودوا إليكم من جديد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.931,
+     "heard": "يعود إليكم من جديد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.1333,
+     "similarity": 0.927,
+     "heard": "يعودوا إليكم من جديد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.1333,
+     "similarity": 0.901,
+     "heard": "يعودوا إليكم من جديد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.1333,
+     "similarity": 0.906,
+     "heard": "يعودوا إليكم من جديد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.923,
+     "heard": "يعود إليكم من جديد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.1333,
+     "similarity": 0.92,
+     "heard": "يعودوا إليكم من جديد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.1333,
+     "similarity": 0.895,
+     "heard": "يعودوا إليكم من جديد"
+    }
+   ]
+  },
+  {
+   "phrase": "وَهُوَ الآنَ في وَثْبَتِهِ الثّانِيَةْ!",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.909,
+     "heard": "وهو الآن في وثبته الثانية"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.931,
+     "heard": "وهو الآن في وثبته الثانية"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.927,
+     "heard": "وهو الآن في وثبته الثانية"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.901,
+     "heard": "وهو الآن في وثبته الثانية"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0476,
+     "similarity": 0.906,
+     "heard": "وهو الآن في وثقته الثانية"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.923,
+     "heard": "وهو الآن في وثبته الثانية"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.92,
+     "heard": "وهو الآن في وثبته الثانية"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.895,
+     "heard": "وهو الآن في وثبته الثانية"
+    }
+   ]
+  }
+ ],
+ "s3": [
+  {
+   "phrase": "يُقَدِّمُ المَشْروعُ دَوْراتٍ تَدْريبِيَّةً وَمِهْنِيَّةً لِشَبابِ مَدينَةِ العُجَيْلاتْ.",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0851,
+     "similarity": 0.921,
+     "heard": "يقدم المشروع دورات تدريبية ومهنية لشداد مدينة الأوجيلات."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.1064,
+     "similarity": 0.928,
+     "heard": "يقدم المشروع دورات تجريبية ومهنية للشداد مدينة لعجيلات."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.1277,
+     "similarity": 0.928,
+     "heard": "بيقدم المشروع دورات تدريبية ومهنية لشداد مدينة الأوجيلاة."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0851,
+     "similarity": 0.923,
+     "heard": "يقدم المشروع دورات تدريبية ومهنية لشداد مدينة لأجيلات."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.1064,
+     "similarity": 0.921,
+     "heard": "يقدم المشروع دورات تدريبية ومهنية لشداد مدينة الأوجيلاد."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.1064,
+     "similarity": 0.928,
+     "heard": "يقدم المشروع دورات تجريبية ومهنية لشداد مدينة لعوجيلات."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.1064,
+     "similarity": 0.925,
+     "heard": "يقدم المشروع دورات تدريبية ومهنية لشداد مدينة الأوجيلاد."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.1064,
+     "similarity": 0.919,
+     "heard": "يقدم المشروع دورات تدريبية ومهنية لشداد مدينة لاو جيلات."
+    }
+   ]
+  },
+  {
+   "phrase": "لِماذا؟",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.921,
+     "heard": "لماذا؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.928,
+     "heard": "لماذا؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.928,
+     "heard": "لماذا؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.923,
+     "heard": "لماذا؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.921,
+     "heard": "لماذا؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.928,
+     "heard": "لماذا؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.925,
+     "heard": "لماذا؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.919,
+     "heard": "لماذا؟"
+    }
+   ]
+  },
+  {
+   "phrase": "لِتُطَوِّرَ نَفْسَكْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.1111,
+     "similarity": 0.921,
+     "heard": "لتطوّر أنفسك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.928,
+     "heard": "لتطور نفسك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.2222,
+     "similarity": 0.928,
+     "heard": "لتطوّل أنفسك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.1111,
+     "similarity": 0.923,
+     "heard": "لتطور أنفسك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.921,
+     "heard": "لتطوّر نفسك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.928,
+     "heard": "لتطور نفسك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.1111,
+     "similarity": 0.925,
+     "heard": "لتطوّر أنفسك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.1111,
+     "similarity": 0.919,
+     "heard": "لتطور أنفسك"
+    }
+   ]
+  },
+  {
+   "phrase": "وَتَكْتَسِبَ مَهاراتٍ تَنْفَعُكْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.921,
+     "heard": "وتكتسب مهارات تنفعك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.928,
+     "heard": "وتكتسب مهارات تنفعك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.928,
+     "heard": "وتكتسب مهارات تنفعك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.923,
+     "heard": "وتكتسب مهارات تنفعك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.921,
+     "heard": "وتكتسب مهارات تنفعك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.928,
+     "heard": "وتكتسب مهارات تنفعك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.925,
+     "heard": "وتكتسب مهارات تنفعك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.919,
+     "heard": "وتكتسب مهارات تنفعك"
+    }
+   ]
+  },
+  {
+   "phrase": "وَتَبْنِيَ مُسْتَقْبَلَكَ بِيَدِكْ.",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0625,
+     "similarity": 0.921,
+     "heard": "وتبني مستقبلك بيادك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.125,
+     "similarity": 0.928,
+     "heard": "وتدنه مستقبلك بيدك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0625,
+     "similarity": 0.928,
+     "heard": "وتبنية مستقبلك بيدك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.125,
+     "similarity": 0.923,
+     "heard": "وتبنه مستقبلك بيادك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0625,
+     "similarity": 0.921,
+     "heard": "وتبني مستقبلك بيادك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.125,
+     "similarity": 0.928,
+     "heard": "وتنهي مستقبلك بيدك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.125,
+     "similarity": 0.925,
+     "heard": "وتبنها مستقبلك بيدك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.125,
+     "similarity": 0.919,
+     "heard": "وتبنه مستقبلك بيادك"
+    }
+   ]
+  }
+ ],
+ "s4": [
+  {
+   "phrase": "هَلْ تُريدُ أَنْ تَتَعَرَّفَ عَلى الدَّوْراتِ؟",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.087,
+     "similarity": 0.879,
+     "heard": "هل تريد أن تتعرف على دورات؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.087,
+     "similarity": 0.88,
+     "heard": "هل تريد أن تتعرف على دورات؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.883,
+     "heard": "هل تريد أن تتعرف على الدورات؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.876,
+     "heard": "هل تريد أن تتعرف على الدورات؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.877,
+     "heard": "هل تريد أن تتعرف على الدورات؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.087,
+     "similarity": 0.884,
+     "heard": "هل تريد أن تتعرف على دورات؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.881,
+     "heard": "هل تريد أن تتعرف على الدورات؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.879,
+     "heard": "هل تريد أن تتعرف على الدورات؟"
+    }
+   ]
+  },
+  {
+   "phrase": "هَيّا بِنا،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.879,
+     "heard": "هيا بنا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.88,
+     "heard": "هيا بنا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.883,
+     "heard": "هيا بنا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.876,
+     "heard": "هيا بنا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.877,
+     "heard": "هيا بنا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.884,
+     "heard": "هيا بنا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.881,
+     "heard": "هيا بنا"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.879,
+     "heard": "هيا بنا"
+    }
+   ]
+  },
+  {
+   "phrase": "تابِعْ مَعِي!",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.879,
+     "heard": "تابع معي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.88,
+     "heard": "تابع معي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.4286,
+     "similarity": 0.883,
+     "heard": "تابعنا إي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.4286,
+     "similarity": 0.876,
+     "heard": "تابع نائي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.877,
+     "heard": "تابع معي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.4286,
+     "similarity": 0.884,
+     "heard": "تابعنا إي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.4286,
+     "similarity": 0.881,
+     "heard": "تابعنا إي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.4286,
+     "similarity": 0.879,
+     "heard": "تابعنا إي"
+    }
+   ]
+  }
+ ],
+ "c1": [
+  {
+   "phrase": "فَنُّ الإِلْقاءِ وَالتَّحَدُّثِ أَمامَ الجُمْهورْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.92,
+     "heard": "فن الإلقاء والتحدث أمام الجمهور"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.037,
+     "similarity": 0.912,
+     "heard": "فن الإلقاء والتحدث أمام الجنهور"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.037,
+     "similarity": 0.915,
+     "heard": "فنو الإلقاء والتحدث أمام الجمهور"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.905,
+     "heard": "فن الإلقاء والتحدث أمام الجمهور"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.917,
+     "heard": "فن الإلقاء والتحدث أمام الجمهور"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.037,
+     "similarity": 0.911,
+     "heard": "فن الإلقاء والتحدث أمام الجنهور"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.1111,
+     "similarity": 0.916,
+     "heard": "فنلقاء والتحدث أمام الجمهور"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.902,
+     "heard": "فن الإلقاء والتحدث أمام الجمهور"
+    }
+   ]
+  },
+  {
+   "phrase": "لِتَتَحَدَّثَ بِثِقَةٍ وَدونَ خَوْفْ.",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0588,
+     "similarity": 0.92,
+     "heard": "لتتحدث بصقة ودون خوف"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.912,
+     "heard": "لتتحدث بثقة ودون خوف."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.915,
+     "heard": "لتتحدث بثقة ودون خوف."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.905,
+     "heard": "لتتحدث بثقة ودون خوف."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0588,
+     "similarity": 0.917,
+     "heard": "لتتحدث بصقة ودون خوف"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.911,
+     "heard": "لتتحدث بثقة ودون خوف."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.916,
+     "heard": "لتتحدث بثقة ودون خوف."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.902,
+     "heard": "لتتحدث بثقة ودون خوف."
+    }
+   ]
+  }
+ ],
+ "c2": [
+  {
+   "phrase": "التَّصْويرُ الفوتوغرافِيّْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.906,
+     "heard": "التصوير الفوتوغرافي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.911,
+     "heard": "التصوير الفوتوغرافي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.894,
+     "heard": "التصوير الفوتوغرافي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.893,
+     "heard": "التصوير الفوتوغرافي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.906,
+     "heard": "التصوير الفوتوغرافي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.911,
+     "heard": "التصوير الفوتوغرافي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.896,
+     "heard": "التصوير الفوتوغرافي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.892,
+     "heard": "التصوير الفوتوغرافي"
+    }
+   ]
+  },
+  {
+   "phrase": "لِتَلْتَقِطَ صُوَرًا كَالمُحْتَرِفينْ.",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.1,
+     "similarity": 0.906,
+     "heard": "لتلتقطه صوراً كالمخترفين."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.15,
+     "similarity": 0.911,
+     "heard": "لتلتقطه صوراً كالمختلفين."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.15,
+     "similarity": 0.894,
+     "heard": "لتلتقطوا صوراً كالمخترفين."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.05,
+     "similarity": 0.893,
+     "heard": "لتلتقط صوراً كالمخترفين."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.05,
+     "similarity": 0.906,
+     "heard": "لتلتقطه صوراً كالمحترفين"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.05,
+     "similarity": 0.911,
+     "heard": "لتلتقطه صوراً كالمحترفين."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.15,
+     "similarity": 0.896,
+     "heard": "لتلتقطوا صوراً كالمخترفين."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.1,
+     "similarity": 0.892,
+     "heard": "لتلتقطوا صوراً كالمحترفين."
+    }
+   ]
+  }
+ ],
+ "c3": [
+  {
+   "phrase": "المُحادَثَةْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.924,
+     "heard": "المحادثة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.25,
+     "similarity": 0.914,
+     "heard": "المخادفة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.25,
+     "similarity": 0.929,
+     "heard": "المخادفة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.919,
+     "heard": "المحادثة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.924,
+     "heard": "المحادثة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.916,
+     "heard": "المحادثة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.925,
+     "heard": "المحادثة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.919,
+     "heard": "المحادثة"
+    }
+   ]
+  },
+  {
+   "phrase": "لِتَتَواصَلَ وَتَتَفاهَمَ بِكُلِّ سُهولَةْ.",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0909,
+     "similarity": 0.924,
+     "heard": "لتتواصل وتتفاهم بكل سهولتك."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0909,
+     "similarity": 0.914,
+     "heard": "لتتواصل وتتفاهم بكل سهولتك."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.929,
+     "heard": "لتتواصل وتتفاهم بكل سهولة."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.919,
+     "heard": "لتتواصل وتتفاهم بكل سهولة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0909,
+     "similarity": 0.924,
+     "heard": "لتتواصل وتتفاهم بكل سهولتك."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0909,
+     "similarity": 0.916,
+     "heard": "لتتواصل وتتفاهم بكل سهولتك."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.925,
+     "heard": "لتتواصل وتتفاهم بكل سهولة."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.919,
+     "heard": "لتتواصل وتتفاهم بكل سهولة"
+    }
+   ]
+  }
+ ],
+ "c4": [
+  {
+   "phrase": "فَنُّ الحِوارِ وَالمُناظَرَةْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.1765,
+     "similarity": 0.923,
+     "heard": "فأن الخوارج والمناظرة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0588,
+     "similarity": 0.922,
+     "heard": "فن الحواري والمناظرة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.2353,
+     "similarity": 0.912,
+     "heard": "فان الشوارع والموناظرة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.2353,
+     "similarity": 0.924,
+     "heard": "فنلخي واري والمناظرة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.1765,
+     "similarity": 0.909,
+     "heard": "فن الخوارج والمناثرة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.1765,
+     "similarity": 0.911,
+     "heard": "فأن الخواري والمناظرة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.1765,
+     "similarity": 0.904,
+     "heard": "فان الشوارع والمناظرة"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.2353,
+     "similarity": 0.904,
+     "heard": "فنرحي واري والمناظرة"
+    }
+   ]
+  },
+  {
+   "phrase": "لِتُحاوِرَ بِثِقَةٍ وَهُدوءٍ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0667,
+     "similarity": 0.923,
+     "heard": "لتحاول بثقة و هدوء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.922,
+     "heard": "لتحاور بثقة و هدوء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0667,
+     "similarity": 0.912,
+     "heard": "لتحاول بثقة وهدوء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0667,
+     "similarity": 0.924,
+     "heard": "لتحاول بثقة و هدوء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.909,
+     "heard": "لتحاور بثقة و هدوء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.911,
+     "heard": "لتحاور بثقة و هدوء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0667,
+     "similarity": 0.904,
+     "heard": "لتحاول بثقة وهدوء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0667,
+     "similarity": 0.904,
+     "heard": "لتحاول بثقة و هدوء"
+    }
+   ]
+  },
+  {
+   "phrase": "وَتُقْنِعَ بِالحُجَّةِ وَالدَّليلْ.",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0556,
+     "similarity": 0.923,
+     "heard": "وتقنع بالفجة والدليل."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0556,
+     "similarity": 0.922,
+     "heard": "وتُقنع بالفجة والدليل."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0556,
+     "similarity": 0.912,
+     "heard": "وتقنع بالخجة والدليل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0556,
+     "similarity": 0.924,
+     "heard": "وتقنع بالفجة والدليل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0556,
+     "similarity": 0.909,
+     "heard": "وتُقنع بالفجة والدليل."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0556,
+     "similarity": 0.911,
+     "heard": "وتُقنع بالخجة والدليل."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0556,
+     "similarity": 0.904,
+     "heard": "وتقنع بالخجة والدليل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0556,
+     "similarity": 0.904,
+     "heard": "وتقنع بالفجة والدليل"
+    }
+   ]
+  }
+ ],
+ "c5": [
+  {
+   "phrase": "التَّسْويقُ الإِلِكْترونِيّْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.93,
+     "heard": "التسويق الإلكتروني"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.925,
+     "heard": "التسويق الإلكتروني"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.922,
+     "heard": "التسويق الإلكتروني"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.927,
+     "heard": "التسويق الإلكتروني"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.929,
+     "heard": "التسويق الإلكتروني"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.926,
+     "heard": "التسويق الإلكتروني"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.923,
+     "heard": "التسويق الإلكتروني"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.927,
+     "heard": "التسويق الإلكتروني"
+    }
+   ]
+  },
+  {
+   "phrase": "لِتَصِلَ فِكْرَتُكَ إِلى أَكْبَرِ عَدَدٍ مِنَ النّاسْ.",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.93,
+     "heard": "لتصل فكرتك إلى أكبر عدد من الناس"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.925,
+     "heard": "لتصل فكرتك إلى أكبر عدد من الناس"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.922,
+     "heard": "لتصل فكرتك إلى أكبر عدد من الناس"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.927,
+     "heard": "لتصل فكرتك إلى أكبر عدد من الناس"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.929,
+     "heard": "لتصل فكرتك إلى أكبر عدد من الناس"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.926,
+     "heard": "لتصل فكرتك إلى أكبر عدد من الناس"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.923,
+     "heard": "لتصل فكرتك إلى أكبر عدد من الناس."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.927,
+     "heard": "لتصل فكرتك إلى أكبر عدد من الناس"
+    }
+   ]
+  }
+ ],
+ "c6": [
+  {
+   "phrase": "الاجْتِماعاتُ الفَعّالَةْ: وَقْتٌ أَقَلّْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.087,
+     "similarity": 0.914,
+     "heard": "الاجتماعات الفعلت  وقت أقل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.907,
+     "heard": "الاجتماعات الفعالة  وقت أقل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.913,
+     "heard": "الاجتماعات الفعالة  وقت أقل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.918,
+     "heard": "الاجتماعات الفعالة وقت أقل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.087,
+     "similarity": 0.913,
+     "heard": "الاجتماعات الفعلت  وقت أقل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.902,
+     "heard": "الاجتماعات الفعالة  وقت أقل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.912,
+     "heard": "الاجتماعات الفعالة  وقت أقل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.917,
+     "heard": "الاجتماعات الفعالة وقت أقل"
+    }
+   ]
+  },
+  {
+   "phrase": "وَنَتائِجُ أَكْبَرْ.",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.914,
+     "heard": "ونتائج أكبر"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.907,
+     "heard": "ونتائج أكبر"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.913,
+     "heard": "ونتائج أكبر"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.918,
+     "heard": "ونتائج أكبر"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.913,
+     "heard": "ونتائج أكبر"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.902,
+     "heard": "ونتائج أكبر"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.912,
+     "heard": "ونتائج أكبر"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.917,
+     "heard": "ونتائج أكبر"
+    }
+   ]
+  }
+ ],
+ "c7": [
+  {
+   "phrase": "أَساسِيّاتُ الحاسِبِ الآلِيّْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.917,
+     "heard": "أساسيات الحاسب الآلي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.918,
+     "heard": "أساسيات الحاسب الآلي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.91,
+     "heard": "أساسيات الحاسب الآلي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.909,
+     "heard": "أساسيات الحاسب الآلي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.911,
+     "heard": "أساسيات الحاسب الآلي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.923,
+     "heard": "أساسيات الحاسب الآلي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.905,
+     "heard": "أساسيات الحاسب الآلي"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0556,
+     "similarity": 0.901,
+     "heard": "أساسيات الحاسب العلي"
+    }
+   ]
+  },
+  {
+   "phrase": "وَسَتَتَعَلَّمُ فيها بَرامِجَ: وُورْد،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.05,
+     "similarity": 0.917,
+     "heard": "وستتعلم فيها برمج وورد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.05,
+     "similarity": 0.918,
+     "heard": "وستتعلم فيها برمج وورد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.91,
+     "heard": "وستتعلم فيها برامج وورد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.909,
+     "heard": "وستتعلم فيها برامج وورد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.05,
+     "similarity": 0.911,
+     "heard": "وستتعلم فيها برمج وورد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.05,
+     "similarity": 0.923,
+     "heard": "وستتعلم فيها برمج وورد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.905,
+     "heard": "وستتعلم فيها برامج وورد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.901,
+     "heard": "وستتعلم فيها برامج وورد"
+    }
+   ]
+  },
+  {
+   "phrase": "وَإِكْسِل،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.8,
+     "similarity": 0.917,
+     "heard": "و-X."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.918,
+     "heard": "و إكسل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.91,
+     "heard": "و إكسل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.4,
+     "similarity": 0.909,
+     "heard": "وكسر"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.911,
+     "heard": "و إكسل."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.923,
+     "heard": "و إكسل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.905,
+     "heard": "و إكسل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.901,
+     "heard": "و إكسل"
+    }
+   ]
+  },
+  {
+   "phrase": "وَبَاوَر بُوينْت.",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.917,
+     "heard": "وباوربوينت"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.918,
+     "heard": "وباوربوينت"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.1,
+     "similarity": 0.91,
+     "heard": "وباور بوينغت"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.1,
+     "similarity": 0.909,
+     "heard": "وبعور بوينت"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.911,
+     "heard": "وباوربوينت"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.923,
+     "heard": "وباوربوينت"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.1,
+     "similarity": 0.905,
+     "heard": "وباور بوينغت"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.901,
+     "heard": "وباوربوينت"
+    }
+   ]
+  }
+ ],
+ "c8": [
+  {
+   "phrase": "الذَّكاءُ الاصْطِناعِيُّ في سوقِ العَمَلْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.898,
+     "heard": "الذكاء الاصطناعي في سوق العمل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.897,
+     "heard": "الذكاء الاصطناعي في سوق العمل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.04,
+     "similarity": 0.898,
+     "heard": "الذكاء الاصطناعي في سوق الأمل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.866,
+     "heard": "الذكاء الاصطناعي في سوق العمل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.899,
+     "heard": "الذكاء الاصطناعي في سوق العمل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.898,
+     "heard": "الذكاء الاصطناعي في سوق العمل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.04,
+     "similarity": 0.898,
+     "heard": "الذكاء الاصطناعي في سوق الأمل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.865,
+     "heard": "الذكاء الاصطناعي في سوق العمل"
+    }
+   ]
+  },
+  {
+   "phrase": "لِتَكونَ جاهِزًا لِوَظائِفِ المُسْتَقْبَلْ!",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.125,
+     "similarity": 0.898,
+     "heard": "لتكون جاهزاً لوفاء في المستقبل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.897,
+     "heard": "لتكون جاهزاً لوظائف المستقبل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.125,
+     "similarity": 0.898,
+     "heard": "لتكون جاهزاً لوفاء في المستقبل."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0833,
+     "similarity": 0.866,
+     "heard": "لتكون جاهزا لوظاء في المستقبل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.1667,
+     "similarity": 0.899,
+     "heard": "لتكون جاهزاً لوفاء في المستقدل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.125,
+     "similarity": 0.898,
+     "heard": "لتكون جاهزا لوفاء في المستقبل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.125,
+     "similarity": 0.898,
+     "heard": "لتكون جاهزاً لوفاء في المستقبل"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.125,
+     "similarity": 0.865,
+     "heard": "لتكون جاهزا لوفاء في المستقبل"
+    }
+   ]
+  }
+ ],
+ "s5": [
+  {
+   "phrase": "ماذا تَنْتَظِرْ؟",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.2222,
+     "similarity": 0.919,
+     "heard": "ماذا تنقبر؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.3333,
+     "similarity": 0.915,
+     "heard": "ماهذا تنطبر؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.6667,
+     "similarity": 0.906,
+     "heard": "ماهذا التنقبير"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.2222,
+     "similarity": 0.907,
+     "heard": "ماذا تنطبر؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.2222,
+     "similarity": 0.915,
+     "heard": "ماذا تنقصر؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.2222,
+     "similarity": 0.911,
+     "heard": "ماذا تنطفر؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.2222,
+     "similarity": 0.904,
+     "heard": "ماذا تنكذر"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.905,
+     "heard": "ماذا تنتظر؟"
+    }
+   ]
+  },
+  {
+   "phrase": "إِنَّها فُرْصَةٌ ذَهَبِيَّةٌ لا تُعَوَّضْ!",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.919,
+     "heard": "إنها فرصة ذهبية لا تعوض"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.915,
+     "heard": "إنها فرصة ذهبية لا تعوض."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.906,
+     "heard": "إنها فرصة ذهبية لا تعوض"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.907,
+     "heard": "إنها فرصة ذهبية لا تعوض."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.915,
+     "heard": "إنها فرصة ذهبية لا تعوض"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.911,
+     "heard": "إنها فرصة ذهبية لا تعوض"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.904,
+     "heard": "إنها فرصة ذهبية لا تعوض"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.905,
+     "heard": "إنها فرصة ذهبية لا تعوض."
+    }
+   ]
+  },
+  {
+   "phrase": "سَجِّلِ الآنْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.4286,
+     "similarity": 0.919,
+     "heard": "سأجلد أن"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.915,
+     "heard": "سجل الآن"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.906,
+     "heard": "سجل الآن"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.907,
+     "heard": "سجل الآن"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.4286,
+     "similarity": 0.915,
+     "heard": "سأجلد أن"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.911,
+     "heard": "سجل الآن"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.904,
+     "heard": "سجل الآن"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.5714,
+     "similarity": 0.905,
+     "heard": "ساكي للآن"
+    }
+   ]
+  },
+  {
+   "phrase": "وَادْعُ أَصْدِقاءَكْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.2727,
+     "similarity": 0.919,
+     "heard": "ودعو أصدقائك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.2727,
+     "similarity": 0.915,
+     "heard": "ودعو أصدقائك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.2727,
+     "similarity": 0.906,
+     "heard": "وادعوا أصدقائك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.2727,
+     "similarity": 0.907,
+     "heard": "ودعو أصدقائك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.2727,
+     "similarity": 0.915,
+     "heard": "ودعو أصدقائك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.2727,
+     "similarity": 0.911,
+     "heard": "ودعو أصدقائك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.2727,
+     "similarity": 0.904,
+     "heard": "ودعو أصدقائك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.1818,
+     "similarity": 0.905,
+     "heard": "وادعو أصدقائك"
+    }
+   ]
+  },
+  {
+   "phrase": "وَتابِعْنا لِيَصِلَكَ كُلُّ جَديدْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0556,
+     "similarity": 0.919,
+     "heard": "وتادعنا ليصلك كل جديد؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.1111,
+     "similarity": 0.915,
+     "heard": "وتدعنا ليصلك كل جديد؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.1111,
+     "similarity": 0.906,
+     "heard": "وتدعنا ليصلك كل جديد؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0556,
+     "similarity": 0.907,
+     "heard": "وتادعنا ليصلك كل جديد؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.1111,
+     "similarity": 0.915,
+     "heard": "وتدعنا ليصلك كل جديد؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.1111,
+     "similarity": 0.911,
+     "heard": "وتدعنا ليصلك كل جديد؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0556,
+     "similarity": 0.904,
+     "heard": "وتادعنا ليصلك كل جديد؟"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.1111,
+     "similarity": 0.905,
+     "heard": "وتدعنا ليصلك كل جديد؟"
+    }
+   ]
+  },
+  {
+   "phrase": "فَالمُسْتَقْبَلُ يَبْدَأُ مِنْكْ!",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.919,
+     "heard": "فالمستقبل يبدأ منك."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.915,
+     "heard": "فالمستقبل يبدأ منك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.906,
+     "heard": "فالمستقبل يبدأ منك."
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.907,
+     "heard": "فالمستقبل يبدأ منك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.915,
+     "heard": "فالمستقبل يبدأ منك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.911,
+     "heard": "فالمستقبل يبدأ منك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0,
+     "similarity": 0.904,
+     "heard": "فالمستقبل يبدأ منك"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.905,
+     "heard": "فالمستقبل يبدأ منك"
+    }
+   ]
+  }
+ ],
+ "s6": [
+  {
+   "phrase": "نَنْتَظِرُكُمْ يا شَبابْ!",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0,
+     "similarity": 0.906,
+     "heard": "ننتظركم يا شباب"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0,
+     "similarity": 0.932,
+     "heard": "ننتظركم يا شباب"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0,
+     "similarity": 0.914,
+     "heard": "ننتظركم يا شباب"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0,
+     "similarity": 0.911,
+     "heard": "ننتظركم يا شباب"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0,
+     "similarity": 0.899,
+     "heard": "ننتظركم يا شباب"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0,
+     "similarity": 0.927,
+     "heard": "ننتظركم يا شباب"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0769,
+     "similarity": 0.906,
+     "heard": "ننتفركم يا شباب"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0,
+     "similarity": 0.904,
+     "heard": "ننتظركم يا شباب"
+    }
+   ]
+  },
+  {
+   "phrase": "الوَكالَةُ الوَطَنِيَّةُ لِلْجُهودِ التَّطَوُّعِيَّةِ لِلشَّبابْ،",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0882,
+     "similarity": 0.906,
+     "heard": "الوكالة الوطنية للجهود التطوعيات للشباد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0882,
+     "similarity": 0.932,
+     "heard": "الوكالة الوطنية للجهود التطوعيات للشباد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.1471,
+     "similarity": 0.914,
+     "heard": "الوكالة الوطنيات للجهود التطوعيات للشباد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0882,
+     "similarity": 0.911,
+     "heard": "الوكالة الوطنية للجهود التطوعيات للشباد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0882,
+     "similarity": 0.899,
+     "heard": "الوكالة الوطنية للجهود التطوعيات للشباد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0882,
+     "similarity": 0.927,
+     "heard": "الوكالة الوطنية للجهود التطوعيات للشباد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.1471,
+     "similarity": 0.906,
+     "heard": "الوكالة الوطنيات للجهود التطوعيات للشباد"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0882,
+     "similarity": 0.904,
+     "heard": "الوكالة الوطنية للجهود التطوعيات للشباد"
+    }
+   ]
+  },
+  {
+   "phrase": "مَكْتَبُ العُجَيْلاتْ: إِيثارٌ وَعَطاءْ!",
+   "chosen": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+   "takes": [
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1",
+     "error": 0.0455,
+     "similarity": 0.906,
+     "heard": "مكتب العجيلات اثار وعطاء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2",
+     "error": 0.0909,
+     "similarity": 0.932,
+     "heard": "مكتب لعجيلات إثار وعطاء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3",
+     "error": 0.0909,
+     "similarity": 0.914,
+     "heard": "مكتب لعجيلات إثار وعطاء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4",
+     "error": 0.0909,
+     "similarity": 0.911,
+     "heard": "مكتب لعجيلات إثار وعطاء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take1f",
+     "error": 0.0455,
+     "similarity": 0.899,
+     "heard": "مكتب العجيلات إثار وعطاء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take2f",
+     "error": 0.0909,
+     "similarity": 0.927,
+     "heard": "مكتب لعجيلات إثار وعطاء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take3f",
+     "error": 0.0909,
+     "similarity": 0.906,
+     "heard": "مكتب لعجيلات إثار وعطاء"
+    },
+    {
+     "take": "/tmp/claude-0/-home-user-Abdulrahman-Belhaj/b0b57069-4f4c-55ca-8d46-0c2ef4df41b9/scratchpad/vc/take4f",
+     "error": 0.0909,
+     "similarity": 0.904,
+     "heard": "مكتب لعجيلات إثار وعطاء"
+    }
+   ]
+  }
+ ]
+}

@@ -11,6 +11,7 @@ the takes are time-aligned, so the chosen phrases are spliced in the pauses betw
 
   python3 my_voice.py convert SEEDVC_DIR REF.wav --src audio-fusha --out build/vc/take1 --seed 1
   python3 my_voice.py pick REF.wav --takes build/vc/take* --src audio-fusha --out audio-myvoice
+  python3 my_voice.py fix --out audio-myvoice          # restore ب ح ظ from the source narration
 
 SEEDVC_DIR: code of the Hugging Face space "Plachta/Seed-VC" (weights download on first run).
 """
@@ -236,6 +237,57 @@ def load_np(y, sr):
     return librosa.resample(y.astype(np.float32), orig_sr=sr, target_sr=16000)
 
 
+def fix(a):
+    """Restore the articulation of a few consonants the conversion blurs (default ب ح ظ).
+
+    Stops and fricatives carry little of a speaker's timbre, so for those letters the
+    converted clip takes the short consonant stretch from the source narration (same
+    timeline), level-matched, with 8 ms crossfades. Whether a restored phrase is better is
+left to `pick`: run fix on copies of the takes and pick from originals and fixed copies together.
+    The converted clip before fixing is kept as <scene>.vc.wav.
+    """
+    import librosa
+    SR = 24000
+    phones = json.loads((ROOT / a.src / "phones.json").read_text())
+    out = ROOT / a.out
+    fade = int(0.008 * SR)
+    voiced = set("بظعقدذزضجغ")
+    for sid, ph in phones.items():
+        base = out / f"{sid}.vc.wav"
+        if not base.exists():
+            shutil.copy(out / f"{sid}.wav", base)
+        y = load(base, SR)
+        src = load(ROOT / a.src / f"{sid}.wav", SR)[:len(y)]
+        f0 = lambda x: np.nanmedian(librosa.pyin(x, fmin=65, fmax=300, sr=SR)[0])
+        shift = 12 * np.log2(f0(y) / f0(src)) if a.shift else 0.0
+        src_v = librosa.effects.pitch_shift(src, sr=SR, n_steps=float(shift)) if a.shift else src
+        n = 0
+        for i, p in enumerate(ph):
+            if not p.get("l") or p["l"] not in a.letters:      # vowels carry no letter
+                continue
+            prev_e = ph[i - 1]["e"] if i else p["t"] - 0.06
+            next_t = ph[i + 1]["t"] if i + 1 < len(ph) else p["e"] + 0.08
+            w0 = int(max(prev_e + (p["t"] - prev_e) / 2, p["t"] - 0.05) * SR)
+            w1 = int(min(p["e"] + (next_t - p["e"]) / 2, p["e"] + 0.08) * SR)
+            if w1 - w0 < 2 * fade:
+                continue
+            seg = (src_v if a.shift and p["l"] in voiced else src)[w0:w1].copy()
+            g = np.sqrt(np.mean(y[w0:w1] ** 2) + 1e-9) / (np.sqrt(np.mean(seg ** 2)) + 1e-9)
+            seg *= float(np.clip(g, 0.5, 2.0))
+            w = np.ones(w1 - w0, np.float32)
+            w[:fade] = np.linspace(0, 1, fade)
+            w[-fade:] = np.linspace(1, 0, fade)
+            y[w0:w1] = y[w0:w1] * (1 - w) + seg * w
+            n += 1
+        with wave.open(str(out / f"{sid}.wav"), "wb") as f:
+            f.setnchannels(1)
+            f.setsampwidth(2)
+            f.setframerate(SR)
+            f.writeframes(np.clip(y * 32767, -32768, 32767).astype(np.int16).tobytes())
+        print(f"{sid}: {n} consonants restored (voiced ones shifted {shift:+.1f} st)", flush=True)
+    shutil.copy(ROOT / a.src / "phones.json", out / "phones.json")
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -253,8 +305,13 @@ def main():
     p.add_argument("--src", default="audio-fusha")
     p.add_argument("--script", default="script-fusha.json")
     p.add_argument("--out", default="audio-myvoice")
+    f = sub.add_parser("fix")
+    f.add_argument("--src", default="audio-fusha")
+    f.add_argument("--out", default="audio-myvoice")
+    f.add_argument("--letters", default="بحظ")
+    f.add_argument("--shift", action="store_true", help="pitch-match voiced letters (smears stop bursts)")
     a = ap.parse_args()
-    convert(a) if a.cmd == "convert" else pick(a)
+    {"convert": convert, "pick": pick, "fix": fix}[a.cmd](a)
 
 
 if __name__ == "__main__":
