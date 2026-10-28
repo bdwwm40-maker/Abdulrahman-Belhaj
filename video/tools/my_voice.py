@@ -6,7 +6,8 @@ re-voices every clip with the timbre of the client's recording. Clip lengths are
 kept, so timings.json / phones.json of the source stay valid (captions and lip sync).
 
 The conversion is stochastic, so several takes are made and `pick` keeps, per scene,
-the take Whisper transcribes most accurately (ties: closest to the client's voice).
+the take Whisper transcribes most accurately phrase by phrase (ties: closest to the client's voice);
+the takes are time-aligned, so the chosen phrases are spliced in the pauses between them.
 
   python3 my_voice.py convert SEEDVC_DIR REF.wav --src audio-fusha --out build/vc/take1 --seed 1
   python3 my_voice.py pick REF.wav --takes build/vc/take* --src audio-fusha --out audio-myvoice
@@ -143,34 +144,96 @@ def letter_error(ref, hyp):
     return d[-1] / max(1, len(ref))
 
 
+def phrases(text, words, x, sr):
+    """Cut points (samples) between the punctuation phrases of a line, placed at the quietest spot of the pause."""
+    parts = [q.strip() for q in re.split(r"(?<=[،,.!؟?…])\s+", text.replace("«", "").replace("»", "")) if q.strip()]
+    n_txt, n_tts = sum(len(q.split()) for q in parts), len(words)
+    first, i = [], 0
+    for q in parts:
+        first.append(min(n_tts - 1, round(i * n_tts / max(n_txt, 1))))
+        i += len(q.split())
+    hop = int(sr * 0.01)
+    rms = np.sqrt(np.convolve(x ** 2, np.ones(hop) / hop, mode="same"))
+    cuts = [0]
+    for j in first[1:]:
+        a = int((words[j - 1]["t"] + words[j - 1]["d"]) * sr) if j > 0 else 0
+        b = int(words[j]["t"] * sr)
+        a, b = min(a, b), max(a, b)
+        cuts.append(a + int(np.argmin(rms[a:b + 1])) if b > a else b)
+    cuts.append(len(x))
+    return parts, cuts
+
+
 def pick(a):
+    """Per scene, per phrase: keep the take that Whisper transcribes most accurately, splice in the pauses."""
     from faster_whisper import WhisperModel
     from resemblyzer import VoiceEncoder, preprocess_wav
     script = {s["id"]: s["voice"] for s in json.loads((ROOT / a.script).read_text())["scenes"]}
+    timings = json.loads((ROOT / a.src / "timings.json").read_text())
     enc = VoiceEncoder("cpu")
     me = enc.embed_utterance(preprocess_wav(load(a.ref), 16000))
     asr = WhisperModel("medium", device="cpu", compute_type="int8")
     out = ROOT / a.out
     out.mkdir(exist_ok=True)
+    SR = 24000
     report = {}
     for sid, text in script.items():
-        rows = []
+        src = load(ROOT / a.src / f"{sid}.wav", SR)
+        parts, cuts = phrases(text, timings[sid]["words"], src, SR)
+        takes = []
         for d in a.takes:
             p = Path(d) / f"{sid}.wav"
-            if not p.exists():
-                continue
-            x = load(p)
-            heard = " ".join(s.text for s in asr.transcribe(x, language="ar", beam_size=5)[0]).strip()
-            rows.append({"take": str(d), "error": round(letter_error(norm(text), norm(heard)), 4),
-                         "similarity": round(float(np.dot(me, enc.embed_utterance(preprocess_wav(x, 16000)))), 3),
-                         "heard": heard})
-        best = min(rows, key=lambda r: (r["error"], -r["similarity"]))
-        shutil.copy(Path(best["take"]) / f"{sid}.wav", out / f"{sid}.wav")
-        report[sid] = {"chosen": best["take"], "takes": rows}
-        print(f"{sid}: {best['take']}  error {best['error'] * 100:.1f}%  similarity {best['similarity']:.3f}", flush=True)
+            if p.exists():
+                y = load(p, SR)[:len(src)]
+                y = np.pad(y, (0, len(src) - len(y)))
+                loud = y[np.abs(y) > 0.02]
+                y = y * (0.12 / (np.sqrt(np.mean(loud ** 2)) + 1e-9))      # same speech level in every take
+                sim = float(np.dot(me, enc.embed_utterance(preprocess_wav(load(p), 16000))))
+                takes.append((str(d), y, sim))
+        rows, chosen = [], []
+        for k, q in enumerate(parts):
+            a0, b0 = cuts[k], cuts[k + 1]
+            cand = []
+            for name, y, sim in takes:
+                seg = y[max(0, a0 - 1200):b0 + 1200]                       # a little context on both sides
+                seg16 = load_np(seg, SR)
+                heard = " ".join(s.text for s in asr.transcribe(seg16, language="ar", beam_size=5)[0]).strip()
+                cand.append({"take": name, "error": round(letter_error(norm(q), norm(heard)), 4),
+                             "similarity": round(sim, 3), "heard": heard})
+            best = min(cand, key=lambda r: (r["error"], -r["similarity"]))
+            chosen.append(best["take"])
+            rows.append({"phrase": q, "chosen": best["take"], "takes": cand})
+        # splice: crossfade 20 ms at each cut (cuts sit in pauses)
+        y_out = np.zeros(len(src), np.float32)
+        fade = int(0.02 * SR)
+        for k in range(len(parts)):
+            y = next(t[1] for t in takes if t[0] == chosen[k])
+            a0, b0 = cuts[k], cuts[k + 1]
+            w = np.zeros(len(src), np.float32)
+            w[a0:b0] = 1
+            if k > 0:
+                w[a0 - fade:a0 + fade] = np.linspace(0, 1, 2 * fade)
+            if k + 1 < len(parts):
+                w[b0 - fade:b0 + fade] = np.linspace(1, 0, 2 * fade)
+            y_out += y * w
+        y_out = y_out / (np.abs(y_out).max() + 1e-9) * 0.89
+        with wave.open(str(out / f"{sid}.wav"), "wb") as f:
+            f.setnchannels(1)
+            f.setsampwidth(2)
+            f.setframerate(SR)
+            f.writeframes((y_out * 32767).astype(np.int16).tobytes())
+        err = np.mean([min(c["error"] for c in r["takes"]) for r in rows])
+        report[sid] = rows
+        print(f"{sid}: {len(parts)} phrases from takes {[Path(c).name for c in chosen]}  mean phrase error {err * 100:.1f}%", flush=True)
     for f in ("timings.json", "phones.json"):                                  # same clip lengths as the source
         shutil.copy(ROOT / a.src / f, out / f)
     (out / "takes.json").write_text(json.dumps(report, ensure_ascii=False, indent=1))
+
+
+def load_np(y, sr):
+    """Resample a float clip to 16 kHz for Whisper."""
+    import librosa
+    return librosa.resample(y.astype(np.float32), orig_sr=sr, target_sr=16000)
 
 
 def main():
