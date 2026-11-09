@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>خطوات البحث العلمي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Playfair+Display:wght@600;700&display=block" rel="stylesheet">
+<style>
+  :root{
+    --wine:#8e1546; --wine-dark:#5e0c2e; --rose:#c2185b; --pink:#f8d7e4;
+    --pink-soft:#fdf0f5; --ink:#2b1020; --gold:#c9a24a;
+  }
+  @page{ size:297mm 420mm; margin:0 }
+  *{ box-sizing:border-box; margin:0; padding:0 }
+  html,body{ background:#fff }
+  body{ font-family:"Cairo",sans-serif; color:var(--ink) }
+  .poster{
+    width:1190px; height:1684px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(circle at 12% 40%, #fbe3ee 0 160px, transparent 161px),
+      radial-gradient(circle at 92% 62%, #fbe3ee 0 200px, transparent 201px),
+      linear-gradient(180deg,#fff 0%,#fff7fa 55%,#fde8f0 100%);
+    display:flex; flex-direction:column;
+  }
+  .poster > *{ flex-shrink:0 }
+  .poster::before{ /* thin frame */
+    content:""; position:absolute; inset:18px; border:2px solid var(--gold);
+    border-radius:26px; pointer-events:none; z-index:5; opacity:.7;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:relative; height:270px; padding:40px 56px 0;
+    background:linear-gradient(135deg,var(--wine-dark) 0%,var(--wine) 55%,var(--rose) 100%);
+    color:#fff; display:flex; align-items:flex-start; justify-content:space-between;
+    clip-path:ellipse(85% 100% at 50% 0%);
+  }
+  header::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.10) 1.5px, transparent 1.6px);
+    background-size:22px 22px; pointer-events:none;
+  }
+  .logo-card{
+    width:160px; height:180px; background:#fff; border-radius:24px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px rgba(0,0,0,.25); border:3px solid var(--gold);
+    position:relative; z-index:2; padding:12px;
+  }
+  .logo-card img{ max-width:100%; max-height:100%; object-fit:contain }
+  .title{ text-align:center; position:relative; z-index:2; flex:1; padding-top:6px }
+  .title .uni{ font-size:22px; font-weight:700; opacity:.95; letter-spacing:.3px }
+  .title h1{ font-size:60px; font-weight:900; line-height:1.15; margin-top:6px;
+    text-shadow:0 4px 14px rgba(0,0,0,.25) }
+  .title .en{ font-family:"Playfair Display",serif; font-size:28px; font-weight:700;
+    color:#ffe3ee; letter-spacing:1px; margin-top:2px }
+  .title .rule{ width:220px; height:4px; margin:10px auto 0; border-radius:4px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent) }
+
+  /* ---------- Section heading pill ---------- */
+  .pill{
+    display:inline-block; background:linear-gradient(90deg,var(--wine),var(--rose));
+    color:#fff; font-weight:800; font-size:28px; padding:4px 40px 8px;
+    border-radius:40px; box-shadow:0 6px 14px rgba(142,21,70,.3);
+  }
+
+  /* ---------- Intro ---------- */
+  .intro{ margin:-6px 70px 0; text-align:center; position:relative; z-index:3 }
+  .intro .box{
+    margin-top:-22px; background:#fff; border:2px solid #f1b6cd; border-radius:26px;
+    padding:32px 40px 18px; font-size:21px; line-height:1.8; font-weight:600;
+    box-shadow:0 10px 24px rgba(142,21,70,.10); text-align:justify; text-align-last:center;
+  }
+
+  /* ---------- Timeline ---------- */
+  .steps-title{ text-align:center; margin-top:24px }
+  .timeline{ position:relative; margin:20px 70px 0; height:716px }
+  .timeline::before{
+    content:""; position:absolute; top:10px; bottom:10px; left:50%; width:8px;
+    transform:translateX(-50%); border-radius:8px;
+    background:linear-gradient(180deg,var(--rose),var(--wine-dark));
+  }
+  .step{
+    position:absolute; width:calc(50% - 56px); height:140px;
+    background:#fff; border-radius:24px; border:2px solid #f1b6cd;
+    box-shadow:0 10px 22px rgba(142,21,70,.12);
+    display:flex; align-items:center; gap:18px; padding:16px 22px;
+  }
+  .step.r{ right:0 }         /* card on right side (RTL start) */
+  .step.l{ left:0 }
+  .step .num{
+    position:absolute; top:50%; width:64px; height:64px; border-radius:50%;
+    transform:translateY(-50%);
+    background:linear-gradient(135deg,var(--rose),var(--wine-dark)); color:#fff;
+    font-weight:900; font-size:32px; display:flex; align-items:center; justify-content:center;
+    border:5px solid #fff; box-shadow:0 0 0 3px var(--rose);
+  }
+  .step.r .num{ left:-88px }
+  .step.l .num{ right:-88px }
+  .step::after{ /* connector */
+    content:""; position:absolute; top:50%; width:30px; height:3px; background:var(--rose);
+  }
+  .step.r::after{ left:-26px } .step.l::after{ right:-26px }
+  .step .icon{
+    flex:0 0 78px; height:78px; border-radius:20px; background:var(--pink-soft);
+    display:flex; align-items:center; justify-content:center; border:2px solid var(--pink);
+  }
+  .step .icon svg{ width:56px; height:56px }
+  .step h3{ font-size:25px; font-weight:800; color:var(--wine); line-height:1.3 }
+  .step p{ font-size:18.5px; font-weight:600; line-height:1.55; color:#3a1a2b }
+
+  /* ---------- Students & Supervisor ---------- */
+  .team{ margin:26px 70px 0; text-align:center; position:relative; z-index:2 }
+  .team .box{
+    margin-top:-22px; background:#fff; border:2px solid #f1b6cd; border-radius:26px;
+    padding:34px 30px 16px; box-shadow:0 10px 24px rgba(142,21,70,.10);
+    display:flex; flex-wrap:wrap; justify-content:center; gap:4px 46px;
+  }
+  .team .name{ font-size:24px; font-weight:700; display:flex; align-items:center; gap:12px }
+  .team .name::before{ content:""; width:14px; height:14px; transform:rotate(45deg);
+    background:var(--rose); border-radius:3px; flex:0 0 14px }
+  
+
+  .supervisor{
+    margin:16px auto 0; text-align:center; position:relative; z-index:2;
+    background:linear-gradient(135deg,var(--wine-dark),var(--wine) 60%,var(--rose));
+    color:#fff; border-radius:60px; padding:10px 70px 14px; width:fit-content;
+    box-shadow:0 10px 22px rgba(94,12,46,.35); border:3px solid var(--gold);
+  }
+  .supervisor .lbl{ font-size:23px; font-weight:700; opacity:.92 }
+  .supervisor .who{ font-size:38px; font-weight:900; line-height:1.3 }
+  footer{ text-align:center; font-size:17px; font-weight:700; color:var(--wine); margin-top:12px }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <header>
+    <div class="logo-card"><img src="assets/logo-university.png" alt="شعار جامعة الزاوية"></div>
+    <div class="title">
+      <div class="uni">جامعة الزاوية – كلية العلوم الصحية العجيلات</div>
+      <h1>خطوات البحث العلمي</h1>
+      <div class="en">Scientific Research Steps</div>
+      <div class="rule"></div>
+    </div>
+    <div class="logo-card"><img src="assets/logo-faculty.png" alt="شعار كلية العلوم الصحية العجيلات"></div>
+  </header>
+
+  <section class="intro">
+    <span class="pill">مقدمة</span>
+    <div class="box">
+      يُعدّ البحث العلمي وسيلةً منظمةً يستخدمها الإنسان للوصول إلى المعرفة وكشف الحقائق وحلّ المشكلات،
+      ويعتمد على مجموعة من الخطوات الأساسية التي تساعد الباحث على جمع المعلومات وتحليلها
+      والوصول إلى نتائج دقيقة وموثوقة.
+    </div>
+  </section>
+
+  <div class="steps-title"><span class="pill">مراحل البحث العلمي</span></div>
+
+  <section class="timeline">
+    <!-- 1 -->
+    <div class="step r" style="top:0">
+      <span class="num">1</span>
+      <div class="icon"><svg viewBox="0 0 64 64" fill="none" stroke="#c2185b" stroke-width="5" stroke-linecap="round"><path d="M22 22a10 10 0 1 1 15 8.7c-3 1.8-5 4-5 7.3v3"/><circle cx="32" cy="50" r="2.5" fill="#c2185b"/></svg></div>
+      <div><h3>تحديد المشكلة</h3><p>اختيار المشكلة أو السؤال الذي يريد الباحث دراسته والإجابة عنه.</p></div>
+    </div>
+    <!-- 2 -->
+    <div class="step l" style="top:96px">
+      <span class="num">2</span>
+      <div class="icon"><svg viewBox="0 0 64 64" fill="none" stroke="#c2185b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40c-4-3-7-7.5-7-13a15 15 0 0 1 30 0c0 5.5-3 10-7 13v5H24z" fill="#ffe08a"/><path d="M25 51h14M28 57h8"/><path d="M32 6V2M52 27h4M8 27h4M47 12l3-3M17 12l-3-3"/></svg></div>
+      <div><h3>وضع الفرضيات</h3><p>طرح تفسير أو إجابة مبدئية للمشكلة يمكن اختبارها بالتجريب.</p></div>
+    </div>
+    <!-- 3 -->
+    <div class="step r" style="top:192px">
+      <span class="num">3</span>
+      <div class="icon"><svg viewBox="0 0 64 64" fill="none" stroke-width="3.5" stroke-linejoin="round"><rect x="10" y="40" width="44" height="12" rx="3" fill="#c2185b" stroke="#5e0c2e"/><rect x="14" y="27" width="40" height="12" rx="3" fill="#1f3c88" stroke="#132a63"/><rect x="10" y="14" width="42" height="12" rx="3" fill="#f06292" stroke="#8e1546"/></svg></div>
+      <div><h3>جمع المعلومات</h3><p>البحث عن المعلومات والبيانات المتعلقة بموضوع الدراسة من مصادر موثوقة.</p></div>
+    </div>
+    <!-- 4 -->
+    <div class="step l" style="top:288px">
+      <span class="num">4</span>
+      <div class="icon"><svg viewBox="0 0 64 64" fill="none" stroke="#1f3c88" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"><path d="M25 6h14M28 6v18L12 52a4 4 0 0 0 3.5 6h33a4 4 0 0 0 3.5-6L36 24V6"/><path d="M17 42h30l5 10a4 4 0 0 1-3.5 6h-33A4 4 0 0 1 12 52z" fill="#5fb3f0"/></svg></div>
+      <div><h3>إجراء التجارب</h3><p>تنفيذ التجارب أو الملاحظات لاختبار الفرضية وجمع البيانات.</p></div>
+    </div>
+    <!-- 5 -->
+    <div class="step r" style="top:384px">
+      <span class="num">5</span>
+      <div class="icon"><svg viewBox="0 0 64 64" fill="none" stroke-width="3" stroke-linejoin="round"><rect x="10" y="38" width="9" height="16" fill="#f06292" stroke="#8e1546"/><rect x="23" y="30" width="9" height="24" fill="#c2185b" stroke="#5e0c2e"/><rect x="36" y="22" width="9" height="32" fill="#f06292" stroke="#8e1546"/><rect x="49" y="12" width="9" height="42" fill="#1f3c88" stroke="#132a63"/><path d="M6 58h54" stroke="#5e0c2e"/><path d="M8 32 24 20l12 5L54 8" stroke="#8e1546" stroke-linecap="round"/></svg></div>
+      <div><h3>تحليل النتائج</h3><p>تنظيم البيانات ودراستها باستخدام الجداول أو الرسوم البيانية لفهم ما تشير إليه.</p></div>
+    </div>
+    <!-- 6 -->
+    <div class="step l" style="top:480px">
+      <span class="num">6</span>
+      <div class="icon"><svg viewBox="0 0 64 64" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="10" width="40" height="48" rx="5" fill="#fff" stroke="#1f3c88"/><rect x="24" y="5" width="16" height="9" rx="3" fill="#1f3c88" stroke="#1f3c88"/><path d="M19 25l3 3 5-6M19 37l3 3 5-6M19 49l3 3 5-6" stroke="#2bb3a3"/><path d="M32 26h13M32 38h13M32 50h13" stroke="#1f3c88"/></svg></div>
+      <div><h3>استخلاص النتائج</h3><p>تحديد ما إذا كانت النتائج تدعم الفرضية أم لا، والإجابة عن سؤال البحث.</p></div>
+    </div>
+    <!-- 7 -->
+    <div class="step r" style="top:576px">
+      <span class="num">7</span>
+      <div class="icon"><svg viewBox="0 0 64 64" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6h26l10 10v42H14z" fill="#fff" stroke="#1f3c88"/><path d="M40 6v10h10" stroke="#1f3c88"/><path d="M21 26h22M21 34h22M21 42h12" stroke="#5fb3f0"/><path d="M56 30 38 48l-6 2 2-6 18-18z" fill="#c2185b" stroke="#5e0c2e"/></svg></div>
+      <div><h3>كتابة التقرير</h3><p>عرض خطوات البحث ونتائجه واستنتاجاته بطريقة علمية واضحة مع ذكر المصادر.</p></div>
+    </div>
+  </section>
+
+  <section class="team">
+    <span class="pill">إعداد الطالبات</span>
+    <div class="box">
+      <div class="name">آية الهادي محمد</div>
+      <div class="name">ريان عبد الحميد عز الدين</div>
+      <div class="name">ريان خالد جابر</div>
+      <div class="name">غفران أبو بكر صالح</div>
+      <div class="name">هبة عبد الحكيم بلق</div>
+    </div>
+  </section>
+
+  <div class="supervisor">
+    <div class="lbl">تحت إشراف الدكتورة</div>
+    <div class="who">ابتسام بزاقة</div>
+  </div>
+
+</div>
+</body>
+</html>
