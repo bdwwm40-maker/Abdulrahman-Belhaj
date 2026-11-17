@@ -1,0 +1,60 @@
+{
+  "name": "circle_match_cut_ticks",
+  "description": "Preset extracted from the reference video (pencil -> mask reveal -> eye -> circular-object match cuts on clock ticks -> eye closes). Exported 9:16 but the edit itself is a 16:9 frame.",
+  "reference_analysis": {
+    "source_file": "abffcc54-5596046325308505491.mp4",
+    "container": "MP4 (H.264 High, yuv420p) + AAC HE-AAC 44.1 kHz stereo",
+    "canvas": "720x1280 (9:16)",
+    "edit_frame": "16:9 frame placed in the upper half of the canvas (y ~193..595), timeline shown below it",
+    "fps": 23.976,
+    "duration_s": 7.05,
+    "loudness": { "mean_dB": -22.1, "peak_dB": -0.1 },
+    "cut_times_s": [2.29, 2.42, 2.75, 3.25, 3.80, 4.25, 4.80, 5.26, 5.80, 6.26, 6.55, 6.80],
+    "beat_interval_s": 0.5,
+    "bpm_equivalent": 120,
+    "shot_list": [
+      { "t": "0.00-2.29", "shot": "Hand writing with a pen in a notebook (wide, shallow depth of field)", "sfx": "pencil scratch + page flip" },
+      { "t": "~2.29-2.42", "shot": "Page flip used as a MASK REVEAL into the eye", "sfx": "page flip, riser keeps building" },
+      { "t": "2.42-2.75", "shot": "Extreme close-up of an eye (iris centred)", "sfx": "eye opens, first tick" },
+      { "t": "2.75-3.25", "shot": "Round lamp / glowing circle", "sfx": "tick" },
+      { "t": "3.25-3.80", "shot": "Wall clock", "sfx": "tick" },
+      { "t": "3.80-4.25", "shot": "Globe being spun", "sfx": "globe spin" },
+      { "t": "4.25-4.80", "shot": "Camera lens: cap removed, top-down", "sfx": "camera lens click" },
+      { "t": "4.80-5.26", "shot": "Acoustic guitar sound hole", "sfx": "guitar strum" },
+      { "t": "5.26-5.80", "shot": "Gas burner igniting", "sfx": "flame whoosh" },
+      { "t": "5.80-6.26", "shot": "Pot of boiling tea, top-down", "sfx": "tea boiling" },
+      { "t": "6.26-6.80", "shot": "Cup of tea, top-down", "sfx": "tick" },
+      { "t": "6.80-7.05", "shot": "Back to the eye -> eye closes (end)", "sfx": "eye closes, riser ends" }
+    ]
+  },
+  "editing_rules": {
+    "concept": "Every match shot has ONE circular object at the exact centre of the frame, at about the same size as the iris, so each cut feels like the same shape turning into something else.",
+    "intro": { "duration_s": 2.3, "transition_to_first_match": "mask_reveal (page flip / wipe)", "transition_duration_s": 0.13 },
+    "match_cuts": { "type": "hard_cut", "one_cut_per_tick": true, "interval_s": 0.5 },
+    "outro": { "shot": "same eye as the first match shot", "ending": "eye closes / quick fade to black", "fade_s": 0.25 },
+    "eye_detail": "adjustment layer on the last eye shot (extra sharpening/contrast on the iris)",
+    "framing": "subject centred; circle diameter about 35-45% of frame height; push-in/scale so each circle matches the previous one"
+  },
+  "color_grade": {
+    "look": "warm, filmic, slightly desaturated shadows, soft contrast",
+    "ffmpeg_filter": "eq=contrast=1.06:saturation=0.92:gamma=0.98,colorbalance=rs=0.04:gs=0.0:bs=-0.05:rm=0.03:bm=-0.03:rh=0.02:bh=-0.04,vignette=PI/5",
+    "average_luma_Y": 118
+  },
+  "sound_design": {
+    "layers": [
+      { "name": "riser", "span": "whole video", "notes": "builds from start to the final eye; drops when the eye closes" },
+      { "name": "ticks", "span": "from the mask reveal to the end", "notes": "one clock tick on each cut, every 0.5 s" },
+      { "name": "pencil + page flip", "span": "intro only" },
+      { "name": "eye opens / eye closes", "span": "first and last eye shots" },
+      { "name": "per-shot SFX", "span": "one short sound for each object (globe, lens, guitar, flame, tea boiling)" }
+    ],
+    "target_loudness": "about -14 LUFS for social media; peaks below -1 dBTP"
+  },
+  "export": {
+    "edit_resolution": "1920x1080 (16:9)",
+    "vertical_option": "1080x1920 with the 16:9 edit centred on black",
+    "fps": 23.976,
+    "video_codec": "libx264 -crf 18 -preset slow -pix_fmt yuv420p",
+    "audio_codec": "aac 192k 48 kHz"
+  }
+}

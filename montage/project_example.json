@@ -1,0 +1,24 @@
+{
+  "output": "my_montage.mp4",
+  "resolution": [1920, 1080],
+  "fps": 23.976,
+  "bpm": 120,
+  "vertical": false,
+  "intro_duration": 2.3,
+  "reveal_transition": "wipeleft",
+  "reveal_duration": 0.13,
+  "music": null,
+  "intro":  { "file": "clips/01_writing.mp4", "in": 0.0, "sfx": null },
+  "match_shots": [
+    { "file": "clips/02_eye_open.mp4",  "in": 0.0, "beats": 1 },
+    { "file": "clips/03_lamp.mp4",      "in": 0.0, "beats": 1 },
+    { "file": "clips/04_clock.mp4",     "in": 0.0, "beats": 1 },
+    { "file": "clips/05_globe.mp4",     "in": 0.0, "beats": 1, "sfx": null },
+    { "file": "clips/06_lens.mp4",      "in": 0.0, "beats": 1 },
+    { "file": "clips/07_guitar.mp4",    "in": 0.0, "beats": 1 },
+    { "file": "clips/08_flame.mp4",     "in": 0.0, "beats": 1 },
+    { "file": "clips/09_tea_boil.mp4",  "in": 0.0, "beats": 1 },
+    { "file": "clips/10_cup.mp4",       "in": 0.0, "beats": 1 }
+  ],
+  "outro": { "file": "clips/11_eye_close.mp4", "in": 0.0, "beats": 1, "eye_detail": true }
+}
