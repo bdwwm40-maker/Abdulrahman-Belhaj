@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>شهادة شكر وتقدير</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E2233;
+    --navy-2:#173A52;
+    --gold:#B8914A;
+    --gold-lt:#D9BC7E;
+    --ivory:#FBF7EE;
+    --ink:#2A2A2A;
+  }
+  @page{ size:297mm 210mm; margin:0; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ width:297mm; height:210mm; background:var(--ivory); }
+  body{ font-family:'Amiri',serif; color:var(--ink); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+  .cert{
+    position:relative; width:297mm; height:210mm; overflow:hidden;
+    background:
+      radial-gradient(ellipse at 50% 45%, #FFFDF8 0%, var(--ivory) 55%, #F2EAD8 100%);
+  }
+  /* subtle geometric watermark */
+  .cert::before{
+    content:""; position:absolute; inset:0; opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%230E2233' stroke-width='1'%3E%3Cpath d='M30 4 L37 23 L56 30 L37 37 L30 56 L23 37 L4 30 L23 23 Z'/%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3C/g%3E%3C/svg%3E");
+    background-size:60px 60px;
+  }
+
+  /* frame */
+  .band{ position:absolute; inset:7mm; border:5mm solid var(--navy); }
+  .band::after{ content:""; position:absolute; inset:-1.4mm; border:0.5mm solid var(--gold); }
+  .line1{ position:absolute; inset:14.5mm; border:0.6mm solid var(--gold); }
+  .line2{ position:absolute; inset:16mm; border:0.25mm solid var(--gold-lt); }
+
+  .corner{ position:absolute; width:30mm; height:30mm; }
+  .corner.tr{ top:10mm; right:10mm; }
+  .corner.tl{ top:10mm; left:10mm; transform:scaleX(-1); }
+  .corner.br{ bottom:10mm; right:10mm; transform:scaleY(-1); }
+  .corner.bl{ bottom:10mm; left:10mm; transform:scale(-1,-1); }
+
+  .content{
+    position:absolute; inset:20mm 30mm 18mm; display:flex; flex-direction:column; align-items:center; text-align:center;
+  }
+  .crest{ width:16mm; height:16mm; margin-top:1mm; }
+  h1{
+    font-family:'Aref Ruqaa',serif; font-weight:700; color:var(--navy);
+    font-size:46pt; line-height:1.15; margin-top:1mm; letter-spacing:0;
+  }
+  .divider{ width:95mm; height:6mm; margin:0.5mm 0 2.5mm; }
+  .to{ font-family:'Tajawal',sans-serif; font-weight:500; font-size:14pt; color:var(--navy-2); letter-spacing:.2px; }
+  .name{
+    font-family:'Aref Ruqaa',serif; font-weight:700; font-size:34pt; line-height:1.3;
+    background:linear-gradient(180deg,#C9A35C 0%, #9C7633 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    padding:0 6mm; margin-bottom:2.5mm;
+  }
+  .body{ max-width:215mm; font-size:13.6pt; line-height:1.85; color:#333; text-align:center; }
+  .body p{ margin-bottom:1.6mm; }
+  .closing{
+    font-family:'Amiri',serif; font-weight:700; font-size:14.5pt; color:var(--navy);
+    margin-top:1.5mm;
+  }
+
+  .footer{
+    position:absolute; left:34mm; right:34mm; bottom:23mm;
+    display:flex; justify-content:space-between; align-items:flex-end;
+  }
+  .sig{ text-align:center; min-width:62mm; }
+  .sig .label{ font-family:'Tajawal',sans-serif; font-size:10.5pt; color:var(--gold); font-weight:700; letter-spacing:.5px; }
+  .sig .val{ font-family:'Aref Ruqaa',serif; font-size:20pt; color:var(--navy); line-height:1.4; }
+  .sig .rule{ height:0.35mm; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin-top:1mm; }
+  .seal{ width:30mm; height:30mm; }
+</style>
+</head>
+<body>
+<div class="cert">
+  <div class="band"></div>
+  <div class="line1"></div>
+  <div class="line2"></div>
+
+  <!-- corner ornament (defined once, reused) -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <g id="orn">
+        <path d="M2 2 H60 M2 2 V60" stroke="#B8914A" stroke-width="1.6" fill="none"/>
+        <path d="M8 8 H44 M8 8 V44" stroke="#B8914A" stroke-width=".8" fill="none"/>
+        <g transform="translate(20 20)">
+          <path d="M0 -13 L4 -4 L13 0 L4 4 L0 13 L-4 4 L-13 0 L-4 -4 Z" fill="#B8914A"/>
+          <path d="M-9 -9 L-2 -3 L0 0 L-3 -2 Z M9 9 L2 3 L0 0 L3 2 Z M9 -9 L3 -2 L0 0 L2 -3 Z M-9 9 L-3 2 L0 0 L-2 3 Z" fill="#0E2233"/>
+          <circle r="2.4" fill="#FBF7EE" stroke="#0E2233" stroke-width=".8"/>
+        </g>
+        <circle cx="52" cy="8" r="1.6" fill="#B8914A"/><circle cx="8" cy="52" r="1.6" fill="#B8914A"/>
+        <circle cx="66" cy="2" r="1.2" fill="#B8914A"/><circle cx="2" cy="66" r="1.2" fill="#B8914A"/>
+      </g>
+    </defs>
+  </svg>
+  <svg class="corner tr" viewBox="0 0 70 70"><g transform="translate(70 0) scale(-1 1)"><use href="#orn"/></g></svg>
+  <svg class="corner tl" viewBox="0 0 70 70"><g transform="translate(70 0) scale(-1 1)"><use href="#orn"/></g></svg>
+  <svg class="corner br" viewBox="0 0 70 70"><g transform="translate(70 0) scale(-1 1)"><use href="#orn"/></g></svg>
+  <svg class="corner bl" viewBox="0 0 70 70"><g transform="translate(70 0) scale(-1 1)"><use href="#orn"/></g></svg>
+
+  <div class="content">
+    <svg class="crest" viewBox="0 0 60 60">
+      <circle cx="30" cy="30" r="28" fill="none" stroke="#B8914A" stroke-width="1.2"/>
+      <circle cx="30" cy="30" r="24" fill="#0E2233"/>
+      <g fill="#D9BC7E">
+        <path d="M30 10 L34 24 L48 22 L36 30 L48 38 L34 36 L30 50 L26 36 L12 38 L24 30 L12 22 L26 24 Z"/>
+      </g>
+      <circle cx="30" cy="30" r="4" fill="#0E2233" stroke="#D9BC7E" stroke-width="1"/>
+    </svg>
+
+    <h1>شهادة شكر وتقدير</h1>
+
+    <svg class="divider" viewBox="0 0 360 22">
+      <path d="M10 11 H150" stroke="url(#gl)" stroke-width="1.4"/>
+      <path d="M210 11 H350" stroke="url(#gr)" stroke-width="1.4"/>
+      <defs>
+        <linearGradient id="gl" gradientUnits="userSpaceOnUse" x1="10" y1="0" x2="150" y2="0"><stop offset="0" stop-color="#B8914A" stop-opacity="0"/><stop offset="1" stop-color="#B8914A"/></linearGradient>
+        <linearGradient id="gr" gradientUnits="userSpaceOnUse" x1="210" y1="0" x2="350" y2="0"><stop offset="0" stop-color="#B8914A"/><stop offset="1" stop-color="#B8914A" stop-opacity="0"/></linearGradient>
+      </defs>
+      <path d="M180 2 L188 11 L180 20 L172 11 Z" fill="#0E2233"/>
+      <path d="M180 6 L184 11 L180 16 L176 11 Z" fill="#D9BC7E"/>
+      <circle cx="160" cy="11" r="2.6" fill="#B8914A"/><circle cx="200" cy="11" r="2.6" fill="#B8914A"/>
+    </svg>
+
+    <div class="to">إلى الدكتورة الفاضلة</div>
+    <div class="name">إيمان الفيتوري</div>
+
+    <div class="body">
+      <p>بكل معاني الشكر والامتنان، وبأسمى عبارات التقدير والعرفان، نتقدم إليكِ نحن طلابكِ بخالص الشكر والتقدير، عرفانًا بما قدمتِه لنا من علمٍ ومعرفة، وما بذلتِه من جهدٍ وعطاء، وما غرستِه في نفوسنا من قيمٍ ومبادئ.</p>
+      <p>لقد كنتِ لنا مثالًا يُحتذى به في الإخلاص والتفاني، ولم تكوني مجرد معلمة تنقل العلم، بل كنتِ مصدر إلهامٍ ودعم، وأثرًا طيبًا سيبقى حاضرًا في مسيرتنا العلمية والعملية.</p>
+      <p>نسأل الله أن يجزيكِ عنا خير الجزاء، وأن يبارك في علمكِ وعملكِ، وأن يجعل كل ما قدمتِه في ميزان حسناتكِ.</p>
+    </div>
+    <div class="closing">مع خالص الحب والاحترام والتقدير</div>
+  </div>
+
+  <div class="footer">
+    <div class="sig">
+      <div class="label">المُهدون</div>
+      <div class="val">طلابكِ</div>
+      <div class="rule"></div>
+    </div>
+
+    <svg class="seal" viewBox="0 0 120 120">
+      <defs>
+        <radialGradient id="sg" cx="40%" cy="35%" r="70%">
+          <stop offset="0" stop-color="#E6CB8E"/><stop offset=".6" stop-color="#B8914A"/><stop offset="1" stop-color="#8A6A2E"/>
+        </radialGradient>
+        <path id="arc" d="M60 60 m-29 0 a29 29 0 1 1 58 0 a29 29 0 1 1 -58 0"/>
+      </defs>
+      <g fill="url(#sg)">
+        <!-- rim --><polygon points="60.0,4.0 65.5,11.3 72.5,5.4 76.2,13.7 84.3,9.5 86.1,18.5 94.9,16.2 94.6,25.4 103.8,25.1 101.5,33.9 110.5,35.7 106.3,43.8 114.6,47.5 108.7,54.5 116.0,60.0 108.7,65.5 114.6,72.5 106.3,76.2 110.5,84.3 101.5,86.1 103.8,94.9 94.6,94.6 94.9,103.8 86.1,101.5 84.3,110.5 76.2,106.3 72.5,114.6 65.5,108.7 60.0,116.0 54.5,108.7 47.5,114.6 43.8,106.3 35.7,110.5 33.9,101.5 25.1,103.8 25.4,94.6 16.2,94.9 18.5,86.1 9.5,84.3 13.7,76.2 5.4,72.5 11.3,65.5 4.0,60.0 11.3,54.5 5.4,47.5 13.7,43.8 9.5,35.7 18.5,33.9 16.2,25.1 25.4,25.4 25.1,16.2 33.9,18.5 35.7,9.5 43.8,13.7 47.5,5.4 54.5,11.3"/>
+      </g>
+      <circle cx="60" cy="60" r="38" fill="#0E2233"/>
+      <circle cx="60" cy="60" r="35" fill="none" stroke="#D9BC7E" stroke-width=".8"/>
+      <circle cx="60" cy="60" r="22" fill="none" stroke="#D9BC7E" stroke-width=".6"/>
+      <text font-family="Tajawal" font-weight="700" font-size="7" fill="#D9BC7E">
+        <textPath href="#arc" startOffset="0">✦ شكر وعرفان ✦ وفاء وتقدير ✦ شكر وعرفان ✦ وفاء وتقدير</textPath>
+      </text>
+      <path d="M60 49 L62.6 56.5 L70.5 56.5 L64.1 61 L66.4 68.5 L60 64 L53.6 68.5 L55.9 61 L49.5 56.5 L57.4 56.5 Z" fill="#D9BC7E"/>
+    </svg>
+  </div>
+</div>
+</body>
+</html>
