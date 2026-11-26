@@ -1,0 +1,68 @@
+{
+  "name": "Dark Cinematic Car Reel",
+  "source": "TikTok reel, 18.9s (15.9s edit + 3s TikTok end card)",
+  "format": {
+    "aspect": "9:16",
+    "resolution_export": "1080x1920 (source was 576x1024)",
+    "fps": 30,
+    "scan": "progressive",
+    "color_space": "Rec.709",
+    "video_codec": "H.264 High",
+    "audio": "AAC 44.1kHz stereo"
+  },
+  "timeline": {
+    "edit_length_s": 15.9,
+    "intro": {
+      "duration_s": 1.53,
+      "effect": "letterbox squeeze: black bars close in from full frame to a thin ~2.35:1 strip on a wide establishing shot, hold, then open back to full 9:16 on the first cut",
+      "keyframes_s": { "bars_closed": 0.35, "hold_until": 1.15, "bars_open": 1.53 }
+    },
+    "cuts_s": [1.53, 2.27, 3.07, 3.87, 4.57, 6.10, 6.90, 7.63, 8.40, 9.07, 9.23, 10.70, 13.03],
+    "avg_shot_length_s": 0.75,
+    "rhythm": "cuts on the beat (~80 BPM, every 1 beat); one longer hold (10.7 -> 13.0) for the hero shot before the outro",
+    "micro_effects": "short flicker/flash cuts around 8.4s and 9.2s (2-3 frame stutter)",
+    "outro": "last shot fades to black at ~15.9s, audio ends with it"
+  },
+  "shot_list": [
+    "wide establishing (front 3/4, parking garage)",
+    "low angle headlight close-up",
+    "wheel + red caliper macro",
+    "rear 3/4 taillight",
+    "side profile rolling",
+    "rear exhaust low angle",
+    "front wide centered",
+    "dutch-angle front",
+    "interior through open door",
+    "rear centered",
+    "door/mirror detail",
+    "bumper detail",
+    "wheel macro (second angle)",
+    "headlight DRL hero",
+    "wide dutch-angle closer"
+  ],
+  "camera": {
+    "style": "handheld gimbal, slow push-ins and orbits",
+    "angles": "very low, dutch tilt 10-20 deg, macro details",
+    "speed": "slight slow motion feel (shoot 60fps, conform to 30)"
+  },
+  "color_grade": {
+    "look": "low-key dark matte, almost monochrome, red accents kept",
+    "measured": { "luma_avg": 42.7, "luma_min": 2.6, "luma_max": 250.5, "saturation_avg": 3.1 },
+    "steps": [
+      "exposure -0.7 to -1.0 EV",
+      "contrast +20, crush blacks (lift 0, shadows -30)",
+      "highlights -20, keep speculars",
+      "global saturation -70 to -80",
+      "HSL: keep reds (sat +20), desaturate all other hues",
+      "slight cool/blue tint in shadows",
+      "vignette -15"
+    ]
+  },
+  "audio": {
+    "integrated_loudness_lufs": -14.0,
+    "true_peak_dbfs": 0.1,
+    "loudness_range_lu": 3.7,
+    "notes": "one music track (deep/phonk style), heavily compressed; normalize to -14 LUFS, limit true peak to -1 dBTP"
+  },
+  "text_overlays": "none (only TikTok watermark, added by platform)"
+}
