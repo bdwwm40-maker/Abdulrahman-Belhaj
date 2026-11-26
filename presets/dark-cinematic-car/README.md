@@ -49,3 +49,14 @@ python3 photos_to_reel.py shots.json output.mp4 [music.mp3]
 ```
 - `shots.json`: قائمة اللقطات (الصورة، المدة، مركز القص، التقريب، الدفع، الميلان، الوميض). مثال: `example_bmw_m5_shots.json`.
 - بدون ملف موسيقى يولّد إيقاعاً داكناً 80 BPM متزامناً مع القصّات.
+
+## تحويل كل صورة إلى فيديو ثم المونتاج
+1. `photo_to_clip.py` يحوّل كل صورة إلى مقطع 4 ثوانٍ: يفصل السيارة عن الخلفية (rembg) ويحرّك الطبقتين بسرعتين مختلفتين (عمق ثلاثي الأبعاد) مع نبض للأضواء.
+   ```
+   pip install "rembg[cpu]" opencv-python-headless
+   python3 photo_to_clip.py clips IMG_*.jpeg
+   ```
+2. `photos_to_reel.py` يقبل مقاطع الفيديو أيضاً (يأخذ وسط كل مقطع): مثال `example_bmw_m5_clips.json`.
+   ```
+   python3 photos_to_reel.py example_bmw_m5_clips.json reel.mp4 [music.mp3]
+   ```

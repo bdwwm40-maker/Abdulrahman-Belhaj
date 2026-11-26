@@ -33,10 +33,25 @@ def probe_size(path):
     return int(w), int(h)
 
 
+def probe_dur(path):
+    out = subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                                   "-of", "csv=p=0", path])
+    return float(out.decode().strip())
+
+
 def render_shot(i, s, tmp):
     out = os.path.join(tmp, f"shot{i:02d}.mp4")
     frames = max(1, round(s["dur"] * FPS))
     iw, ih = probe_size(s["img"])
+    is_video = s["img"].lower().endswith((".mp4", ".mov"))
+    if is_video:
+        # Video clip: take the middle part (or "start") and push in per input frame.
+        start = s.get("start", max(0.0, (probe_dur(s["img"]) - s["dur"]) / 2))
+        inputs = ["-ss", f"{start:.3f}", "-i", s["img"]]
+        zp_z, zp_d = "in", 1
+    else:
+        inputs = ["-loop", "1", "-i", s["img"]]
+        zp_z, zp_d = "on", frames
     if s.get("intro"):
         # Wide photo in a letterbox strip; bars squeeze in, hold, then open.
         strip = round(W * ih / iw / 2) * 2
@@ -44,8 +59,8 @@ def render_shot(i, s, tmp):
         squeeze = 120
         bar = (f"{top}+{squeeze}*if(lt(t,0.35),t/0.35,if(lt(t,1.1),1,"
                f"max(0,1-(t-1.1)/0.35)))")
-        vf = (f"[0:v]scale={W*2}:-2,zoompan=z='1+0.06*on/{frames}':x='iw/2-iw/zoom/2':"
-              f"y='ih/2-ih/zoom/2':d={frames}:s={W}x{strip}:fps={FPS},"
+        vf = (f"[0:v]scale={W*2}:-2,zoompan=z='1+0.06*{zp_z}/{frames}':x='iw/2-iw/zoom/2':"
+              f"y='ih/2-ih/zoom/2':d={zp_d}:s={W}x{strip}:fps={FPS},"
               f"pad={W}:{H}:0:{top}:black[img];"
               f"color=black:s={W}x{H}:r={FPS}[b];"
               f"[img][b]overlay=y='-{H}+{bar}':eval=frame[t1];"
@@ -63,12 +78,12 @@ def render_shot(i, s, tmp):
         y = min(max(s.get("cy", 0.5) * ih - ch / 2, 0), ih - ch)
         push = s.get("push", 0.06)
         chain = (f"[0:v]crop={int(cw)}:{int(ch)}:{int(x)}:{int(y)},scale={W*2}:{H*2},"
-                 f"zoompan=z='1+{push}*on/{frames}':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':"
-                 f"d={frames}:s={W}x{H}:fps={FPS}")
+                 f"zoompan=z='1+{push}*{zp_z}/{frames}':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':"
+                 f"d={zp_d}:s={W}x{H}:fps={FPS}")
         if rot:
             chain += f",scale={int(W*extra)//2*2}:{int(H*extra)//2*2},rotate={rot}*PI/180:ow={W}:oh={H}"
         vf = chain + ",format=yuv420p[v]"
-    run(["ffmpeg", "-y", "-loop", "1", "-i", s["img"], "-filter_complex", vf, "-map", "[v]",
+    run(["ffmpeg", "-y", *inputs, "-filter_complex", vf, "-map", "[v]",
          "-frames:v", str(frames), "-r", str(FPS), "-c:v", "libx264", "-crf", "14",
          "-preset", "fast", out])
     return out

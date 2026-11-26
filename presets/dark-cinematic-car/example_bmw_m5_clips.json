@@ -1,0 +1,16 @@
+[
+  {"img": "clips/IMG_0477.mp4", "dur": 1.5,   "intro": true},
+  {"img": "clips/IMG_0476.mp4", "dur": 0.75,  "cx": 0.35, "cy": 0.62, "zoom": 1.8, "push": 0.08},
+  {"img": "clips/IMG_0477.mp4", "dur": 0.75,  "cx": 0.64, "cy": 0.76, "zoom": 2.2, "push": 0.08},
+  {"img": "clips/IMG_0471.mp4", "dur": 0.75,  "cx": 0.60, "cy": 0.50, "zoom": 1.1, "push": 0.06},
+  {"img": "clips/IMG_0472.mp4", "dur": 0.75,  "cx": 0.50, "cy": 0.55, "zoom": 1.0, "push": 0.06},
+  {"img": "clips/IMG_0475.mp4", "dur": 1.5,   "cx": 0.72, "cy": 0.55, "zoom": 1.0, "push": 0.10},
+  {"img": "clips/IMG_0477.mp4", "dur": 0.75,  "cx": 0.50, "cy": 0.62, "zoom": 1.15, "push": 0.06},
+  {"img": "clips/IMG_0473.mp4", "dur": 0.75,  "cx": 0.50, "cy": 0.55, "zoom": 1.0, "push": 0.06, "rotate": 12},
+  {"img": "clips/IMG_0468.mp4", "dur": 0.75,  "cx": 0.50, "cy": 0.50, "zoom": 1.0, "push": 0.06},
+  {"img": "clips/IMG_0475.mp4", "dur": 0.75,  "cx": 0.80, "cy": 0.66, "zoom": 1.5, "push": 0.08, "flash": true},
+  {"img": "clips/IMG_0470.mp4", "dur": 0.375, "cx": 0.72, "cy": 0.55, "zoom": 1.0, "push": 0.04, "flash": true},
+  {"img": "clips/IMG_0467.mp4", "dur": 1.125, "cx": 0.52, "cy": 0.50, "zoom": 1.0, "push": 0.08},
+  {"img": "clips/IMG_0474.mp4", "dur": 2.25,  "cx": 0.62, "cy": 0.55, "zoom": 1.0, "push": 0.15},
+  {"img": "clips/IMG_0476.mp4", "dur": 3.0,   "cx": 0.50, "cy": 0.55, "zoom": 1.0, "push": 0.10}
+]
